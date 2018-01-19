@@ -47,26 +47,43 @@ We'll be taking two simple `ggplot2` graphs and turning them into part of an int
 
 ### Making two plots interactive
 
-The first visualization is going to be visualizing the total `box_office` by `year_release`. For the interactive portion, we're going to color each point by different categories.
+The first visualization is going to be visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 library(tidyverse)
 library(fivethirtyeight)
 data(biopics)
 
-biopics %>% ggplot(aes_string(y="box_office", x="year_release")) +
+biopics %>% ggplot(aes_string(y="box_office", x="year_release", color = "type_of_subject")) +
         geom_point()
 ```
 
-The second visualization is going to be showing a boxplot of `box_office` by category:
+The second visualization is going to be a boxplot of `box_office` by category:
 
-```{r}
+```{r warning=FALSE}
 biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office", 
                                    fill="type_of_subject")) +
   geom_boxplot()
 ```
 
-1. Open the `01_app_basics` folder and open the `app.R` file. This is the 
+1. Open the `01_app_basics` folder and open the `app.R` file. This is the file for the Shiny App and we'll modify it.
+
+2. Look at the structure of the code. There are two objects that we define: `ui` and `server`. We make them into an app with the command `shinyApp(ui = ui, server = server)`.
+
+3. Take a look at the `server` code. Notice where our `ggplot2` code is. Both graphs are placed in a `renderPlot()` function, and we give them a place in `output`, so `ui` can "see" it. The scatterplot is named `output$scatter_plot` and the boxplot is named `output$boxoffice_boxplot`. 
+
+4. Take a look at the `ui` code. Where in the code are we displaying `scatter_plot` and `boxoffice_boxplot`? Notice we don't need to refer to `output`. The display function `plotOutput` knows to look in the `output` object.
+
+5. Run the code by clicking the "Run App" button on the top of code window. You can see that we output our graphs in the "main" window.
+
+6. Let's paste in a control. 
+
+```
+selectInput("color_opts", "Select Category to Color With",
+        choices = select_color_options)
+```
+
+7. Add in another category option.
 
 ## App 2: Reactives
 

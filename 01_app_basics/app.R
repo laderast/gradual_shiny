@@ -26,8 +26,8 @@ ui <- fluidPage(
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
-        selectInput("color_opts", "Select Category to Color With",
-                    choices = select_color_options)
+        ## Add User Interface element here
+        
       ),
       
       # Show a plot of the generated distribution
