@@ -13,19 +13,23 @@ data(biopics)
 biopics <- biopics %>% filter(!is.na(box_office))
 ##specify what categories we want to color with
 select_color_options <- c("type_of_subject", "subject_race", "subject_sex")
+min_year <- min(biopics$year_release)
+max_year <- max(biopics$year_release)
 
 
 # Define UI for application that plots 
 ui <- fluidPage(
    
    # Application title
-   titlePanel(""),
+   titlePanel("Adding a Reactive"),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
         selectInput("color_opts", "Select Category to Color With",
-                    choices = select_color_options)
+                    choices = select_color_options),
+        sliderInput("year_filter", "Select Lowest Year", min = min_year,
+                    max=max_year, value = min_year)
       ),
       
       # Show a plot of the generated distribution
@@ -36,17 +40,26 @@ ui <- fluidPage(
    )
 )
 
-# Define server logic required to draw a histogram
+##Server is where all of the computations happen
 server <- function(input, output) {
+  
+  biopics_filtered <- reactive({
+    biopics %>%
+      filter(year_release > input$year_filter)
+    
+  })
    
    output$scatter_plot <- renderPlot({
-      biopics %>% ggplot(aes_string(y="box_office", x="year_release", color=input$color_opts)) + 
+      biopics_filtered() %>% ggplot(aes_string(y="box_office", 
+                                               x="year_release", 
+                                               color=input$color_opts)) + 
        geom_point()
      
    })
    
    output$boxoffice_boxplot <- renderPlot({
-     biopics %>% ggplot(aes_string(x=input$color_opts, y="box_office")) + geom_boxplot()
+     biopics_filtered() %>% ggplot(aes_string(x=input$color_opts, y="box_office")) + 
+       geom_boxplot()
    })
 }
 

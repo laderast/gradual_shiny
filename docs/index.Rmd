@@ -9,19 +9,21 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Before we start
+## Setup
 
-Make sure that you have the following packages installed:
+1) Make sure that you have the following packages installed:
 
-```{r}
+```{r eval=FALSE}
 install.packages(c("shiny", "tidyverse", "fivethirtyeight"))
 ```
 
-## App 1: Introducing Shiny
+2) Clone or download the tutorial from here (click the `Clone or Download` button, it's green and on the right side): https://github.com/laderast/shiny_workshop_pdxrlang 
+
+3) Unzip, and open the `shiny_workshop_pdxrlang.Rproj` file. The project should open in RStudio and you should be ready!
+
+## Introducing Shiny
 
 Welcome to Shiny! Shiny is a framework in R for making interactive visualizations for the web created by Joe Cheng. Nearly any plot in R can be made into an interactive visualization by adding some simple interface elements and mapping these interface elements into the plot. It's an extremely powerful technique for visualization and communication of findings.
-
-###
 
 Before we get started, we need to talk a little bit about the architecture of `shiny` apps. `shiny` apps are *server-based*, which means that all of the calculations happen on a server (when you're running them in RStudio, your server is your computer). Compare this to JavaScript visualization frameworks such as `D3.js`, where the client's computer needs to do all of the computing of the visualization. 
 
@@ -37,24 +39,43 @@ Every shiny app has two elements. The first is `ui`, which handles both the user
 
 If this is confusing, go very carefully through the diagram below. I'm happy to answer any questions you have about it.
 
-![](img/shiny_architecture.png)
+`![](img/shiny_architecture.png)`
 
-### Connecting `ui` and `server`
+## App 1: Connecting `ui` and `server`
 
 We'll be taking two simple `ggplot2` graphs and turning them into part of an interactive dashboard. The data we're going to use is the `biopics` dataset from the `fivethirtyeight` package. 
 
 ### Making two plots interactive
 
-The first visualization is going to be
+The first visualization is going to be visualizing the total `box_office` by `year_release`. For the interactive portion, we're going to color each point by different categories.
 
 ```{r}
+library(tidyverse)
+library(fivethirtyeight)
+data(biopics)
+
+biopics %>% ggplot(aes_string(y="box_office", x="year_release")) +
+        geom_point()
 ```
+
+The second visualization is going to be showing a boxplot of `box_office` by category:
+
+```{r}
+biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office", 
+                                   fill="type_of_subject")) +
+  geom_boxplot()
+```
+
+1. Open the `01_app_basics` folder and open the `app.R` file. This is the 
 
 ## App 2: Reactives
 
 
 
-## App 3: 
+## App 3: Adding tooltips
+
+
+## App 4: Adding in a file loader: `observe` and `update`.
 
 ## Where Next?
 
