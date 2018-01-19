@@ -19,14 +19,13 @@ select_color_options <- c("type_of_subject", "subject_race", "subject_sex")
 ui <- fluidPage(
    
    # Application title
-   titlePanel("Adding a Reactive"),
+   titlePanel(""),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
         selectInput("color_opts", "Select Category to Color With",
-                    choices = select_color_options),
-        sliderInput("year_filter", "Select Lowest Year", min = )
+                    choices = select_color_options)
       ),
       
       # Show a plot of the generated distribution
@@ -39,11 +38,6 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
-  outData <- reactive({
-    biopics
-    
-  })
    
    output$scatter_plot <- renderPlot({
       biopics %>% ggplot(aes_string(y="box_office", x="year_release", color=input$color_opts)) + 
