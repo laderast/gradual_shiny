@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Shiny"
+title: "A Gentle Introduction to Shiny"
 author: "Ted Laderas"
 date: "1/19/2018"
 output: html_document
@@ -47,7 +47,7 @@ We'll be taking two simple `ggplot2` graphs and turning them into part of an int
 
 ### Making two plots interactive
 
-The first visualization is going to be visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories.
+The first visualization is going to be visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories. Notice we use `aes_string()` to map columns to aesthetics. This is important, since we'll be passing `character` arguments to modify this plot later.
 
 ```{r warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -76,21 +76,30 @@ biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office",
 
 5. Run the code by clicking the "Run App" button on the top of code window. You can see that we output our graphs in the "main" window.
 
-6. Let's paste in a control. 
+6. Let's paste in a control. If you run the app again, you should see a control, but it doesn't change the plot.
 
 ```
 selectInput("color_opts", "Select Category to Color With",
         choices = select_color_options)
 ```
 
-7. Add in another category option.
+7. Let's connect the control to the plot. 
+
+8. Bonus! Let's add in another category option. Where should you add it? Just in case, here are the column names and their data types. 
+
+```{r}
+glimpse(biopics)
+```
 
 ## App 2: Reactives
 
+So we've connected our control up. Great! Now let's add a numeric filter to our data by using an `reactive`. `reactive`s are the heart and soul of `shiny`. We'll use a `reactive` to filter our data, and pass this filtered data on to our two plots. This means we can dynamically filter our data and our plots will update.
 
+1. Open up the `02_reactives` folder. 
 
 ## App 3: Adding tooltips
 
+Tooltips are great for examining single datapoints in the data. 
 
 ## App 4: Adding in a file loader: `observe` and `update`.
 
