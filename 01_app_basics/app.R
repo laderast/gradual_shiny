@@ -14,7 +14,8 @@ biopics <- biopics %>% filter(!is.na(box_office))
 ##specify what categories we want to color with
 select_color_options <- c("type_of_subject", "subject_race", "subject_sex")
 
-# Define UI for application that draws a histogram
+
+# Define UI for application that plots 
 ui <- fluidPage(
    
    # Application title
@@ -29,8 +30,8 @@ ui <- fluidPage(
       
       # Show a plot of the generated distribution
       mainPanel(
-         plotOutput("scatter_plot") #,
-        # plotOutput("boxoffice_boxplot")
+         plotOutput("scatter_plot"),
+        plotOutput("boxoffice_boxplot")
       )
    )
 )
@@ -39,16 +40,13 @@ ui <- fluidPage(
 server <- function(input, output) {
    
    output$scatter_plot <- renderPlot({
-
       biopics %>% ggplot(aes_string(y="box_office", x="year_release", color=input$color_opts)) + 
        geom_point()
      
    })
    
    output$boxoffice_boxplot <- renderPlot({
-     
-     biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office")) + geom_boxplot()
-     
+     biopics %>% ggplot(aes_string(x=input$color_opts, y="box_office")) + geom_boxplot()
    })
 }
 
