@@ -45,6 +45,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   biopics_filtered <- reactive({
+    ##add code after biopics here
     biopics 
   })
    

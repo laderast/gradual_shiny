@@ -49,7 +49,7 @@ We'll be taking two simple `ggplot2` graphs and turning them into part of an int
 
 The first visualization is a scatterplot visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories. Notice we use `aes_string()` to map columns to aesthetics. This is important, since we'll be passing `character` arguments to modify this plot later.
 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=TRUE}
 library(tidyverse)
 library(fivethirtyeight)
 data(biopics)
@@ -60,7 +60,7 @@ biopics %>% ggplot(aes_string(y="box_office", x="year_release", color = "type_of
 
 The second visualization is going to be a boxplot of `box_office` by category:
 
-```{r warning=FALSE}
+```{r warning=FALSE, echo=TRUE}
 biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office", 
                                    fill="type_of_subject")) +
   geom_boxplot()
@@ -83,13 +83,29 @@ selectInput("color_opts", "Select Category to Color With",
         choices = select_color_options)
 ```
 
-7. Let's connect the control to the plot. 
+7. Let's connect the control to the plot. Change the `color` aesthetic to the following:
 
-8. Bonus! Let's add in another category option. Where should you add it? Just in case, here are the column names and their data types. 
+```
+color = input$color_opts
+```
+
+8. Now try running the app. Your select box should control what categorical data controls the color of the points. Try it out!
+
+9. Bonus! Let's add in another category option. Where should you add it? Just in case, here are the column names and their data types. 
 
 ```{r}
 glimpse(biopics)
 ```
+
+### What you've learned so far
+
++   The architecture of shiny apps
++   How `ui` and `server` communicate through `output` and `input`
++   How `ui` displays plots (using `plotOutput`)
++   Adding a control (a `selectInput`)
++   Connecting that control to our `plots` using `input`
+
+### For More Info
 
 ## App 2: Reactives
 
@@ -108,24 +124,52 @@ A `reactive` can be thought of a bit of code that runs whenever the controls tha
 ```
 %>% filter(year_release > input$year_filter)
 ```
-5. Notice how we call the reactive in `output$scatter_plot`? We have to use `biopics_filtered()` rather than `biopics_filtered`. A reactive is actually a function, and so you need to use the function notation to invoke it. 
+5. Notice how we call the reactive in `output$scatter_plot`? We have to use `biopics_filtered()` rather than `biopics_filtered`. A reactive is actually a function, and so you need to use the function notation to invoke it in a `renderPlot` statement.
 
 6. Ok, run the app again and adjust the slider. Notice how the top plot is changing but the bottom one isn't. Why isn't it running?
 
 7. Modify the code in `output$boxoffice_boxplot` to use the `biopics_filtered()` reactive. Where should you put it? Run the code again to make sure it works.
 
+### For More Info
+
+We've only shown one type of `reactive`, basically a `reactive` `data.frame`. Almost any type of object can be a `reactive`. Here are more resources on learning about them.
+
++   [Reactivity 101 (Dean Attali)](https://deanattali.com/blog/building-shiny-apps-tutorial/#10-reactivity-101) - Dean Attali's pages on Shiny are a good read, especially his section on reactives.
++   [Reactivity: An Overview (Official Shiny Documentation)](https://shiny.rstudio.com/articles/reactivity-overview.html) - I personally find this overview of `reactive`s a little confusing.
+
+## App 3: Adding in a file loader: `observe` and `update`.
+
+We're going to make our file explorer more useful for other files by not hard coding variable names. We'll take a `.csv` file as input, and populate our `selectInput`s with categories that are related to our selected variables.
+
+1. Open the `app.R` in `04_observe_update`.
+
+2. Run the code before 
+
+3. Let's add a `selectInput` to filter on a particular category within our category variable. We'll need to create a new `reactive` to hold the categories for each category variable.
+
+
 ## App 3: Adding tooltips
 
-Tooltips are great for examining single datapoints in the data. 
+Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
 
-## App 4: Adding in a file loader: `observe` and `update`.
+### For More Info
+
+The `plotly` package also does tooltips, and can instantly make your graphs more interactive. `plotly` moves a lot of the graphing and such to the client side using JavaScript. You can see an example in `03_tooltips_plotly`. 
+
 
 ## Where Next?
 
 The wide world of `shiny` is now yours for the taking. I'm compiling a list of resources that I found really useful:
 
-* The Shiny Gallery
-* Dean Attali's Site and Repo
+* [The Shiny Gallery](https://shiny.rstudio.com/gallery/) - Tons of examples about how to implement things in Shiny
+* [Dean Attali's Site](https://deanattali.com/blog/advanced-shiny-tips/) - his "Advanced Shiny Tips" page has a really useful FAQ.
+* [Advanced Shiny (Dean Attali)](https://github.com/daattali/advanced-shiny) - This is the repo for all of Dean's shiny tips.
+* [Plotly](https://plot.ly/r/) - with the `plotly` package, you can translate ggplots into client-side `d3.js` plots, which can be customized with a lot more interactivity, and it runs on top of `shiny`. I'm still learning how to use it, but you can make your interactive graphics very slick with it. 
+
+## Shiny related things that I've done
+
+* [`ggvis` Intro](http://laderast.github.io/ggvis-intro/) - before `plotly`, there was `ggvis` for adding more interactivity, such as tooltips. These are some old slides about `ggvis` that I made. I don't use it anymore because the syntax is very different than `ggplot2` and it's really still very beta.
+* [flowDashboard example](https://tladeras.shinyapps.io/sampleFlowDashboard/) - Just tooting my own horn here. This is package that I'm working on for interactive exploration of flow cytometry data.
 
 ### I want more interactivity
 
