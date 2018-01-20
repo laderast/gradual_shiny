@@ -1,11 +1,16 @@
+library(fivethirtyeight)
+data(biopics)
+myDataFrame <- biopics
+source("helper.R")
 
+categoricalVars <- 
 
 library(shiny)
 
 ui <- shinyUI(
   fluidPage(
     fileInput("file1", "Choose file to upload", accept = ".csv"),
-    selectInput("myNames","Names", ""),
+    selectInput("myNames","Names",""),
     tableOutput("contents")
   )
 )
@@ -17,7 +22,7 @@ server <- function(input, output, session) {
     if (is.null(inFile)) {
       d <- myDataFrame
     } else {
-      d <- readRDS(inFile$datapath)
+      d <- read.csv(inFile$datapath)
     }
     d
   })
@@ -27,10 +32,11 @@ server <- function(input, output, session) {
   })
   
   observe({
+    choices <- colnames(myData())
     updateSelectInput(session, "myNames",
                       label = "myNames",
-                      choices = myData()$names,
-                      selected = myData()$names[1])
+                      choices = choices,
+                      selected = choices)
   })
   
 }

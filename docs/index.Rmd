@@ -97,7 +97,7 @@ color = input$color_opts
 
 8. Now try running the app. Your select box should control what categorical data controls the color of the points. Try it out!
 
-9. Bonus! Let's add in another category option. Where should you add it? Just in case, here are the column names and their data types. 
+9. Bonus! Let's add in another category option. Where should you add it? Just in case, here are the column names and their data types. You probably shouldn't add `title`, `director`, `subject`, `lead_actor_actress` since they aren't really categories, and they will blow up your `ggplot`s.
 
 ```{r}
 glimpse(biopics)
@@ -161,7 +161,6 @@ Tooltips are great for examining single datapoints in the data. We're going to a
 ### For More Info
 
 The `plotly` package also does tooltips, and can instantly make your graphs more interactive. `plotly` moves a lot of the graphing and such to the client side using JavaScript. You can see an example in `03_tooltips_plotly`. 
-
 
 ## Where Next?
 
