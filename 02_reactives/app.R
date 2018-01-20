@@ -36,7 +36,7 @@ ui <- fluidPage(
       # Show a plot of the generated distribution
       mainPanel(
          plotOutput("scatter_plot"),
-        plotOutput("boxoffice_boxplot")
+         plotOutput("boxoffice_boxplot")
       )
    )
 )
