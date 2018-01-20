@@ -1,4 +1,4 @@
-##01 - Shiny App Basics
+##02 - Reactives
 ##Here we'll learn how to connect server and ui together with the input and output objects
 #
 ## loading code here
@@ -13,6 +13,7 @@ data(biopics)
 biopics <- biopics %>% filter(!is.na(box_office))
 ##specify what categories we want to color with
 select_color_options <- c("type_of_subject", "subject_race", "subject_sex")
+
 min_year <- min(biopics$year_release)
 max_year <- max(biopics$year_release)
 
@@ -44,9 +45,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   biopics_filtered <- reactive({
-    biopics %>%
-      filter(year_release > input$year_filter)
-    
+    biopics 
   })
    
    output$scatter_plot <- renderPlot({
@@ -58,7 +57,7 @@ server <- function(input, output) {
    })
    
    output$boxoffice_boxplot <- renderPlot({
-     biopics_filtered() %>% ggplot(aes_string(x=input$color_opts, y="box_office")) + 
+     biopics %>% ggplot(aes_string(x=input$color_opts, y="box_office")) + 
        geom_boxplot()
    })
 }

@@ -1,5 +1,5 @@
 ---
-title: "A Gentle Introduction to Shiny"
+title: "A gRadual Introduction to Shiny"
 author: "Ted Laderas"
 date: "1/19/2018"
 output: html_document
@@ -47,7 +47,7 @@ We'll be taking two simple `ggplot2` graphs and turning them into part of an int
 
 ### Making two plots interactive
 
-The first visualization is going to be visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories. Notice we use `aes_string()` to map columns to aesthetics. This is important, since we'll be passing `character` arguments to modify this plot later.
+The first visualization is a scatterplot visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories. Notice we use `aes_string()` to map columns to aesthetics. This is important, since we'll be passing `character` arguments to modify this plot later.
 
 ```{r warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -76,7 +76,7 @@ biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office",
 
 5. Run the code by clicking the "Run App" button on the top of code window. You can see that we output our graphs in the "main" window.
 
-6. Let's paste in a control. If you run the app again, you should see a control, but it doesn't change the plot.
+6. Let's paste in a control. Paste the following code where it says "Add User Interface Element here" in `app.R`. If you run the app again, you should see a control, but it doesn't change the plot.
 
 ```
 selectInput("color_opts", "Select Category to Color With",
@@ -93,9 +93,26 @@ glimpse(biopics)
 
 ## App 2: Reactives
 
-So we've connected our control up. Great! Now let's add a numeric filter to our data by using an `reactive`. `reactive`s are the heart and soul of `shiny`. We'll use a `reactive` to filter our data, and pass this filtered data on to our two plots. This means we can dynamically filter our data and our plots will update.
+So we've connected our control up. Great! Now let's add a numeric filter to our data by using an `reactive`. `reactive`s are the heart and soul of `shiny`. We'll use a `reactive` to filter our data, and pass this filtered data on to our two plots. This means we can dynamically filter our data and our plots will update. 
 
-1. Open up the `02_reactives` folder. 
+A `reactive` can be thought of a bit of code that runs whenever the controls that map to it are changed. In this case, our `reactive` represents our filtered dataset when we adjust our slider.
+
+1. Open up the `02_reactives` folder and the `app.R` file within.
+
+2. Try running the app. You can see that we added a slider (using `sliderInput`) in `ui`, but it doesn't do anything. We're going to connect that slider to filter the `biopics` dataset. 
+
+3. You might notice that there is a new object in the `server` code, called `biopics_filtered`. This is where we're going to connect our slider.
+
+4. Paste the following bit of code into the reactive, after `biopics`. What does it do?
+
+```
+%>% filter(year_release > input$year_filter)
+```
+5. Notice how we call the reactive in `output$scatter_plot`? We have to use `biopics_filtered()` rather than `biopics_filtered`. A reactive is actually a function, and so you need to use the function notation to invoke it. 
+
+6. Ok, run the app again and adjust the slider. Notice how the top plot is changing but the bottom one isn't. Why isn't it running?
+
+7. Modify the code in `output$boxoffice_boxplot` to use the `biopics_filtered()` reactive. Where should you put it? Run the code again to make sure it works.
 
 ## App 3: Adding tooltips
 
