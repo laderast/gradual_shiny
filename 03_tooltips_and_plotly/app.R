@@ -1,5 +1,7 @@
 ## 03 - Tooltips using plotly
-## You will need to install the latest ggplot and plotly
+## You will need to install the latest ggplot2 and plotly
+## devtools::install_github("hadley/ggplot2")
+## install.packages("plotly")
 
 Sys.setlocale("LC_ALL", "C")
 library(tidyverse)
@@ -34,6 +36,7 @@ server <- function(input, output, session) {
                                        gender="subject_sex", subject_race="subject_race")) + 
       geom_point()
     
+    ##notice we pass our ggplot into ggplotly, which makes it more interactive
     g <- ggplotly(g, tooltip="all")
   })
 
