@@ -4,8 +4,8 @@ Welcome to the workshop! We'll introduce you to the basics behind Shiny, an easy
 
 01) Getting the basics down
 02) What are reactives for?
-03) Observe/isolate/update
-04) Tooltips and graph interactivity
+03) Tooltips and graph interactivity
+04) Observe/isolate/update
 05) Where to go next
 
 ## Requirements
