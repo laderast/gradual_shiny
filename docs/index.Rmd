@@ -27,6 +27,23 @@ install.packages(c("shiny", "tidyverse", "fivethirtyeight"))
 
 3) Unzip, and open the `shiny_workshop_pdxrlang.Rproj` file. The project should open in RStudio and you should be ready!
 
+4) (*optional*) If you want to use `plotly` in app 04B, you'll also need to do this:
+
+```
+install.packages(c("devtools", "plotly"))
+library(devtools)
+#install latest version of ggplot2 (needed to use plotly)
+install_github("hadley/ggplot2")
+```
+
+# Workshop Expectations
+
+I expect everyone to adhere to the code of conduct. 
+
+Additionally, please work together! The people in my workshops who have a really bad time and don't get anything out of it are the ones who try to do it alone. To quote the Legend of Zelda, "It's dangerous to go alone". Talking through the material with someone will help you understand it.
+
+We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help. *Green* means 
+
 # Introducing Shiny
 
 Welcome to Shiny! Shiny is a framework in R for making interactive visualizations for the web created by Joe Cheng. Nearly any plot in R can be made into an interactive visualization by adding some simple interface elements and mapping these interface elements into the plot. It's an extremely powerful technique for visualization and communication of findings.
@@ -45,7 +62,7 @@ Every shiny app has two elements. The first is `ui`, which handles both the user
 
 If this is confusing, go very carefully through the diagram below. I'm happy to answer any questions you have about it.
 
-![](img/shiny-architecture.png)
+![The basic shiny architecture](img/shiny-architecture.png)
 
 # App 1: Connecting `ui` and `server`
 
