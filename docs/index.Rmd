@@ -29,7 +29,7 @@ install.packages(c("shiny", "tidyverse", "fivethirtyeight"))
 
 4) (*optional*) If you want to use `plotly` in app 04B, you'll also need to do this:
 
-```
+```{r eval=FALSE, echo=TRUE}
 install.packages(c("devtools", "plotly"))
 library(devtools)
 #install latest version of ggplot2 (needed to use plotly)
@@ -38,11 +38,11 @@ install_github("hadley/ggplot2")
 
 # Workshop Expectations
 
-I expect everyone to adhere to the code of conduct. 
+We want to foster a positive learning environment in this workshop. I expect everyone to adhere to the [Code of Conduct](http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md). In short, be respectful of each other's learning styles, don't be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others. 
 
-Additionally, please work together! The people in my workshops who have a really bad time and don't get anything out of it are the ones who try to do it alone. To quote the Legend of Zelda, "It's dangerous to go alone". Talking through the material with someone will help you understand it.
+Additionally, please work together! The people in my workshops who have a really bad time and don't get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, "It's dangerous to go alone". Talking through the material with someone will help you understand it.
 
-We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help. *Green* means 
+We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. *Green* means "I'm okay, don't bug me", *Red* means "I need some help!".
 
 # Introducing Shiny
 
@@ -184,13 +184,17 @@ We're going to make our file explorer more useful for other files by not hard co
 
 Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can hover over a datapoint and see all the information.
 
-
+## Exercise
 
 # App 4B: Adding tooltips with `plotly`
 
 There is another way to add tooltips: use the `plotly` library. This is a JavaScript (built on top of `d3.js`) library that makes your `ggplots` more interactive, with built in tooltips. 
 
+The `plotly` library itself relies on `d3.js`, which is a client-side visualization library. So if you add `plotly`, does this make your shiny app client-based? Not quite. All of the controls and data serving are still done *server-side*. It's only the last bit that is translated to JavaScript and is *client-side*.
 
+Please note that we're not putting anything on the `plotly` servers when we do this. All of the data still lives on your server.
+
+## Exercise
 
 ## For More Info
 
@@ -198,12 +202,18 @@ The `plotly` package also does tooltips, and can instantly make your graphs more
 
 # Where Next?
 
-The wide world of `shiny` is now yours for the taking. I'm compiling a list of resources that I found really useful:
+The wide world of `shiny` is now yours for the taking. I'm compiling a list of resources that I found really useful.
+
+## Programming Resources
 
 * [The Shiny Gallery](https://shiny.rstudio.com/gallery/) - Tons of examples about how to implement things in Shiny
 * [Dean Attali's Site](https://deanattali.com/blog/advanced-shiny-tips/) - his "Advanced Shiny Tips" page has a really useful FAQ.
 * [Advanced Shiny (Dean Attali)](https://github.com/daattali/advanced-shiny) - This is the repo for all of Dean's shiny tips.
 * [Plotly](https://plot.ly/r/) - with the `plotly` package, you can translate ggplots into client-side `d3.js` plots, which can be customized with a lot more interactivity, and it runs on top of `shiny`. I'm still learning how to use it, but you can make your interactive graphics very slick with it. 
+
+## Deploying your app
+
+
 
 ## Shiny related things that I've done
 
