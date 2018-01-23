@@ -119,6 +119,8 @@ So we've connected our control up. Great! Now let's add a numeric filter to our 
 
 A `reactive` can be thought of a bit of code that runs whenever the controls that map to it are changed. In this case, our `reactive` represents our filtered dataset when we adjust our slider.
 
+![Basic workflow of reactives](img/reactive.png)
+
 1. Open up the `02_reactives` folder and the `app.R` file within.
 
 2. Try running the app. You can see that we added a slider (using `sliderInput`) in `ui`, but it doesn't do anything. We're going to connect that slider to filter the `biopics` dataset. 
@@ -147,16 +149,19 @@ We've only shown one type of `reactive`, basically a `reactive` `data.frame`. Al
 
 We're going to make our file explorer more useful for other files by not hard coding variable names. We'll take a `.csv` file as input, and populate our `selectInput`s with categories that are related to our selected variables.
 
+![observe/update programming pattern](img/observe_update.png)
+
 1. Open the `app.R` in `04_observe_update`.
 
 2. Run the code before 
 
 3. Let's add a `selectInput` to filter on a particular category within our category variable. We'll need to create a new `reactive` to hold the categories for each category variable.
 
-
 # App 4A: Adding tooltips
 
 Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
+
+
 
 # App 4B: Adding tooltips with `plotly`
 
