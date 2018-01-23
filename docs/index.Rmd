@@ -180,7 +180,7 @@ This will be more code review than activity. I apologize. Go through it and you 
 
 2. Try running the following code. What is in `categoricalVars` and what is in `numericVars`? Is it what you expected? If you're confused, please let me know.
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo=TRUE}
 #since we're in the shiny_pdx_rlang directory,
 #we need to set our working directory to 03_observe_update
 
@@ -224,7 +224,30 @@ Tooltips are great for examining single datapoints in the data. We're going to a
 
 There are a couple of web programming techniques we need to understand before we can understand how tooltips work. 
 
+In terms of interactivity, `shiny` has the following interactions built into `renderPlot()`: `hover` (where in the graph the mouse is hovering), `click` (grabs the location where you clicked), and `brush` (select multiple points). We'll play around with `hover` and `click`.
+
+Both the `hover` and `click` arguments will return the same thing: basically an object (we'll call it a `hover` object for now) which has the x-y coordinate information about the mouse position. That gets us part of the way there. The other part is returning the row in our data that's the closest to that point on the graph. `nearPoints` handles getting the row from the `data.frame`, which we'll refer to as a `point`. We use both this `hover` and `point` object to build our tooltip.  
+
+Once we have the row, we pass this on to a helper function called `return_tooltip`, which returns the location where we want the tooltip as well as the content of the tooltip. Then we display it onto our plot using `wellPanel`.
+
 ## Exercise
+
+1. Try running the `app.R` in `04A_tooltips`. Mouse near a data point. Did you get a tooltip?
+2. Try changing the `hover` argument in `plotOutput` to `click`. That is, instead of
+
+```
+ plotOutput("scatter_plot", hover = "plot_hover"),
+```
+make it
+
+```
+plotOutput("scatter_plot", hover = "plot_hover"),
+```
+What did that do with our interactivity?
+
+3. Uncomment the `print` statement in the `renderUI` codeblock. Try mousing over a point. Where is it printing the output? (hint: not the webpage.) How does this help us?
+
+4. If you're really interested in how it works, try printing `hover` as well.
 
 # App 4B: Adding tooltips with `plotly`
 

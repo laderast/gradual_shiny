@@ -341,6 +341,31 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <ol style="list-style-type: decimal">
 <li><p>Open the <code>app.R</code> in <code>03_observe_update</code>.</p></li>
 <li><p>Try running the following code. What is in <code>categoricalVars</code> and what is in <code>numericVars</code>? Is it what you expected? If you’re confused, please let me know.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#since we're in the shiny_pdx_rlang directory,</span>
+<span class="co">#we need to set our working directory to 03_observe_update</span>
+
+<span class="kw">library</span>(fivethirtyeight)
+<span class="kw">library</span>(shiny)
+<span class="kw">library</span>(tidyverse)
+
+##Load in the helper functions
+<span class="kw">source</span>(<span class="st">&quot;03/_observe_update/helper.R&quot;</span>)
+<span class="kw">data</span>(biopics)
+myDataFrame &lt;-<span class="st"> </span>biopics
+
+##these functions return the categorical variables and
+##the numeric variables, given a data.frame
+##They're in helper.R
+##Try running all the code before ui
+##and look at what categoricalVars and numericVars contains
+categoricalVars &lt;-<span class="st"> </span><span class="kw">get_category_variables</span>(myDataFrame)
+numericVars &lt;-<span class="st"> </span><span class="kw">get_numeric_variables</span>(myDataFrame)
+
+<span class="kw">glimpse</span>(myDataFrame)
+categoricalVars
+numericVars</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
 <li><p>Try running the app, and try loading the <code>datasetB.csv</code> file using the file browser (it should be in <code>03_observe_update</code>). Did the <code>x_variable</code> and <code>y_variable</code> <code>selectInputs</code> change?</p></li>
 <li><p>Let’s add a <code>selectInput</code> to filter on a particular category within our category variable. Uncomment all of the areas that say <code>uncomment this code for step 4</code> (there are 4 sections). As you do, follow the path from the <code>myData()</code> <code>reactive</code> to the <code>observe</code> code block to the <code>selectInput</code>s in <code>ui.R</code></p></li>
 <li><p>What is going on? Let’s start with the <code>fileInput</code> in <code>ui.R</code>. Where does <code>input$file1</code> appear? What do we do with it in the reactive?</p></li>
@@ -354,8 +379,23 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <h1><span class="header-section-number">7</span> App 4A: Adding tooltips</h1>
 <p>Tooltips are great for examining single datapoints in the data. We’re going to add tooltips to our scatterplot so that users can hover over a datapoint and see all the information.</p>
 <p>There are a couple of web programming techniques we need to understand before we can understand how tooltips work.</p>
+<p>In terms of interactivity, <code>shiny</code> has the following interactions built into <code>renderPlot()</code>: <code>hover</code> (where in the graph the mouse is hovering), <code>click</code> (grabs the location where you clicked), and <code>brush</code> (select multiple points). We’ll play around with <code>hover</code> and <code>click</code>.</p>
+<p>Both the <code>hover</code> and <code>click</code> arguments will return the same thing: basically an object (we’ll call it a <code>hover</code> object for now) which has the x-y coordinate information about the mouse position. That gets us part of the way there. The other part is returning the row in our data that’s the closest to that point on the graph. <code>nearPoints</code> handles getting the row from the <code>data.frame</code>, which we’ll refer to as a <code>point</code>. We use both this <code>hover</code> and <code>point</code> object to build our tooltip.</p>
+<p>Once we have the row, we pass this on to a helper function called <code>return_tooltip</code>, which returns the location where we want the tooltip as well as the content of the tooltip. Then we display it onto our plot using <code>wellPanel</code>.</p>
 <div id="exercise-3" class="section level2">
 <h2><span class="header-section-number">7.1</span> Exercise</h2>
+<ol style="list-style-type: decimal">
+<li>Try running the <code>app.R</code> in <code>04A_tooltips</code>. Mouse near a data point. Did you get a tooltip?</li>
+<li>Try changing the <code>hover</code> argument in <code>plotOutput</code> to <code>click</code>. That is, instead of</li>
+</ol>
+<pre><code> plotOutput(&quot;scatter_plot&quot;, hover = &quot;plot_hover&quot;),</code></pre>
+<p>make it</p>
+<pre><code>plotOutput(&quot;scatter_plot&quot;, hover = &quot;plot_hover&quot;),</code></pre>
+<p>What did that do with our interactivity?</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Uncomment the <code>print</code> statement in the <code>renderUI</code> codeblock. Try mousing over a point. Where is it printing the output? (hint: not the webpage.) How does this help us?</p></li>
+<li><p>If you’re really interested in how it works, try printing <code>hover</code> as well.</p></li>
+</ol>
 </div>
 </div>
 <div id="app-4b-adding-tooltips-with-plotly" class="section level1">

@@ -19,7 +19,6 @@ library(shiny)
 ui <- shinyUI(
   fluidPage(sidebarLayout(
     sidebarPanel(
-    fileInput("file1", "Choose csv file to upload", accept = ".csv"),
     selectInput("x_variable","Select X Variable",numericVars, selected=numericVars[1]),
     selectInput("y_variable", "Select Y Variable", numericVars, selected = numericVars[2]),
     selectInput("color_variable", "Select Color Variable", names(categoricalVars), 
@@ -56,6 +55,9 @@ server <- function(input, output, session) {
     #myData() using nearPoints
     point <- nearPoints(df=myData(), coordinfo=hover, 
                         maxpoints = 1, threshold = 5)
+    
+    ##uncomment this for step 3
+    print(point)
     
     #if nearPoints returns a data row, then show tooltip
     if(nrow(point)!=0){
