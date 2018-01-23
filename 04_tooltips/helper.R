@@ -64,7 +64,7 @@ get_category_variables <- function(df) {
 #' @export
 #'
 #' @examples
-return_well_panel <- function(hover, point){
+return_tooltip <- function(hover, point){
   left_pct <- (hover$x - hover$domain$left) / (hover$domain$right - hover$domain$left)
   top_pct <- (hover$domain$top - hover$y) / (hover$domain$top - hover$domain$bottom)
   

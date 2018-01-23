@@ -53,3 +53,37 @@ get_category_variables <- function(df) {
   return(char_list)
   
 }
+
+
+#' Title
+#'
+#' @param hover 
+#' @param point 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+return_tooltip <- function(hover, point){
+  left_pct <- (hover$x - hover$domain$left) / (hover$domain$right - hover$domain$left)
+  top_pct <- (hover$domain$top - hover$y) / (hover$domain$top - hover$domain$bottom)
+  
+  # calculate distance from left and bottom side of the picture in pixels
+  left_px <- hover$range$left + left_pct * (hover$range$right - hover$range$left)
+  top_px <- hover$range$top + top_pct * (hover$range$bottom - hover$range$top)
+  
+  style <- paste0("position:absolute; z-index:100; background-color: rgba(245, 245, 245, 0.85); ",
+                  "left:", left_px + 2, "px; top:", top_px + 2, "px;")
+  
+  output_string <- ''
+  
+  point2 <- as.list(point)
+  
+  for(i in 1:length(point2)){
+    output_string <- paste0(output_string, "<b>", names(point2[i]), "</b>: ", as.character(point2[i]), "<br>")
+  }
+  
+  # actual tooltip created as wellPanel
+  return(list(output_string=output_string, style=style))
+  
+}

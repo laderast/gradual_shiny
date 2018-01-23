@@ -23,79 +23,54 @@ ui <- shinyUI(
     selectInput("color_variable", "Select Color Variable", names(categoricalVars), selected = names(categoricalVars[1]))
 ),
   mainPanel(
-    #div(
-    #style = "position:relative",
+    ##hover is the critical parameter here
     plotOutput("scatter_plot", hover = "plot_hover"),
     uiOutput("hover_info")
     )
-    #)
   ))
 )
 
 server <- function(input, output, session) {
   
   myData <- reactive({
-    inFile <- input$file1
-    if (is.null(inFile)) {
-      d <- myDataFrame
-    } else {
-      d <- read.csv(inFile$datapath)
-    }
-    d
+      myDataFrame
   })
   
   output$scatter_plot <- renderPlot({
     ggplot(myData(), aes_string(y=input$x_variable, 
                                        x=input$y_variable, 
-                                       color=input$color_variable
-                                       
-                                    )) +  geom_point() 
+                                       color=input$color_variable)) +  
+      geom_point() 
 
     
   })
   
   output$hover_info <- renderUI({
+    #get the x-y coordinates from plot
     hover <- input$plot_hover
-
+    
+    #translate x-y coordinates to a row in 
+    #myData() using nearPoints
     point <- nearPoints(df=myData(), coordinfo=hover, 
                         maxpoints = 1, threshold = 3)
     
-    #print(point)
-    
+    #if nearPoints returns a data row, then show tooltip
     if(nrow(point)!=0){
-    output_list <- return_well_panel(hover, point)
+      
+      #return_tooltip returns both the text of tooltip (output_list$output_string),
+      #but also where on plot to display it (output_list$style).
+      output_list <- return_tooltip(hover, point)
 
-    wellPanel(
-      style = output_list$style,
-      p(HTML(output_list$output_string))
-    )
+      #use wellPanel() to display the tooltip
+      wellPanel(
+        style = output_list$style,
+        p(HTML(output_list$output_string))
+      )
     }
     
   })
   
-  ##observe runs the code whenever myData() changes
-  observe({
-    #get the new numeric variables when the data is loaded
-    num_vars <- get_numeric_variables(myData())
-    
-    ##update the selectInput with choices
-    updateSelectInput(session, "x_variable",
-                      choices = num_vars,
-                      selected = num_vars[1])
-    
-    updateSelectInput(session, "y_variable", 
-                      choices=num_vars,
-                      selected= num_vars[2])
-    
-    ##get the new categorical variables when the data is loaded
-    cat_vars <- names(get_category_variables(myData()))
-    
-    updateSelectInput(session, "color_variable",
-                      choices=cat_vars,
-                      selected=cat_vars[1])
-    
-  })
-  
+ 
 
 }
 
