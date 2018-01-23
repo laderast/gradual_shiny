@@ -152,44 +152,48 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#setup"><span class="toc-section-number">0.1</span> Setup</a></li>
-<li><a href="#introducing-shiny"><span class="toc-section-number">0.2</span> Introducing Shiny</a><ul>
-<li><a href="#the-concept-of-ui-and-server-elements"><span class="toc-section-number">0.2.1</span> The concept of <code>ui</code> and <code>server</code> elements</a></li>
+<li><a href="#setup"><span class="toc-section-number">1</span> Setup</a></li>
+<li><a href="#introducing-shiny"><span class="toc-section-number">2</span> Introducing Shiny</a><ul>
+<li><a href="#the-concept-of-ui-and-server-elements"><span class="toc-section-number">2.1</span> The concept of <code>ui</code> and <code>server</code> elements</a></li>
 </ul></li>
-<li><a href="#app-1-connecting-ui-and-server"><span class="toc-section-number">0.3</span> App 1: Connecting <code>ui</code> and <code>server</code></a><ul>
-<li><a href="#making-two-plots-interactive"><span class="toc-section-number">0.3.1</span> Making two plots interactive</a></li>
-<li><a href="#what-youve-learned-so-far"><span class="toc-section-number">0.3.2</span> What you’ve learned so far</a></li>
-<li><a href="#for-more-info"><span class="toc-section-number">0.3.3</span> For More Info</a></li>
+<li><a href="#app-1-connecting-ui-and-server"><span class="toc-section-number">3</span> App 1: Connecting <code>ui</code> and <code>server</code></a><ul>
+<li><a href="#making-two-plots-interactive"><span class="toc-section-number">3.1</span> Making two plots interactive</a></li>
+<li><a href="#what-youve-learned-so-far"><span class="toc-section-number">3.2</span> What you’ve learned so far</a></li>
+<li><a href="#for-more-info"><span class="toc-section-number">3.3</span> For More Info</a></li>
 </ul></li>
-<li><a href="#app-2-reactives"><span class="toc-section-number">0.4</span> App 2: Reactives</a><ul>
-<li><a href="#for-more-info-1"><span class="toc-section-number">0.4.1</span> For More Info</a></li>
+<li><a href="#app-2-reactives"><span class="toc-section-number">4</span> App 2: Reactives</a><ul>
+<li><a href="#for-more-info-1"><span class="toc-section-number">4.1</span> For More Info</a></li>
 </ul></li>
-<li><a href="#app-3-adding-in-a-file-loader-observe-and-update."><span class="toc-section-number">0.5</span> App 3: Adding in a file loader: <code>observe</code> and <code>update</code>.</a></li>
-<li><a href="#app-3-adding-tooltips"><span class="toc-section-number">0.6</span> App 3: Adding tooltips</a><ul>
-<li><a href="#for-more-info-2"><span class="toc-section-number">0.6.1</span> For More Info</a></li>
+<li><a href="#app-3-adding-in-a-file-loader-observe-and-update."><span class="toc-section-number">5</span> App 3: Adding in a file loader: <code>observe</code> and <code>update</code>.</a></li>
+<li><a href="#app-4a-adding-tooltips"><span class="toc-section-number">6</span> App 4A: Adding tooltips</a></li>
+<li><a href="#app-4b-adding-tooltips-with-plotly"><span class="toc-section-number">7</span> App 4B: Adding tooltips with <code>plotly</code></a><ul>
+<li><a href="#for-more-info-2"><span class="toc-section-number">7.1</span> For More Info</a></li>
 </ul></li>
-<li><a href="#where-next"><span class="toc-section-number">0.7</span> Where Next?</a></li>
-<li><a href="#shiny-related-things-that-ive-done"><span class="toc-section-number">0.8</span> Shiny related things that I’ve done</a><ul>
-<li><a href="#i-want-more-interactivity"><span class="toc-section-number">0.8.1</span> I want more interactivity</a></li>
+<li><a href="#where-next"><span class="toc-section-number">8</span> Where Next?</a><ul>
+<li><a href="#shiny-related-things-that-ive-done"><span class="toc-section-number">8.1</span> Shiny related things that I’ve done</a></li>
+<li><a href="#i-want-more-interactivity"><span class="toc-section-number">8.2</span> I want more interactivity</a></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="setup" class="section level2">
-<h2><span class="header-section-number">0.1</span> Setup</h2>
+<div id="setup" class="section level1">
+<h1><span class="header-section-number">1</span> Setup</h1>
 <ol style="list-style-type: decimal">
-<li><p>Make sure that you have the following packages installed:</p></li>
+<li>Make sure that you have the following packages installed:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;shiny&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;fivethirtyeight&quot;</span>))</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
 <li><p>Clone or download the tutorial from here (click the <code>Clone or Download</code> button, it’s green and on the right side): <a href="https://github.com/laderast/shiny_workshop_pdxrlang" class="uri">https://github.com/laderast/shiny_workshop_pdxrlang</a></p></li>
 <li><p>Unzip, and open the <code>shiny_workshop_pdxrlang.Rproj</code> file. The project should open in RStudio and you should be ready!</p></li>
 </ol>
 </div>
-<div id="introducing-shiny" class="section level2">
-<h2><span class="header-section-number">0.2</span> Introducing Shiny</h2>
+<div id="introducing-shiny" class="section level1">
+<h1><span class="header-section-number">2</span> Introducing Shiny</h1>
 <p>Welcome to Shiny! Shiny is a framework in R for making interactive visualizations for the web created by Joe Cheng. Nearly any plot in R can be made into an interactive visualization by adding some simple interface elements and mapping these interface elements into the plot. It’s an extremely powerful technique for visualization and communication of findings.</p>
 <p>Before we get started, we need to talk a little bit about the architecture of <code>shiny</code> apps. <code>shiny</code> apps are <em>server-based</em>, which means that all of the calculations happen on a server (when you’re running them in RStudio, your server is your computer). Compare this to JavaScript visualization frameworks such as <code>D3.js</code>, where the client’s computer needs to do all of the computing of the visualization.</p>
 <p>There are a lot of benefits to server-based frameworks, namely that your users don’t need to have a heavy-duty computer to visit your site, and that your data is sitting behind a protected server. One of the difficulties is that it can be difficult to scale for lots of users.</p>
-<div id="the-concept-of-ui-and-server-elements" class="section level3">
-<h3><span class="header-section-number">0.2.1</span> The concept of <code>ui</code> and <code>server</code> elements</h3>
+<div id="the-concept-of-ui-and-server-elements" class="section level2">
+<h2><span class="header-section-number">2.1</span> The concept of <code>ui</code> and <code>server</code> elements</h2>
 <p>Every shiny app has two elements. The first is <code>ui</code>, which handles both the user controls and the layout and placement of output elements, such as plots or tables. <code>ui</code> usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is <code>server</code>, which handles all of the calculations and the generation of plots for <code>ui</code>.</p>
 <p><code>ui</code> and <code>server</code> are only connected by two objects <code>input</code>, and <code>output</code> (they actually are environments, but we’ll just say they are objects). <code>ui</code> puts the values from the controls into <code>input</code>, which can be accessed by <code>server</code>. For example, if we have a slider called <code>year_release</code> in <code>ui</code>, we can access the value of that slider in <code>server</code> through <code>input$year_release</code>.</p>
 <p><code>server</code> will then do something with the slider value and generate some output. Where does it put the output? If you guessed <code>output</code>, then give yourself a star! <code>ui</code> then takes <code>output</code> and will then display it using the various _Output functions (such as <code>plotOutput</code>, <code>textOutput</code> and<code>tableOutput</code>).</p>
@@ -200,11 +204,11 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
-<div id="app-1-connecting-ui-and-server" class="section level2">
-<h2><span class="header-section-number">0.3</span> App 1: Connecting <code>ui</code> and <code>server</code></h2>
+<div id="app-1-connecting-ui-and-server" class="section level1">
+<h1><span class="header-section-number">3</span> App 1: Connecting <code>ui</code> and <code>server</code></h1>
 <p>We’ll be taking two simple <code>ggplot2</code> graphs and turning them into part of an interactive dashboard. The data we’re going to use is the <code>biopics</code> dataset from the <code>fivethirtyeight</code> package.</p>
-<div id="making-two-plots-interactive" class="section level3">
-<h3><span class="header-section-number">0.3.1</span> Making two plots interactive</h3>
+<div id="making-two-plots-interactive" class="section level2">
+<h2><span class="header-section-number">3.1</span> Making two plots interactive</h2>
 <p>The first visualization is a scatterplot visualizing the total <code>box_office</code> by <code>year_release</code>, colored by <code>type_of_subject</code>. For the interactive portion, we’re going to color each point by different categories. Notice we use <code>aes_string()</code> to map columns to aesthetics. This is important, since we’ll be passing <code>character</code> arguments to modify this plot later.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(fivethirtyeight)
@@ -253,8 +257,8 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 ## $ subject_sex        &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Ma...
 ## $ lead_actor_actress &lt;chr&gt; &quot;Richard Attenborough&quot;, &quot;Chiwetel Ejiofor&quot;,...</code></pre>
 </div>
-<div id="what-youve-learned-so-far" class="section level3">
-<h3><span class="header-section-number">0.3.2</span> What you’ve learned so far</h3>
+<div id="what-youve-learned-so-far" class="section level2">
+<h2><span class="header-section-number">3.2</span> What you’ve learned so far</h2>
 <ul>
 <li>The architecture of shiny apps</li>
 <li>How <code>ui</code> and <code>server</code> communicate through <code>output</code> and <code>input</code></li>
@@ -263,12 +267,12 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <li>Connecting that control to our <code>plots</code> using <code>input</code></li>
 </ul>
 </div>
-<div id="for-more-info" class="section level3">
-<h3><span class="header-section-number">0.3.3</span> For More Info</h3>
+<div id="for-more-info" class="section level2">
+<h2><span class="header-section-number">3.3</span> For More Info</h2>
 </div>
 </div>
-<div id="app-2-reactives" class="section level2">
-<h2><span class="header-section-number">0.4</span> App 2: Reactives</h2>
+<div id="app-2-reactives" class="section level1">
+<h1><span class="header-section-number">4</span> App 2: Reactives</h1>
 <p>So we’ve connected our control up. Great! Now let’s add a numeric filter to our data by using an <code>reactive</code>. <code>reactive</code>s are the heart and soul of <code>shiny</code>. We’ll use a <code>reactive</code> to filter our data, and pass this filtered data on to our two plots. This means we can dynamically filter our data and our plots will update.</p>
 <p>A <code>reactive</code> can be thought of a bit of code that runs whenever the controls that map to it are changed. In this case, our <code>reactive</code> represents our filtered dataset when we adjust our slider.</p>
 <ol style="list-style-type: decimal">
@@ -283,8 +287,8 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <li><p>Ok, run the app again and adjust the slider. Notice how the top plot is changing but the bottom one isn’t. Why isn’t it running?</p></li>
 <li><p>Modify the code in <code>output$boxoffice_boxplot</code> to use the <code>biopics_filtered()</code> reactive. Where should you put it? Run the code again to make sure it works.</p></li>
 </ol>
-<div id="for-more-info-1" class="section level3">
-<h3><span class="header-section-number">0.4.1</span> For More Info</h3>
+<div id="for-more-info-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> For More Info</h2>
 <p>We’ve only shown one type of <code>reactive</code>, basically a <code>reactive</code> <code>data.frame</code>. Almost any type of object can be a <code>reactive</code>. Here are more resources on learning about them.</p>
 <ul>
 <li><a href="https://deanattali.com/blog/building-shiny-apps-tutorial/#10-reactivity-101">Reactivity 101 (Dean Attali)</a> - Dean Attali’s pages on Shiny are a good read, especially his section on reactives.</li>
@@ -292,8 +296,8 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </ul>
 </div>
 </div>
-<div id="app-3-adding-in-a-file-loader-observe-and-update." class="section level2">
-<h2><span class="header-section-number">0.5</span> App 3: Adding in a file loader: <code>observe</code> and <code>update</code>.</h2>
+<div id="app-3-adding-in-a-file-loader-observe-and-update." class="section level1">
+<h1><span class="header-section-number">5</span> App 3: Adding in a file loader: <code>observe</code> and <code>update</code>.</h1>
 <p>We’re going to make our file explorer more useful for other files by not hard coding variable names. We’ll take a <code>.csv</code> file as input, and populate our <code>selectInput</code>s with categories that are related to our selected variables.</p>
 <ol style="list-style-type: decimal">
 <li><p>Open the <code>app.R</code> in <code>04_observe_update</code>.</p></li>
@@ -301,16 +305,20 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <li><p>Let’s add a <code>selectInput</code> to filter on a particular category within our category variable. We’ll need to create a new <code>reactive</code> to hold the categories for each category variable.</p></li>
 </ol>
 </div>
-<div id="app-3-adding-tooltips" class="section level2">
-<h2><span class="header-section-number">0.6</span> App 3: Adding tooltips</h2>
+<div id="app-4a-adding-tooltips" class="section level1">
+<h1><span class="header-section-number">6</span> App 4A: Adding tooltips</h1>
 <p>Tooltips are great for examining single datapoints in the data. We’re going to add tooltips to our scatterplot so that users can click on it.</p>
-<div id="for-more-info-2" class="section level3">
-<h3><span class="header-section-number">0.6.1</span> For More Info</h3>
+</div>
+<div id="app-4b-adding-tooltips-with-plotly" class="section level1">
+<h1><span class="header-section-number">7</span> App 4B: Adding tooltips with <code>plotly</code></h1>
+<p>There is another way to add tooltips: use the <code>plotly</code> library. This is a JavaScript (built on top of <code>d3.js</code>) library that makes your <code>ggplots</code> more interactive, with built in tooltips.</p>
+<div id="for-more-info-2" class="section level2">
+<h2><span class="header-section-number">7.1</span> For More Info</h2>
 <p>The <code>plotly</code> package also does tooltips, and can instantly make your graphs more interactive. <code>plotly</code> moves a lot of the graphing and such to the client side using JavaScript. You can see an example in <code>03_tooltips_plotly</code>.</p>
 </div>
 </div>
-<div id="where-next" class="section level2">
-<h2><span class="header-section-number">0.7</span> Where Next?</h2>
+<div id="where-next" class="section level1">
+<h1><span class="header-section-number">8</span> Where Next?</h1>
 <p>The wide world of <code>shiny</code> is now yours for the taking. I’m compiling a list of resources that I found really useful:</p>
 <ul>
 <li><a href="https://shiny.rstudio.com/gallery/">The Shiny Gallery</a> - Tons of examples about how to implement things in Shiny</li>
@@ -318,15 +326,15 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <li><a href="https://github.com/daattali/advanced-shiny">Advanced Shiny (Dean Attali)</a> - This is the repo for all of Dean’s shiny tips.</li>
 <li><a href="https://plot.ly/r/">Plotly</a> - with the <code>plotly</code> package, you can translate ggplots into client-side <code>d3.js</code> plots, which can be customized with a lot more interactivity, and it runs on top of <code>shiny</code>. I’m still learning how to use it, but you can make your interactive graphics very slick with it.</li>
 </ul>
-</div>
 <div id="shiny-related-things-that-ive-done" class="section level2">
-<h2><span class="header-section-number">0.8</span> Shiny related things that I’ve done</h2>
+<h2><span class="header-section-number">8.1</span> Shiny related things that I’ve done</h2>
 <ul>
 <li><a href="http://laderast.github.io/ggvis-intro/"><code>ggvis</code> Intro</a> - before <code>plotly</code>, there was <code>ggvis</code> for adding more interactivity, such as tooltips. These are some old slides about <code>ggvis</code> that I made. I don’t use it anymore because the syntax is very different than <code>ggplot2</code> and it’s really still very beta.</li>
 <li><a href="https://tladeras.shinyapps.io/sampleFlowDashboard/">flowDashboard example</a> - Just tooting my own horn here. This is package that I’m working on for interactive exploration of flow cytometry data.</li>
 </ul>
-<div id="i-want-more-interactivity" class="section level3">
-<h3><span class="header-section-number">0.8.1</span> I want more interactivity</h3>
+</div>
+<div id="i-want-more-interactivity" class="section level2">
+<h2><span class="header-section-number">8.2</span> I want more interactivity</h2>
 <p>Look into the world of <code>htmlwidgets</code></p>
 </div>
 </div>

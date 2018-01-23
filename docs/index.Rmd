@@ -15,7 +15,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Setup
+# Setup
 
 1) Make sure that you have the following packages installed:
 
@@ -27,7 +27,7 @@ install.packages(c("shiny", "tidyverse", "fivethirtyeight"))
 
 3) Unzip, and open the `shiny_workshop_pdxrlang.Rproj` file. The project should open in RStudio and you should be ready!
 
-## Introducing Shiny
+# Introducing Shiny
 
 Welcome to Shiny! Shiny is a framework in R for making interactive visualizations for the web created by Joe Cheng. Nearly any plot in R can be made into an interactive visualization by adding some simple interface elements and mapping these interface elements into the plot. It's an extremely powerful technique for visualization and communication of findings.
 
@@ -35,7 +35,7 @@ Before we get started, we need to talk a little bit about the architecture of `s
 
 There are a lot of benefits to server-based frameworks, namely that your users don't need to have a heavy-duty computer to visit your site, and that your data is sitting behind a protected server. One of the difficulties is that it can be difficult to scale for lots of users.
 
-### The concept of `ui` and `server` elements
+## The concept of `ui` and `server` elements
 
 Every shiny app has two elements. The first is `ui`, which handles both the user controls and the layout and placement of output elements, such as plots or tables. `ui` usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is `server`, which handles all of the calculations and the generation of plots for `ui`. 
 
@@ -47,11 +47,11 @@ If this is confusing, go very carefully through the diagram below. I'm happy to 
 
 ![](img/shiny-architecture.png)
 
-## App 1: Connecting `ui` and `server`
+# App 1: Connecting `ui` and `server`
 
 We'll be taking two simple `ggplot2` graphs and turning them into part of an interactive dashboard. The data we're going to use is the `biopics` dataset from the `fivethirtyeight` package. 
 
-### Making two plots interactive
+## Making two plots interactive
 
 The first visualization is a scatterplot visualizing the total `box_office` by `year_release`, colored by `type_of_subject`. For the interactive portion, we're going to color each point by different categories. Notice we use `aes_string()` to map columns to aesthetics. This is important, since we'll be passing `character` arguments to modify this plot later.
 
@@ -103,7 +103,7 @@ color = input$color_opts
 glimpse(biopics)
 ```
 
-### What you've learned so far
+## What you've learned so far
 
 +   The architecture of shiny apps
 +   How `ui` and `server` communicate through `output` and `input`
@@ -111,9 +111,9 @@ glimpse(biopics)
 +   Adding a control (a `selectInput`)
 +   Connecting that control to our `plots` using `input`
 
-### For More Info
+## For More Info
 
-## App 2: Reactives
+# App 2: Reactives
 
 So we've connected our control up. Great! Now let's add a numeric filter to our data by using an `reactive`. `reactive`s are the heart and soul of `shiny`. We'll use a `reactive` to filter our data, and pass this filtered data on to our two plots. This means we can dynamically filter our data and our plots will update. 
 
@@ -136,29 +136,14 @@ A `reactive` can be thought of a bit of code that runs whenever the controls tha
 
 7. Modify the code in `output$boxoffice_boxplot` to use the `biopics_filtered()` reactive. Where should you put it? Run the code again to make sure it works.
 
-### For More Info
+## For More Info
 
 We've only shown one type of `reactive`, basically a `reactive` `data.frame`. Almost any type of object can be a `reactive`. Here are more resources on learning about them.
 
 +   [Reactivity 101 (Dean Attali)](https://deanattali.com/blog/building-shiny-apps-tutorial/#10-reactivity-101) - Dean Attali's pages on Shiny are a good read, especially his section on reactives.
 +   [Reactivity: An Overview (Official Shiny Documentation)](https://shiny.rstudio.com/articles/reactivity-overview.html) - I personally find this overview of `reactive`s a little confusing.
 
-## App 3: Adding tooltips
-
-Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
-
-## App 3: Adding tooltips with `plotly`
-
-There is another way to add tooltips: use the `plotly` library. This is a JavaScript (built on top of `d3.js`) library that makes your `ggplots` more interactive, with built in tooltips. 
-
-
-
-### For More Info
-
-The `plotly` package also does tooltips, and can instantly make your graphs more interactive. `plotly` moves a lot of the graphing and such to the client side using JavaScript. You can see an example in `03_tooltips_plotly`. 
-
-
-## App 3: Adding in a file loader: `observe` and `update`.
+# App 3: Adding in a file loader: `observe` and `update`.
 
 We're going to make our file explorer more useful for other files by not hard coding variable names. We'll take a `.csv` file as input, and populate our `selectInput`s with categories that are related to our selected variables.
 
@@ -169,8 +154,21 @@ We're going to make our file explorer more useful for other files by not hard co
 3. Let's add a `selectInput` to filter on a particular category within our category variable. We'll need to create a new `reactive` to hold the categories for each category variable.
 
 
+# App 4A: Adding tooltips
 
-## Where Next?
+Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
+
+# App 4B: Adding tooltips with `plotly`
+
+There is another way to add tooltips: use the `plotly` library. This is a JavaScript (built on top of `d3.js`) library that makes your `ggplots` more interactive, with built in tooltips. 
+
+
+
+## For More Info
+
+The `plotly` package also does tooltips, and can instantly make your graphs more interactive. `plotly` moves a lot of the graphing and such to the client side using JavaScript. You can see an example in `03_tooltips_plotly`. 
+
+# Where Next?
 
 The wide world of `shiny` is now yours for the taking. I'm compiling a list of resources that I found really useful:
 
@@ -184,6 +182,6 @@ The wide world of `shiny` is now yours for the taking. I'm compiling a list of r
 * [`ggvis` Intro](http://laderast.github.io/ggvis-intro/) - before `plotly`, there was `ggvis` for adding more interactivity, such as tooltips. These are some old slides about `ggvis` that I made. I don't use it anymore because the syntax is very different than `ggplot2` and it's really still very beta.
 * [flowDashboard example](https://tladeras.shinyapps.io/sampleFlowDashboard/) - Just tooting my own horn here. This is package that I'm working on for interactive exploration of flow cytometry data.
 
-### I want more interactivity
+## I want more interactivity
 
 Look into the world of `htmlwidgets`
