@@ -17,7 +17,7 @@ You will need a laptop with RStudio installed. Additionally, you will need the f
 install.packages("fivethirtyeight", "shiny", "tidyverse")
 ```
 
-If you want to use `plotly` in app 04B, you'll also need to do this:
+If you want to use `plotly` in app 04B (which is optional), you'll also need to do this:
 
 ```
 install.packages(c("devtools", "plotly"))
