@@ -9,6 +9,8 @@ library(plotly)
 source("helper.R")
 myDataFrame <- biopics
 
+##these functions return the categorical variables and
+##the numeric variables, given a data.frame
 categoricalVars <- get_category_variables(myDataFrame)
 numericVars <- get_numeric_variables(myDataFrame)
 

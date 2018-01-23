@@ -1,4 +1,4 @@
-## 03 - Tooltips using plotly
+## 04B - Tooltips using plotly
 ## You will need to install the latest ggplot2 and plotly
 ## devtools::install_github("hadley/ggplot2")
 ## install.packages("plotly")

@@ -62,7 +62,7 @@ Every shiny app has two elements. The first is `ui`, which handles both the user
 
 If this is confusing, go very carefully through the diagram below. I'm happy to answer any questions you have about it.
 
-![The basic shiny architecture](img/shiny-architecture.png)
+![*Basic shiny architecture*](img/shiny-architecture.png)
 
 # App 1: Connecting `ui` and `server`
 
@@ -138,7 +138,7 @@ So we've connected our control up. Great! Now let's add a numeric filter to our 
 
 A `reactive` can be thought of a bit of code that runs whenever the controls that map to it are changed. In this case, our `reactive` represents our filtered dataset when we adjust our slider.
 
-![Basic workflow of reactives](img/reactive.png)
+![*Basic workflow of reactives*](img/reactive.png)
 
 ## Exercise
 
@@ -170,15 +170,43 @@ We've only shown one type of `reactive`, basically a `reactive` `data.frame`. Al
 
 We're going to make our file explorer more useful for other files by not hard coding variable names. We'll take a `.csv` file as input, and populate our `selectInput`s with categories that are related to our selected variables.
 
-![observe/update programming pattern](img/observe_update.png)
+![*observe/update programming pattern*](img/observe_update.png)
 
 ## Exercise
 
-1. Open the `app.R` in `04_observe_update`.
+1. Open the `app.R` in `03_observe_update`.
 
-2. Run the code before 
+2. Try running the following code. What is in `categoricalVars` and what is in `numericVars`? Is it what you expected? If you're confused, please let me know.
 
-3. Let's add a `selectInput` to filter on a particular category within our category variable. We'll need to create a new `reactive` to hold the categories for each category variable.
+```{r eval=FALSE}
+#since we're in the shiny_pdx_rlang directory,
+#we need to set our working directory to 03_observe_update
+
+library(fivethirtyeight)
+library(shiny)
+library(tidyverse)
+
+##Load in the helper functions
+source("03/_observe_update/helper.R")
+data(biopics)
+myDataFrame <- biopics
+
+##these functions return the categorical variables and
+##the numeric variables, given a data.frame
+##They're in helper.R
+##Try running all the code before ui
+##and look at what categoricalVars and numericVars contains
+categoricalVars <- get_category_variables(myDataFrame)
+numericVars <- get_numeric_variables(myDataFrame)
+
+glimpse(myDataFrame)
+categoricalVars
+numericVars
+```
+
+3. Try running the app, and try loading the `datasetB.csv` file using the file browser (it should be in `03_observe_update`). Did the `x_variable` and `y_variable` `selectInputs` change?
+
+3. Let's add a `selectInput` to filter on a particular category within our category variable. 
 
 # App 4A: Adding tooltips
 
@@ -214,6 +242,11 @@ The wide world of `shiny` is now yours for the taking. I'm compiling a list of r
 ## Deploying your app
 
 
+## Debugging your app
+
+Debugging is probably one of the most difficult things about an interactive app. You can see certain errors in your console, but they aren't usually very helpful because these errors aren't localized to a line number.
+
+Instead, you'll have to use things like `print` statements and `breakpoints` to debug your app. More info here: https://shiny.rstudio.com/articles/debugging.html
 
 ## Shiny related things that I've done
 
