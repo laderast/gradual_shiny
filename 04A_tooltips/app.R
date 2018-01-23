@@ -52,7 +52,7 @@ server <- function(input, output, session) {
     #translate x-y coordinates to a row in 
     #myData() using nearPoints
     point <- nearPoints(df=myData(), coordinfo=hover, 
-                        maxpoints = 1, threshold = 3)
+                        maxpoints = 1, threshold = 5)
     
     #if nearPoints returns a data row, then show tooltip
     if(nrow(point)!=0){

@@ -72,6 +72,8 @@ biopics %>% ggplot(aes_string(x="type_of_subject", y="box_office",
   geom_boxplot()
 ```
 
+## Exercise
+
 1. Open the `01_app_basics` folder and open the `app.R` file. This is the file for the Shiny App and we'll modify it.
 
 2. Look at the structure of the code. There are two objects that we define: `ui` and `server`. We make them into an app with the command `shinyApp(ui = ui, server = server)`.
@@ -121,6 +123,8 @@ A `reactive` can be thought of a bit of code that runs whenever the controls tha
 
 ![Basic workflow of reactives](img/reactive.png)
 
+## Exercise
+
 1. Open up the `02_reactives` folder and the `app.R` file within.
 
 2. Try running the app. You can see that we added a slider (using `sliderInput`) in `ui`, but it doesn't do anything. We're going to connect that slider to filter the `biopics` dataset. 
@@ -151,6 +155,8 @@ We're going to make our file explorer more useful for other files by not hard co
 
 ![observe/update programming pattern](img/observe_update.png)
 
+## Exercise
+
 1. Open the `app.R` in `04_observe_update`.
 
 2. Run the code before 
@@ -159,7 +165,7 @@ We're going to make our file explorer more useful for other files by not hard co
 
 # App 4A: Adding tooltips
 
-Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
+Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can hover over a datapoint and see all the information.
 
 
 
