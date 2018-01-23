@@ -22,7 +22,8 @@ ui <- shinyUI(
     fileInput("file1", "Choose csv file to upload", accept = ".csv"),
     selectInput("x_variable","Select X Variable",numericVars, selected=numericVars[1]),
     selectInput("y_variable", "Select Y Variable", numericVars, selected = numericVars[2]),
-    selectInput("color_variable", "Select Color Variable", names(categoricalVars), selected = names(categoricalVars[1]))
+    selectInput("color_variable", "Select Color Variable", names(categoricalVars), 
+                selected = names(categoricalVars[1]))
 ),
   mainPanel(
     ##hover is the critical parameter here

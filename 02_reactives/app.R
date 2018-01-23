@@ -59,7 +59,7 @@ server <- function(input, output) {
    
    output$boxoffice_boxplot <- renderPlot({
      biopics %>% ggplot(aes_string(x=input$color_opts, y="box_office")) + 
-       geom_boxplot()
+       geom_boxplot() + theme(axis.text.x = element_text(angle=45))
    })
 }
 
