@@ -16,6 +16,14 @@ You will need a laptop with RStudio installed. Additionally, you will need the f
 install.packages("fivethirtyeight", "shiny", "tidyverse")
 ```
 
+If you want to use `plotly` in part 03, you'll also need to do this:
+
+```
+install.packages(c("devtools", "plotly"))
+library(devtools)
+install_github("hadley/ggplot2")
+```
+
 ## Getting Started
 
 Open up the tutorial at http://laderast.github.io/shiny_workshop_pdxrlang. There's more info on getting started in there.

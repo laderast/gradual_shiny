@@ -6,7 +6,7 @@ output:
   html_document:
     toc: true # table of content true
     toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
-    number_sections: true  ## if you want number sections at each table header
+    number_sections: true  ## if you want number sections at each table heiader
     theme: united  # many options for theme, this one is my favorite.
     highlight: tango  # specifies the syntax highlighting style
 ---
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 1) Make sure that you have the following packages installed:
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo=TRUE}
 install.packages(c("shiny", "tidyverse", "fivethirtyeight"))
 ```
 
@@ -45,7 +45,7 @@ Every shiny app has two elements. The first is `ui`, which handles both the user
 
 If this is confusing, go very carefully through the diagram below. I'm happy to answer any questions you have about it.
 
-`![](img/shiny_architecture.png)`
+![](img/shiny-architecture.png)
 
 ## App 1: Connecting `ui` and `server`
 
@@ -143,6 +143,21 @@ We've only shown one type of `reactive`, basically a `reactive` `data.frame`. Al
 +   [Reactivity 101 (Dean Attali)](https://deanattali.com/blog/building-shiny-apps-tutorial/#10-reactivity-101) - Dean Attali's pages on Shiny are a good read, especially his section on reactives.
 +   [Reactivity: An Overview (Official Shiny Documentation)](https://shiny.rstudio.com/articles/reactivity-overview.html) - I personally find this overview of `reactive`s a little confusing.
 
+## App 3: Adding tooltips
+
+Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
+
+## App 3: Adding tooltips with `plotly`
+
+There is another way to add tooltips: use the `plotly` library. This is a JavaScript (built on top of `d3.js`) library that makes your `ggplots` more interactive, with built in tooltips. 
+
+
+
+### For More Info
+
+The `plotly` package also does tooltips, and can instantly make your graphs more interactive. `plotly` moves a lot of the graphing and such to the client side using JavaScript. You can see an example in `03_tooltips_plotly`. 
+
+
 ## App 3: Adding in a file loader: `observe` and `update`.
 
 We're going to make our file explorer more useful for other files by not hard coding variable names. We'll take a `.csv` file as input, and populate our `selectInput`s with categories that are related to our selected variables.
@@ -154,13 +169,6 @@ We're going to make our file explorer more useful for other files by not hard co
 3. Let's add a `selectInput` to filter on a particular category within our category variable. We'll need to create a new `reactive` to hold the categories for each category variable.
 
 
-## App 3: Adding tooltips
-
-Tooltips are great for examining single datapoints in the data. We're going to add tooltips to our scatterplot so that users can click on it.
-
-### For More Info
-
-The `plotly` package also does tooltips, and can instantly make your graphs more interactive. `plotly` moves a lot of the graphing and such to the client side using JavaScript. You can see an example in `03_tooltips_plotly`. 
 
 ## Where Next?
 
