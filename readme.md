@@ -1,6 +1,6 @@
 ## A gRadual Introduction to Shiny
 
-Welcome to the workshop! We'll introduce you to the basics behind Shiny, an easy to use web application framework. We'll learn the basics by building a data exploration app piece by piece.
+Welcome to the workshop! We'll introduce you to the basics behind Shiny, an easy to use web application framework in R. We'll learn the basics by building a data exploration app piece by piece.
 
 01) Getting the basics down
 02) What are reactives for?
