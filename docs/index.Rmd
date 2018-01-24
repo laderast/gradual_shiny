@@ -285,6 +285,13 @@ The wide world of `shiny` is now yours for the taking. I'm compiling a list of r
 * [Advanced Shiny (Dean Attali)](https://github.com/daattali/advanced-shiny) - This is the repo for all of Dean's shiny tips.
 * [Plotly](https://plot.ly/r/) - with the `plotly` package, you can translate ggplots into client-side `d3.js` plots, which can be customized with a lot more interactivity, and it runs on top of `shiny`. I'm still learning how to use it, but you can make your interactive graphics very slick with it. 
 
+## Cool Shiny Enhancements
+
+* [flexDashboard](http://rmarkdown.rstudio.com/flexdashboard/index.html) - Mix Rmarkdown and `shiny`! Make interactive documents!
+* [shinyDashboard](https://rstudio.github.io/shinydashboard/) - Make a more professional dashboard for your integrated `shiny` app. Includes alerts, menus, and status updates.
+* [shinyLP](https://github.com/jasdumas/shinyLP) - Make a landing page for your shiny app. By Jasmine Dumas.
+* [shinyjs](https://deanattali.com/shinyjs/) - Add more JavaScript components to your shiny app.
+
 ## Deploying your app
 
 You may notice that we've run everything on our own machines. What if we want to share our apps? We'll need to deploy them to a web accessible server. There are two main places you can deploy your Shiny apps. 

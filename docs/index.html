@@ -179,10 +179,11 @@ $(document).ready(function () {
 </ul></li>
 <li><a href="#where-next"><span class="toc-section-number">9</span> Where Next?</a><ul>
 <li><a href="#programming-resources"><span class="toc-section-number">9.1</span> Programming Resources</a></li>
-<li><a href="#deploying-your-app"><span class="toc-section-number">9.2</span> Deploying your app</a></li>
-<li><a href="#debugging-your-app"><span class="toc-section-number">9.3</span> Debugging your app</a></li>
-<li><a href="#shiny-related-things-that-ive-done"><span class="toc-section-number">9.4</span> Shiny related things that I’ve done</a></li>
-<li><a href="#i-want-more"><span class="toc-section-number">9.5</span> I want more!</a></li>
+<li><a href="#cool-shiny-enhancements"><span class="toc-section-number">9.2</span> Cool Shiny Enhancements</a></li>
+<li><a href="#deploying-your-app"><span class="toc-section-number">9.3</span> Deploying your app</a></li>
+<li><a href="#debugging-your-app"><span class="toc-section-number">9.4</span> Debugging your app</a></li>
+<li><a href="#shiny-related-things-that-ive-done"><span class="toc-section-number">9.5</span> Shiny related things that I’ve done</a></li>
+<li><a href="#i-want-more"><span class="toc-section-number">9.6</span> I want more!</a></li>
 </ul></li>
 </ul>
 </div>
@@ -427,21 +428,30 @@ numericVars</code></pre></div>
 <li><a href="https://plot.ly/r/">Plotly</a> - with the <code>plotly</code> package, you can translate ggplots into client-side <code>d3.js</code> plots, which can be customized with a lot more interactivity, and it runs on top of <code>shiny</code>. I’m still learning how to use it, but you can make your interactive graphics very slick with it.</li>
 </ul>
 </div>
+<div id="cool-shiny-enhancements" class="section level2">
+<h2><span class="header-section-number">9.2</span> Cool Shiny Enhancements</h2>
+<ul>
+<li><a href="http://rmarkdown.rstudio.com/flexdashboard/index.html">flexDashboard</a> - Mix Rmarkdown and <code>shiny</code>! Make interactive documents!</li>
+<li><a href="https://rstudio.github.io/shinydashboard/">shinyDashboard</a> - Make a more professional dashboard for your integrated <code>shiny</code> app. Includes alerts, menus, and status updates.</li>
+<li><a href="https://github.com/jasdumas/shinyLP">shinyLP</a> - Make a landing page for your shiny app. By Jasmine Dumas.</li>
+<li><a href="https://deanattali.com/shinyjs/">shinyjs</a> - Add more JavaScript components to your shiny app.</li>
+</ul>
+</div>
 <div id="deploying-your-app" class="section level2">
-<h2><span class="header-section-number">9.2</span> Deploying your app</h2>
+<h2><span class="header-section-number">9.3</span> Deploying your app</h2>
 <p>You may notice that we’ve run everything on our own machines. What if we want to share our apps? We’ll need to deploy them to a web accessible server. There are two main places you can deploy your Shiny apps.</p>
 <p><a href="https://shinyapps.io" class="uri">https://shinyapps.io</a> is a more streamlined service, and it lets you push apps to it using the <code>rsconnect</code> package. For more info, go here: <a href="http://docs.rstudio.com/shinyapps.io/" class="uri">http://docs.rstudio.com/shinyapps.io/</a>. The free account gives you 5 free apps and something like 25 hours of access time for free.</p>
 <p>if you need more service, Rstudio’s new <code>RStudio Connect</code> service: <a href="https://www.rstudio.com/products/connect/" class="uri">https://www.rstudio.com/products/connect/</a>. <code>Rstudio Connect</code> is more of a complete solution, giving you a web-accessible <code>Rstudio</code> server instance along with a <code>shiny</code> server instance. It costs money.</p>
 <p>You can also install <a href="https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/">Shiny Server on something like a DigitalOcean Droplet</a>, or a <a href="https://www.rstudio.com/products/shiny/download-server/">web-accessible server</a>. Note that if you are non-academic, or need things like user authentication, you’ll need to pay for a license.</p>
 </div>
 <div id="debugging-your-app" class="section level2">
-<h2><span class="header-section-number">9.3</span> Debugging your app</h2>
+<h2><span class="header-section-number">9.4</span> Debugging your app</h2>
 <p>Debugging is probably one of the most difficult things about an interactive app. You can see certain errors in your console, but they aren’t usually very helpful because these errors aren’t localized to a line number.</p>
 <p>Instead, you’ll have to use things like <code>print</code> statements and <code>breakpoints</code> to debug your app. More info here: <a href="https://shiny.rstudio.com/articles/debugging.html" class="uri">https://shiny.rstudio.com/articles/debugging.html</a></p>
 <p>Don’t forget there is a vibrant Shiny user community that you can ask for help! <a href="https://shiny.rstudio.com/articles/help.html" class="uri">https://shiny.rstudio.com/articles/help.html</a></p>
 </div>
 <div id="shiny-related-things-that-ive-done" class="section level2">
-<h2><span class="header-section-number">9.4</span> Shiny related things that I’ve done</h2>
+<h2><span class="header-section-number">9.5</span> Shiny related things that I’ve done</h2>
 <p>Here are some examples of things I’ve done with Shiny.</p>
 <ul>
 <li><a href="https://tladeras.shinyapps.io/surrogateShiny/">Surrogate Mutation</a>. I put this together for my dissertation paper to explain network effects of cancer mutations in cell lines.</li>
@@ -450,7 +460,7 @@ numericVars</code></pre></div>
 </ul>
 </div>
 <div id="i-want-more" class="section level2">
-<h2><span class="header-section-number">9.5</span> I want more!</h2>
+<h2><span class="header-section-number">9.6</span> I want more!</h2>
 <p>Look into the world of <code>htmlwidgets</code>: <a href="http://www.htmlwidgets.org" class="uri">http://www.htmlwidgets.org</a>. Basically, people are trying to bring more visualization frameworks (such as <code>d3.js</code>) to R. Someone may have a <code>htmlwidget</code> that could work for you.</p>
 </div>
 </div>
