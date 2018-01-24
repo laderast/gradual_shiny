@@ -390,7 +390,7 @@ numericVars</code></pre></div>
 </ol>
 <pre><code> plotOutput(&quot;scatter_plot&quot;, hover = &quot;plot_hover&quot;),</code></pre>
 <p>make it</p>
-<pre><code>plotOutput(&quot;scatter_plot&quot;, hover = &quot;plot_hover&quot;),</code></pre>
+<pre><code>plotOutput(&quot;scatter_plot&quot;, click = &quot;plot_hover&quot;),</code></pre>
 <p>What did that do with our interactivity?</p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Uncomment the <code>print</code> statement in the <code>renderUI</code> codeblock. Try mousing over a point. Where is it printing the output? (hint: not the webpage.) How does this help us?</p></li>

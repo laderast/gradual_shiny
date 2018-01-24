@@ -241,7 +241,7 @@ Once we have the row, we pass this on to a helper function called `return_toolti
 make it
 
 ```
-plotOutput("scatter_plot", hover = "plot_hover"),
+plotOutput("scatter_plot", click = "plot_hover"),
 ```
 What did that do with our interactivity?
 
