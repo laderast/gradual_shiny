@@ -30,6 +30,10 @@ install_github("hadley/ggplot2")
 
 Open up the tutorial at http://laderast.github.io/shiny_workshop_pdxrlang. There's more info on getting started in there.
 
+## Contributing
+
+I'd love to hear any suggestions on what people thought worked and didn't work for the workshop. [Add comments to this issue](https://github.com/laderast/shiny_workshop_pdxrlang/issues/2)!
+
 ## Licensing Info
 
 Copyright 2018 Ted Laderas
