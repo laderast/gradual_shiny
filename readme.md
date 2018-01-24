@@ -1,4 +1,4 @@
-## Shiny Workshop For PDX Rlang Meetup
+## A gRadual Introduction to Shiny
 
 Welcome to the workshop! We'll introduce you to the basics behind Shiny, an easy to use web application framework. We'll learn the basics by building a data exploration app piece by piece.
 
