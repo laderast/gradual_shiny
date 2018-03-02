@@ -17,13 +17,10 @@ You will need a laptop with RStudio installed. Additionally, you will need the f
 install.packages(c("fivethirtyeight", "shiny", "tidyverse"))
 ```
 
-If you want to use `plotly` in app 04B (which is optional), you'll also need to do this:
+If you want to use `plotly` in app 04B (which is optional), you'll also need to install it:
 
 ```
-install.packages(c("devtools", "plotly"))
-library(devtools)
-#install latest version of ggplot2 (needed to use plotly)
-install_github("hadley/ggplot2")
+install.packages("plotly")
 ```
 
 ## Getting Started
