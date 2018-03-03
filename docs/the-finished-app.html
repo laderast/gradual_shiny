@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="app-4a-adding-tooltips.html">
-<link rel="next" href="the-finished-app.html">
+<link rel="prev" href="app-4b-adding-tooltips-with-plotly.html">
+<link rel="next" href="testing-apps-with-shinytest.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -161,31 +161,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="app-4b-adding-tooltips-with-plotly" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> App 4B: Adding tooltips with <code>plotly</code></h1>
-<p>There is another way to add tooltips: use the <code>plotly</code> library. This is a JavaScript (built on top of <code>d3.js</code>) library that makes your <code>ggplots</code> more interactive, with built in tooltips.</p>
-<p>The <code>plotly</code> library itself relies on <code>d3.js</code>, which is a client-side visualization library. So if you add <code>plotly</code>, does this make your shiny app client-based? Not quite. All of the controls and data serving are still done <em>server-side</em>. It’s only the last bit that is translated to JavaScript and is <em>client-side</em>.</p>
-<p>Please note that we’re not putting anything on the <code>plotly</code> servers when we do this. All of the data still lives on your server.</p>
-<div id="exercise-4" class="section level2">
-<h2><span class="header-section-number">6.1</span> Exercise</h2>
-<ol style="list-style-type: decimal">
-<li><p>Try running the <code>app.R</code> in <code>04B_tooltips_plotly</code>. Mouse over a datapoint. Neat, huh?</p></li>
-<li><p>How did we supply the infomation to the tooltip? Take a look at the <code>aes_string()</code> code. Notice we’re passing in a bunch of dummy variables into <code>aes_string</code>. Do these variables appear in the tooltip?</p></li>
-</ol>
-</div>
-<div id="for-more-info-3" class="section level2">
-<h2><span class="header-section-number">6.2</span> For More Info</h2>
-<p>The <code>plotly</code> package can instantly make your graphs more interactive using the <code>ggplotly()</code> function. For more info and some recipes, go here: <a href="https://plot.ly/ggplot2/" class="uri">https://plot.ly/ggplot2/</a></p>
+<div id="the-finished-app" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> The Finished App</h1>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="app-4a-adding-tooltips.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-finished-app.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-4b-adding-tooltips-with-plotly.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="testing-apps-with-shinytest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
