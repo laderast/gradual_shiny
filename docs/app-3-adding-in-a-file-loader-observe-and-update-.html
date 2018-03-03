@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="app-2-reactives.html">
+<link rel="next" href="app-4a-adding-tooltips.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,18 +152,55 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A gRadual intRoduction to Shiny</h1>
-<h4 class="author"><em>Ted Laderas</em></h4>
-<h4 class="date"><em>2018-03-02</em></h4>
+<div id="app-3-adding-in-a-file-loader-observe-and-update." class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> App 3: Adding in a file loader: <code>observe</code> and <code>update</code>.</h1>
+<p>We’re going to make our file explorer more useful for other files by not hard coding variable names. We’ll take a <code>.csv</code> file as input, and populate our <code>selectInput</code>s with categories that are related to our selected variables.</p>
+<div class="figure">
+<img src="img/observe_update.png" alt="observe/update programming pattern" />
+<p class="caption"><em>observe/update programming pattern</em></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<div id="workshop-expectations" class="section level2">
-<h2><span class="header-section-number">0.1</span> Workshop Expectations</h2>
-<p>We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the <a href="http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md">Code of Conduct</a>. In short, be respectful of each other’s learning styles, don’t be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others.</p>
-<p>Additionally, please work together! The people in my workshops who have a really bad time and don’t get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, “<em>It’s dangerous to go alone</em>”. Talking through the material with someone will help you understand it.</p>
-<p>We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. <em>Green</em> means “I’m okay, don’t bug me”, <em>Red</em> means “I need some help!”.</p>
+<div id="exercise-2" class="section level2">
+<h2><span class="header-section-number">4.1</span> Exercise</h2>
+<p>This will be more code review than activity. I apologize. Go through it and you will learn a lot.</p>
+<ol style="list-style-type: decimal">
+<li><p>Open the <code>app.R</code> in <code>03_observe_update</code>.</p></li>
+<li><p>Try running the following code. What is in <code>categoricalVars</code> and what is in <code>numericVars</code>? Is it what you expected? If you’re confused, please let me know.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#since we&#39;re in the shiny_pdx_rlang directory,</span>
+<span class="co">#we need to set our working directory to 03_observe_update</span>
+
+<span class="kw">library</span>(fivethirtyeight)
+<span class="kw">library</span>(shiny)
+<span class="kw">library</span>(tidyverse)
+
+##Load in the helper functions
+<span class="kw">source</span>(<span class="st">&quot;03/_observe_update/helper.R&quot;</span>)
+<span class="kw">data</span>(biopics)
+myDataFrame &lt;-<span class="st"> </span>biopics
+
+##these functions return the categorical variables and
+##the numeric variables, given a data.frame
+##They&#39;re in helper.R
+##Try running all the code before ui
+##and look at what categoricalVars and numericVars contains
+categoricalVars &lt;-<span class="st"> </span><span class="kw">get_category_variables</span>(myDataFrame)
+numericVars &lt;-<span class="st"> </span><span class="kw">get_numeric_variables</span>(myDataFrame)
+
+<span class="kw">glimpse</span>(myDataFrame)
+categoricalVars
+numericVars</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Try running the app, and try loading the <code>datasetB.csv</code> file using the file browser (it should be in <code>03_observe_update</code>). Did the <code>x_variable</code> and <code>y_variable</code> <code>selectInputs</code> change?</p></li>
+<li><p>Let’s add a <code>selectInput</code> to filter on a particular category within our category variable. Uncomment all of the areas that say <code>uncomment this code for step 4</code> (there are 4 sections). As you do, follow the path from the <code>myData()</code> <code>reactive</code> to the <code>observe</code> code block to the <code>selectInput</code>s in <code>ui.R</code></p></li>
+<li><p>What is going on? Let’s start with the <code>fileInput</code> in <code>ui.R</code>. Where does <code>input$file1</code> appear? What do we do with it in the reactive?</p></li>
+<li><p>Now let’s look at the <code>observe</code> codeblock. Is it dependent on a reactive? Where are we calling the <code>reactive</code>? What are we doing in the codeblock?</p></li>
+<li><p>What does the <code>updateSelectInput</code> code do? What are we passing into it? What <code>selectInputs</code> are we modifying?</p></li>
+<li><p>Try running the app again and make sure that it works before moving on.</p></li>
+</ol>
+</div>
+<div id="for-more-info-2" class="section level2">
+<h2><span class="header-section-number">4.2</span> For More Info</h2>
+<p>There’s a few examples of <code>updateSelectInput</code></p>
 
 </div>
 </div>
@@ -172,8 +209,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-2-reactives.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-4a-adding-tooltips.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

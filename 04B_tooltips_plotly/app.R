@@ -3,7 +3,7 @@
 ## devtools::install_github("hadley/ggplot2")
 ## install.packages("plotly")
 
-Sys.setlocale("LC_ALL", "C")
+#Sys.setlocale("LC_ALL", "C")
 library(tidyverse)
 library(shiny)
 library(plotly)

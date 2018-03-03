@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="introduction.html">
+<link rel="next" href="app-2-reactives.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,18 +152,75 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A gRadual intRoduction to Shiny</h1>
-<h4 class="author"><em>Ted Laderas</em></h4>
-<h4 class="date"><em>2018-03-02</em></h4>
+<div id="app-1-connecting-ui-and-server" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> App 1: Connecting <code>ui</code> and <code>server</code></h1>
+<p>We’ll be taking two simple <code>ggplot2</code> graphs and turning them into part of an interactive dashboard. The data we’re going to use is the <code>biopics</code> dataset from the <code>fivethirtyeight</code> package.</p>
+<div id="making-two-plots-interactive" class="section level2">
+<h2><span class="header-section-number">2.1</span> Making two plots interactive</h2>
+<p>The first visualization is a scatterplot visualizing the total <code>box_office</code> by <code>year_release</code>, colored by <code>type_of_subject</code>. For the interactive portion, we’re going to color each point by different categories. Notice we use <code>aes_string()</code> to map columns to aesthetics. This is important, since we’ll be passing <code>character</code> arguments to modify this plot later.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(fivethirtyeight)
+<span class="kw">data</span>(biopics)
+
+biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes_string</span>(<span class="dt">y=</span><span class="st">&quot;box_office&quot;</span>, <span class="dt">x=</span><span class="st">&quot;year_release&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;type_of_subject&quot;</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="02-App1_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>The second visualization is going to be a boxplot of <code>box_office</code> by category:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes_string</span>(<span class="dt">x=</span><span class="st">&quot;type_of_subject&quot;</span>, <span class="dt">y=</span><span class="st">&quot;box_office&quot;</span>, 
+                                   <span class="dt">fill=</span><span class="st">&quot;type_of_subject&quot;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>))</code></pre></div>
+<p><img src="02-App1_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<div id="workshop-expectations" class="section level2">
-<h2><span class="header-section-number">0.1</span> Workshop Expectations</h2>
-<p>We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the <a href="http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md">Code of Conduct</a>. In short, be respectful of each other’s learning styles, don’t be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others.</p>
-<p>Additionally, please work together! The people in my workshops who have a really bad time and don’t get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, “<em>It’s dangerous to go alone</em>”. Talking through the material with someone will help you understand it.</p>
-<p>We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. <em>Green</em> means “I’m okay, don’t bug me”, <em>Red</em> means “I need some help!”.</p>
+<div id="exercise" class="section level2">
+<h2><span class="header-section-number">2.2</span> Exercise</h2>
+<ol style="list-style-type: decimal">
+<li><p>Open the <code>01_app_basics</code> folder and open the <code>app.R</code> file. This is the file for the Shiny App and we’ll modify it.</p></li>
+<li><p>Look at the structure of the code. There are two objects that we define: <code>ui</code> and <code>server</code>. We make them into an app with the command <code>shinyApp(ui = ui, server = server)</code>.</p></li>
+<li><p>Take a look at the <code>server</code> code. Notice where our <code>ggplot2</code> code is. Both graphs are placed in a <code>renderPlot()</code> function, and we give them a place in <code>output</code>, so <code>ui</code> can “see” it. The scatterplot is named <code>output$scatter_plot</code> and the boxplot is named <code>output$boxoffice_boxplot</code>.</p></li>
+<li><p>Take a look at the <code>ui</code> code. Where in the code are we displaying <code>scatter_plot</code> and <code>boxoffice_boxplot</code>? Notice we don’t need to refer to <code>output</code>. The display function <code>plotOutput</code> knows to look in the <code>output</code> object.</p></li>
+<li><p>Run the code by clicking the “Run App” button on the top of code window. You can see that we output our graphs in the “main” window.</p></li>
+<li><p>Let’s paste in a control. Paste the following code where it says “Add User Interface Element here” in <code>app.R</code>. If you run the app again, you should see a control, but it doesn’t change the plot.</p></li>
+</ol>
+<pre><code>selectInput(&quot;color_opts&quot;, &quot;Select Category to Color With&quot;,
+        choices = select_color_options)</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Let’s connect the control to the plot. Change the <code>color</code> aesthetic to the following:</li>
+</ol>
+<pre><code>color = input$color_opts</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Now try running the app. Your select box should control what categorical data controls the color of the points. Try it out!</p></li>
+<li><p>Bonus! Let’s add in another category option. Where should you add it? Just in case, here are the column names and their data types. You probably shouldn’t add <code>title</code>, <code>director</code>, <code>subject</code>, <code>lead_actor_actress</code> since they aren’t really categories, and they will blow up your <code>ggplot</code>s.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(biopics)</code></pre></div>
+<pre><code>## Observations: 761
+## Variables: 14
+## $ title              &lt;chr&gt; &quot;10 Rillington Place&quot;, &quot;12 Years a Slave&quot;, ...
+## $ site               &lt;chr&gt; &quot;tt0066730&quot;, &quot;tt2024544&quot;, &quot;tt1542344&quot;, &quot;tt2...
+## $ country            &lt;chr&gt; &quot;UK&quot;, &quot;US/UK&quot;, &quot;US/UK&quot;, &quot;Canada&quot;, &quot;US&quot;, &quot;US...
+## $ year_release       &lt;int&gt; 1971, 2013, 2010, 2014, 1998, 2008, 2002, 2...
+## $ box_office         &lt;dbl&gt; NA, 5.67e+07, 1.83e+07, NA, 5.37e+05, 8.12e...
+## $ director           &lt;chr&gt; &quot;Richard Fleischer&quot;, &quot;Steve McQueen&quot;, &quot;Dann...
+## $ number_of_subjects &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 3, 3, 3...
+## $ subject            &lt;chr&gt; &quot;John Christie&quot;, &quot;Solomon Northup&quot;, &quot;Aron R...
+## $ type_of_subject    &lt;chr&gt; &quot;Criminal&quot;, &quot;Other&quot;, &quot;Athlete&quot;, &quot;Other&quot;, &quot;O...
+## $ race_known         &lt;chr&gt; &quot;Unknown&quot;, &quot;Known&quot;, &quot;Unknown&quot;, &quot;Known&quot;, &quot;Un...
+## $ subject_race       &lt;chr&gt; NA, &quot;African American&quot;, NA, &quot;White&quot;, NA, &quot;A...
+## $ person_of_color    &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, FAL...
+## $ subject_sex        &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Ma...
+## $ lead_actor_actress &lt;chr&gt; &quot;Richard Attenborough&quot;, &quot;Chiwetel Ejiofor&quot;,...</code></pre>
+</div>
+<div id="what-youve-learned-so-far" class="section level2">
+<h2><span class="header-section-number">2.3</span> What you’ve learned so far</h2>
+<ul>
+<li>The architecture of shiny apps</li>
+<li>How <code>ui</code> and <code>server</code> communicate through <code>output</code> and <code>input</code></li>
+<li>How <code>ui</code> displays plots (using <code>plotOutput</code>)</li>
+<li>Adding a control (a <code>selectInput</code>)</li>
+<li>Connecting that control to our <code>plots</code> using <code>input</code></li>
+</ul>
+</div>
+<div id="for-more-info" class="section level2">
+<h2><span class="header-section-number">2.4</span> For More Info</h2>
 
 </div>
 </div>
@@ -172,8 +229,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-2-reactives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

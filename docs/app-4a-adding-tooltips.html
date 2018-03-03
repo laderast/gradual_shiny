@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="app-3-adding-in-a-file-loader-observe-and-update-.html">
+<link rel="next" href="app-4b-adding-tooltips-with-plotly.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,19 +152,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A gRadual intRoduction to Shiny</h1>
-<h4 class="author"><em>Ted Laderas</em></h4>
-<h4 class="date"><em>2018-03-02</em></h4>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<div id="workshop-expectations" class="section level2">
-<h2><span class="header-section-number">0.1</span> Workshop Expectations</h2>
-<p>We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the <a href="http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md">Code of Conduct</a>. In short, be respectful of each other’s learning styles, don’t be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others.</p>
-<p>Additionally, please work together! The people in my workshops who have a really bad time and don’t get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, “<em>It’s dangerous to go alone</em>”. Talking through the material with someone will help you understand it.</p>
-<p>We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. <em>Green</em> means “I’m okay, don’t bug me”, <em>Red</em> means “I need some help!”.</p>
-
+<div id="app-4a-adding-tooltips" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> App 4A: Adding tooltips</h1>
+<p>Tooltips are great for examining single datapoints in the data. We’re going to add tooltips to our scatterplot so that users can hover over a datapoint and see all the information.</p>
+<p>There are a couple of web programming techniques we need to understand before we can understand how tooltips work.</p>
+<p>In terms of interactivity, <code>shiny</code> has the following interactions built into <code>renderPlot()</code>: <code>hover</code> (where in the graph the mouse is hovering), <code>click</code> (grabs the location where you clicked), and <code>brush</code> (select multiple points). We’ll play around with <code>hover</code> and <code>click</code>.</p>
+<p>Both the <code>hover</code> and <code>click</code> arguments will return the same thing: basically an object (we’ll call it a <code>hover</code> object for now) which has the x-y coordinate information about the mouse position. That gets us part of the way there. The other part is returning the row in our data that’s the closest to that point on the graph. <code>nearPoints</code> handles getting the row from the <code>data.frame</code>, which we’ll refer to as a <code>point</code>. We use both this <code>hover</code> and <code>point</code> object to build our tooltip.</p>
+<p>Once we have the row, we pass this on to a helper function called <code>return_tooltip</code>, which returns the location where we want the tooltip as well as the content of the tooltip. Then we display it onto our plot using <code>wellPanel</code>.</p>
+<div id="exercise-3" class="section level2">
+<h2><span class="header-section-number">5.1</span> Exercise</h2>
+<ol style="list-style-type: decimal">
+<li>Try running the <code>app.R</code> in <code>04A_tooltips</code>. Mouse near a data point. Did you get a tooltip?</li>
+<li>Try changing the <code>hover</code> argument in <code>plotOutput</code> to <code>click</code>. That is, instead of</li>
+</ol>
+<pre><code> plotOutput(&quot;scatter_plot&quot;, hover = &quot;plot_hover&quot;),</code></pre>
+<p>make it</p>
+<pre><code>plotOutput(&quot;scatter_plot&quot;, click = &quot;plot_hover&quot;),</code></pre>
+<p>What did that do with our interactivity?</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Uncomment the <code>print</code> statement in the <code>renderUI</code> codeblock. Try mousing over a point. Where is it printing the output? (hint: not the webpage.) How does this help us?</p></li>
+<li><p>If you’re really interested in how it works, try printing <code>hover</code> as well.</p></li>
+</ol>
 </div>
 </div>
             </section>
@@ -172,8 +180,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-3-adding-in-a-file-loader-observe-and-update-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-4b-adding-tooltips-with-plotly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

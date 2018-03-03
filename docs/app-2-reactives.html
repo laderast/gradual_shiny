@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="app-1-connecting-ui-and-server.html">
+<link rel="next" href="app-3-adding-in-a-file-loader-observe-and-update-.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,18 +152,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A gRadual intRoduction to Shiny</h1>
-<h4 class="author"><em>Ted Laderas</em></h4>
-<h4 class="date"><em>2018-03-02</em></h4>
+<div id="app-2-reactives" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> App 2: Reactives</h1>
+<p>So we’ve connected our control up. Great! Now let’s add a numeric filter to our data by using an <code>reactive</code>. <code>reactive</code>s are the heart and soul of <code>shiny</code>. We’ll use a <code>reactive</code> to filter our data, and pass this filtered data on to our two plots. This means we can dynamically filter our data and our plots will update.</p>
+<p>A <code>reactive</code> can be thought of a bit of code that runs whenever the controls that map to it are changed. In this case, our <code>reactive</code> represents our filtered dataset when we adjust our slider.</p>
+<div class="figure">
+<img src="img/reactive.png" alt="Basic workflow of reactives" />
+<p class="caption"><em>Basic workflow of reactives</em></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<div id="workshop-expectations" class="section level2">
-<h2><span class="header-section-number">0.1</span> Workshop Expectations</h2>
-<p>We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the <a href="http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md">Code of Conduct</a>. In short, be respectful of each other’s learning styles, don’t be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others.</p>
-<p>Additionally, please work together! The people in my workshops who have a really bad time and don’t get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, “<em>It’s dangerous to go alone</em>”. Talking through the material with someone will help you understand it.</p>
-<p>We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. <em>Green</em> means “I’m okay, don’t bug me”, <em>Red</em> means “I need some help!”.</p>
+<div id="exercise-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Exercise</h2>
+<ol style="list-style-type: decimal">
+<li><p>Open up the <code>02_reactives</code> folder and the <code>app.R</code> file within.</p></li>
+<li><p>Try running the app. You can see that we added a slider (using <code>sliderInput</code>) in <code>ui</code>, but it doesn’t do anything. We’re going to connect that slider to filter the <code>biopics</code> dataset.</p></li>
+<li><p>You might notice that there is a new object in the <code>server</code> code, called <code>biopics_filtered</code>. This is where we’re going to connect our slider.</p></li>
+<li><p>Paste the following bit of code into the reactive, after <code>biopics</code>. What does it do?</p></li>
+</ol>
+<pre><code>%&gt;% filter(year_release &gt; input$year_filter)</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Notice how we call the reactive in <code>output$scatter_plot</code>? We have to use <code>biopics_filtered()</code> rather than <code>biopics_filtered</code>. A reactive is actually a function, and so you need to use the function notation to invoke it in a <code>renderPlot</code> statement.</p></li>
+<li><p>Ok, run the app again and adjust the slider. Notice how the top plot is changing but the bottom one isn’t. Why isn’t it running?</p></li>
+<li><p>Modify the code in <code>output$boxoffice_boxplot</code> to use the <code>biopics_filtered()</code> reactive. Where should you put it? Run the code again to make sure it works.</p></li>
+</ol>
+</div>
+<div id="for-more-info-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> For More Info</h2>
+<p>We’ve only shown one type of <code>reactive</code>, basically a <code>reactive</code> <code>data.frame</code>. Almost any type of object can be a <code>reactive</code>. Here are more resources on learning about them.</p>
+<ul>
+<li><a href="https://deanattali.com/blog/building-shiny-apps-tutorial/#10-reactivity-101">Reactivity 101 (Dean Attali)</a> - Dean Attali’s pages on Shiny are a good read, especially his section on reactives.</li>
+<li><a href="https://shiny.rstudio.com/articles/reactivity-overview.html">Reactivity: An Overview (Official Shiny Documentation)</a> - I personally find this overview of <code>reactive</code>s a little confusing.</li>
+</ul>
 
 </div>
 </div>
@@ -172,8 +190,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-1-connecting-ui-and-server.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-3-adding-in-a-file-loader-observe-and-update-.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

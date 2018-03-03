@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="app-1-connecting-ui-and-server.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,18 +152,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A gRadual intRoduction to Shiny</h1>
-<h4 class="author"><em>Ted Laderas</em></h4>
-<h4 class="date"><em>2018-03-02</em></h4>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<div id="setup" class="section level2">
+<h2><span class="header-section-number">1.1</span> Setup</h2>
+<ol style="list-style-type: decimal">
+<li>Make sure that you have the following packages installed:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;shiny&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;fivethirtyeight&quot;</span>, <span class="st">&quot;plotly&quot;</span>))</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Clone or download the tutorial from here (click the <code>Clone or Download</code> button, it’s green and on the right side): <a href="https://github.com/laderast/gradual_shiny" class="uri">https://github.com/laderast/gradual_shiny</a></p></li>
+<li><p>Unzip, and open the <code>gradual_shiny.Rproj</code> file in this folder. The project should open in RStudio and you should be ready!</p></li>
+</ol>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<div id="workshop-expectations" class="section level2">
-<h2><span class="header-section-number">0.1</span> Workshop Expectations</h2>
-<p>We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the <a href="http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md">Code of Conduct</a>. In short, be respectful of each other’s learning styles, don’t be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others.</p>
-<p>Additionally, please work together! The people in my workshops who have a really bad time and don’t get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, “<em>It’s dangerous to go alone</em>”. Talking through the material with someone will help you understand it.</p>
-<p>We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. <em>Green</em> means “I’m okay, don’t bug me”, <em>Red</em> means “I need some help!”.</p>
+<div id="introducing-shiny" class="section level2">
+<h2><span class="header-section-number">1.2</span> Introducing Shiny</h2>
+<p>Welcome to Shiny! Shiny is a framework in R for making interactive visualizations for the web created by Joe Cheng. Nearly any plot in R can be made into an interactive visualization by adding some simple interface elements and mapping these interface elements into the plot. It’s an extremely powerful technique for visualization and communication of findings.</p>
+<p>Before we get started, we need to talk a little bit about the architecture of <code>shiny</code> apps. <code>shiny</code> apps are <em>server-based</em>, which means that all of the calculations and plot rendering happen on a server (when you’re running them in RStudio, your server is your computer). Compare this to JavaScript visualization frameworks such as <code>D3.js</code>, where the client’s computer needs to do all of the computing of the visualization.</p>
+<p>There are a lot of benefits to server-based frameworks, namely that your users don’t need to have a heavy-duty computer to visit your site, and that your data is sitting behind a protected server. One of the difficulties is that it can be difficult to scale for lots of users.</p>
+</div>
+<div id="the-concept-of-ui-and-server-elements" class="section level2">
+<h2><span class="header-section-number">1.3</span> The concept of <code>ui</code> and <code>server</code> elements</h2>
+<p>Every shiny app has two elements. The first is <code>ui</code>, which handles both the user controls and the layout and placement of output elements, such as plots or tables. <code>ui</code> usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is <code>server</code>, which handles all of the calculations and the generation of plots for <code>ui</code>.</p>
+<p><code>ui</code> and <code>server</code> are only connected by two objects <code>input</code>, and <code>output</code> (they actually are environments, but we’ll just say they are objects). <code>ui</code> puts the values from the controls into <code>input</code>, which can be accessed by <code>server</code>. For example, if we have a slider called <code>year_release</code> in <code>ui</code>, we can access the value of that slider in <code>server</code> through <code>input$year_release</code>.</p>
+<p><code>server</code> will then do something with the slider value and generate some output. Where does it put the output? If you guessed <code>output</code>, then give yourself a star! <code>ui</code> then takes <code>output</code> and will then display it using the various _Output functions (such as <code>plotOutput</code>, <code>textOutput</code> and<code>tableOutput</code>).</p>
+<p>If this is confusing, go very carefully through the diagram below. I’m happy to answer any questions you have about it.</p>
+<div class="figure">
+<img src="img/shiny-architecture.png" alt="Basic shiny architecture" />
+<p class="caption"><em>Basic shiny architecture</em></p>
+</div>
 
 </div>
 </div>
@@ -172,8 +189,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-1-connecting-ui-and-server.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
