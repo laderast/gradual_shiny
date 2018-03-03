@@ -1,7 +1,7 @@
 --- 
 title: "A gRadual intRoduction to Shiny"
 author: "Ted Laderas"
-date: "2018-03-02"
+date: "2018-03-03"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -16,7 +16,7 @@ description: "A gradual and gentle introduction to interactive programming conce
 
 ## Workshop Expectations
 
-We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the [Code of Conduct](http://github.com/laderast/shiny_workshop_pdxrlang/CODE_OF_CONDUCT.md). In short, be respectful of each other's learning styles, don't be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others. 
+We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the [Code of Conduct](http://github.com/laderast/gradual_shiny/CODE_OF_CONDUCT.md). In short, be respectful of each other's learning styles, don't be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others. 
 
 Additionally, please work together! The people in my workshops who have a really bad time and don't get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, "*It's dangerous to go alone*". Talking through the material with someone will help you understand it.
 
