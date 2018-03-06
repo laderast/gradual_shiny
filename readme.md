@@ -25,7 +25,7 @@ install.packages("plotly")
 
 ## Getting Started
 
-Open up the tutorial at http://laderast.github.io/shiny_workshop_pdxrlang. There's more info on getting started in there.
+Open up the tutorial at http://laderast.github.io/gradual_shiny. There's more info on getting started in there.
 
 ## Contributing
 
