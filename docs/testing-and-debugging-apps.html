@@ -136,17 +136,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.1" data-path="the-finished-app.html"><a href="the-finished-app.html#extensions"><i class="fa fa-check"></i><b>7.1</b> Extensions</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html"><i class="fa fa-check"></i><b>8</b> Testing and debugging apps</a><ul>
-<li class="chapter" data-level="8.1" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#issues-youll-encounter-with-interactive-programming"><i class="fa fa-check"></i><b>8.1</b> Issues you’ll encounter with interactive programming</a></li>
-<li class="chapter" data-level="8.2" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#using-print-statements-to-debug-your-shiny-app"><i class="fa fa-check"></i><b>8.2</b> Using <code>print</code> statements to debug your Shiny app</a></li>
-<li class="chapter" data-level="8.3" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#using-breakpoints-to-debug"><i class="fa fa-check"></i><b>8.3</b> Using breakpoints to debug</a></li>
-<li class="chapter" data-level="8.4" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#testing-the-ui-shinytest-and-rselenium"><i class="fa fa-check"></i><b>8.4</b> Testing the UI: <code>shinytest</code> and <code>RSelenium</code></a></li>
+<li class="chapter" data-level="8.1" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#debugging-your-app"><i class="fa fa-check"></i><b>8.1</b> Debugging your app</a></li>
+<li class="chapter" data-level="8.2" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#issues-youll-encounter-with-interactive-programming"><i class="fa fa-check"></i><b>8.2</b> Issues you’ll encounter with interactive programming</a></li>
+<li class="chapter" data-level="8.3" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#using-print-statements-to-debug-your-shiny-app"><i class="fa fa-check"></i><b>8.3</b> Using <code>print</code> statements to debug your Shiny app</a></li>
+<li class="chapter" data-level="8.4" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#using-breakpoints-to-debug"><i class="fa fa-check"></i><b>8.4</b> Using breakpoints to debug</a></li>
+<li class="chapter" data-level="8.5" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#testing-the-ui-shinytest-and-rselenium"><i class="fa fa-check"></i><b>8.5</b> Testing the UI: <code>shinytest</code> and <code>RSelenium</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="where-next.html"><a href="where-next.html"><i class="fa fa-check"></i><b>9</b> Where Next?</a><ul>
 <li class="chapter" data-level="9.1" data-path="where-next.html"><a href="where-next.html#programming-resources"><i class="fa fa-check"></i><b>9.1</b> Programming Resources</a></li>
 <li class="chapter" data-level="9.2" data-path="where-next.html"><a href="where-next.html#cool-shiny-enhancements"><i class="fa fa-check"></i><b>9.2</b> Cool Shiny Enhancements</a></li>
 <li class="chapter" data-level="9.3" data-path="where-next.html"><a href="where-next.html#deploying-your-app"><i class="fa fa-check"></i><b>9.3</b> Deploying your app</a></li>
-<li class="chapter" data-level="9.4" data-path="where-next.html"><a href="where-next.html#debugging-your-app"><i class="fa fa-check"></i><b>9.4</b> Debugging your app</a></li>
-<li class="chapter" data-level="9.5" data-path="where-next.html"><a href="where-next.html#i-want-more"><i class="fa fa-check"></i><b>9.5</b> I want more!</a></li>
+<li class="chapter" data-level="9.4" data-path="where-next.html"><a href="where-next.html#i-want-more"><i class="fa fa-check"></i><b>9.4</b> I want more!</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -170,21 +170,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="testing-and-debugging-apps" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Testing and debugging apps</h1>
+<div id="debugging-your-app" class="section level2">
+<h2><span class="header-section-number">8.1</span> Debugging your app</h2>
+<p>Debugging is probably one of the most difficult things about an interactive app. You can see certain errors in your console, but they aren’t usually very helpful because these errors aren’t localized to a line number.</p>
+<p>Instead, you’ll have to use things like <code>print</code> statements and <code>breakpoints</code> to debug your app. More info here: <a href="https://shiny.rstudio.com/articles/debugging.html" class="uri">https://shiny.rstudio.com/articles/debugging.html</a></p>
+<p>Don’t forget there is a vibrant Shiny user community that you can ask for help! <a href="https://shiny.rstudio.com/articles/help.html" class="uri">https://shiny.rstudio.com/articles/help.html</a></p>
+</div>
 <div id="issues-youll-encounter-with-interactive-programming" class="section level2">
-<h2><span class="header-section-number">8.1</span> Issues you’ll encounter with interactive programming</h2>
+<h2><span class="header-section-number">8.2</span> Issues you’ll encounter with interactive programming</h2>
 <p>One of the largest errors you’ll encounter is when your <code>selectInput</code>s, and other input objects don’t correspond to your underlying dataset. For example, you may have the wrong column names in your <code>selectInput</code>, and when you try to do something with that <code>input</code> value, your Shiny app will return an error.</p>
 <p>Unfortunately, the errors that <code>shiny</code> will return in the browser can be somewhat cryptic.</p>
 </div>
 <div id="using-print-statements-to-debug-your-shiny-app" class="section level2">
-<h2><span class="header-section-number">8.2</span> Using <code>print</code> statements to debug your Shiny app</h2>
+<h2><span class="header-section-number">8.3</span> Using <code>print</code> statements to debug your Shiny app</h2>
 <p>An elementary form of debugging can be done by using <code>print</code> statements. If you use <code>print</code> statements in a reactive, then you can see whether the inputs that the reactive sees are correct and correspond to your data in the console.</p>
 </div>
 <div id="using-breakpoints-to-debug" class="section level2">
-<h2><span class="header-section-number">8.3</span> Using breakpoints to debug</h2>
+<h2><span class="header-section-number">8.4</span> Using breakpoints to debug</h2>
 <p>Breakpoints are the next level of debugging your Shiny app. By setting breakpoints where you think you are having an issue, you can see the state of objects are at a particular breakpoint.</p>
 </div>
 <div id="testing-the-ui-shinytest-and-rselenium" class="section level2">
-<h2><span class="header-section-number">8.4</span> Testing the UI: <code>shinytest</code> and <code>RSelenium</code></h2>
+<h2><span class="header-section-number">8.5</span> Testing the UI: <code>shinytest</code> and <code>RSelenium</code></h2>
 <p>There are currently two alternatives for testing the UI of the Shiny app: <code>shinytest</code> and <code>RSelenium</code>.</p>
 
 </div>

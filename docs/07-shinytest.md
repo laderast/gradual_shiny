@@ -1,5 +1,13 @@
 # Testing and debugging apps
 
+## Debugging your app
+
+Debugging is probably one of the most difficult things about an interactive app. You can see certain errors in your console, but they aren't usually very helpful because these errors aren't localized to a line number.
+
+Instead, you'll have to use things like `print` statements and `breakpoints` to debug your app. More info here: https://shiny.rstudio.com/articles/debugging.html
+
+Don't forget there is a vibrant Shiny user community that you can ask for help! https://shiny.rstudio.com/articles/help.html
+
 ## Issues you'll encounter with interactive programming
 
 One of the largest errors you'll encounter is when your `selectInput`s, and other input objects don't correspond to your underlying dataset. For example, you may have the wrong column names in your `selectInput`, and when you try to do something with that `input` value, your Shiny app will return an error.

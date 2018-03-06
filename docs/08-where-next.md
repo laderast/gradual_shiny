@@ -26,14 +26,6 @@ if you need more service, Rstudio's new `RStudio Connect` service: https://www.r
 
 You can also install [Shiny Server on something like a DigitalOcean Droplet](https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/), or a [web-accessible server](https://www.rstudio.com/products/shiny/download-server/). Note that if you are non-academic, or need things like user authentication, you'll need to pay for a license.
 
-## Debugging your app
-
-Debugging is probably one of the most difficult things about an interactive app. You can see certain errors in your console, but they aren't usually very helpful because these errors aren't localized to a line number.
-
-Instead, you'll have to use things like `print` statements and `breakpoints` to debug your app. More info here: https://shiny.rstudio.com/articles/debugging.html
-
-Don't forget there is a vibrant Shiny user community that you can ask for help! https://shiny.rstudio.com/articles/help.html
-
 ## I want more!
 
 Look into the world of `htmlwidgets`: http://www.htmlwidgets.org. Basically, people are trying to bring more visualization frameworks (such as `d3.js`) to R. Someone may have a `htmlwidget` that could work for you. 
