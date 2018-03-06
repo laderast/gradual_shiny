@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="the-finished-app.html">
+<link rel="next" href="where-next.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -168,18 +168,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A gRadual intRoduction to Shiny</h1>
-<h4 class="author"><em>Ted Laderas</em></h4>
-<h4 class="date"><em>2018-03-06</em></h4>
+<div id="testing-and-debugging-apps" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Testing and debugging apps</h1>
+<div id="issues-youll-encounter-with-interactive-programming" class="section level2">
+<h2><span class="header-section-number">8.1</span> Issues you’ll encounter with interactive programming</h2>
+<p>One of the largest errors you’ll encounter is when your <code>selectInput</code>s, and other input objects don’t correspond to your underlying dataset. For example, you may have the wrong column names in your <code>selectInput</code>, and when you try to do something with that <code>input</code> value, your Shiny app will return an error.</p>
+<p>Unfortunately, the errors that <code>shiny</code> will return in the browser can be somewhat cryptic.</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<div id="workshop-expectations" class="section level2">
-<h2><span class="header-section-number">0.1</span> Workshop Expectations</h2>
-<p>We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the <a href="https://github.com/laderast/gradual_shiny/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>. In short, be respectful of each other’s learning styles, don’t be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others.</p>
-<p>Additionally, please work together! The people in my workshops who have a really bad time and don’t get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, “<em>It’s dangerous to go alone</em>”. Talking through the material with someone will help you understand it.</p>
-<p>We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. <em>Green</em> means “I’m okay, don’t bug me”, <em>Red</em> means “I need some help!”.</p>
+<div id="using-print-statements-to-debug-your-shiny-app" class="section level2">
+<h2><span class="header-section-number">8.2</span> Using <code>print</code> statements to debug your Shiny app</h2>
+<p>An elementary form of debugging can be done by using <code>print</code> statements. If you use <code>print</code> statements in a reactive, then you can see whether the inputs that the reactive sees are correct and correspond to your data in the console.</p>
+</div>
+<div id="using-breakpoints-to-debug" class="section level2">
+<h2><span class="header-section-number">8.3</span> Using breakpoints to debug</h2>
+<p>Breakpoints are the next level of debugging your Shiny app. By setting breakpoints where you think you are having an issue, you can see the state of objects are at a particular breakpoint.</p>
+</div>
+<div id="testing-the-ui-shinytest-and-rselenium" class="section level2">
+<h2><span class="header-section-number">8.4</span> Testing the UI: <code>shinytest</code> and <code>RSelenium</code></h2>
+<p>There are currently two alternatives for testing the UI of the Shiny app: <code>shinytest</code> and <code>RSelenium</code>.</p>
 
 </div>
 </div>
@@ -188,8 +194,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-finished-app.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="where-next.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -25,7 +25,7 @@
 <meta name="author" content="Ted Laderas">
 
 
-<meta name="date" content="2018-03-03">
+<meta name="date" content="2018-03-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="app-4b-adding-tooltips-with-plotly.html">
-<link rel="next" href="testing-apps-with-shinytest.html">
+<link rel="next" href="testing-and-debugging-apps.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -132,8 +132,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1" data-path="app-4b-adding-tooltips-with-plotly.html"><a href="app-4b-adding-tooltips-with-plotly.html#exercise-4"><i class="fa fa-check"></i><b>6.1</b> Exercise</a></li>
 <li class="chapter" data-level="6.2" data-path="app-4b-adding-tooltips-with-plotly.html"><a href="app-4b-adding-tooltips-with-plotly.html#for-more-info-3"><i class="fa fa-check"></i><b>6.2</b> For More Info</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="the-finished-app.html"><a href="the-finished-app.html"><i class="fa fa-check"></i><b>7</b> The Finished App</a></li>
-<li class="chapter" data-level="8" data-path="testing-apps-with-shinytest.html"><a href="testing-apps-with-shinytest.html"><i class="fa fa-check"></i><b>8</b> Testing apps with <code>shinytest</code></a></li>
+<li class="chapter" data-level="7" data-path="the-finished-app.html"><a href="the-finished-app.html"><i class="fa fa-check"></i><b>7</b> The Finished App</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-finished-app.html"><a href="the-finished-app.html#extensions"><i class="fa fa-check"></i><b>7.1</b> Extensions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html"><i class="fa fa-check"></i><b>8</b> Testing and debugging apps</a><ul>
+<li class="chapter" data-level="8.1" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#issues-youll-encounter-with-interactive-programming"><i class="fa fa-check"></i><b>8.1</b> Issues you’ll encounter with interactive programming</a></li>
+<li class="chapter" data-level="8.2" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#using-print-statements-to-debug-your-shiny-app"><i class="fa fa-check"></i><b>8.2</b> Using <code>print</code> statements to debug your Shiny app</a></li>
+<li class="chapter" data-level="8.3" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#using-breakpoints-to-debug"><i class="fa fa-check"></i><b>8.3</b> Using breakpoints to debug</a></li>
+<li class="chapter" data-level="8.4" data-path="testing-and-debugging-apps.html"><a href="testing-and-debugging-apps.html#testing-the-ui-shinytest-and-rselenium"><i class="fa fa-check"></i><b>8.4</b> Testing the UI: <code>shinytest</code> and <code>RSelenium</code></a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="where-next.html"><a href="where-next.html"><i class="fa fa-check"></i><b>9</b> Where Next?</a><ul>
 <li class="chapter" data-level="9.1" data-path="where-next.html"><a href="where-next.html#programming-resources"><i class="fa fa-check"></i><b>9.1</b> Programming Resources</a></li>
 <li class="chapter" data-level="9.2" data-path="where-next.html"><a href="where-next.html#cool-shiny-enhancements"><i class="fa fa-check"></i><b>9.2</b> Cool Shiny Enhancements</a></li>
@@ -163,7 +170,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="the-finished-app" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> The Finished App</h1>
+<p>Open up the app in <code>05_all_together_now</code> and run it.</p>
+<p>Check to see if you can use different <code>.csv</code> files with it.</p>
+<div id="extensions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Extensions</h2>
+<ol style="list-style-type: decimal">
+<li>Change the app to only use a few <code>fivethirtyeight</code> datasets, such as <code>biopics</code>, <code>bechdel</code> and <code>bad_drivers</code>. You’ll have to change the file loader to a select box, and you may want to load the datasets up as a named list.</li>
+<li>Try extending the boxplot to include tooltips using <code>plotly</code>.</li>
+<li>Add a summary view of the incoming data using <code>skimr</code>.</li>
+</ol>
 
+</div>
 </div>
             </section>
 
@@ -171,7 +188,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         </div>
       </div>
 <a href="app-4b-adding-tooltips-with-plotly.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="testing-apps-with-shinytest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="testing-and-debugging-apps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
