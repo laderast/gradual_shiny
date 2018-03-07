@@ -48,8 +48,8 @@ server <- function(input, output, session) {
   })
   
   output$scatter_plot <- renderPlot({
-    ggplot(myData(), aes_string(y=input$x_variable, 
-                                       x=input$y_variable# uncomment this line and next line for step 4, 
+    ggplot(myData(), aes_string(y=input$y_variable, 
+                                       x=input$x_variable# uncomment this line and next line for step 4, 
                                       # color=input$color_variable
                                        
                                     )) +  geom_point() 
