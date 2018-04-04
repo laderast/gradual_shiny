@@ -31,6 +31,10 @@ Open up the tutorial at http://laderast.github.io/gradual_shiny. There's more in
 
 I'd love to hear any suggestions on what people thought worked and didn't work for the workshop. [Add comments to this issue](https://github.com/laderast/shiny_workshop_pdxrlang/issues/2)!
 
+## Acknowledgements
+
+This workshop was partially funded from a NLM T15 Training Grant supplement for Data Science: T15-LM007088-23
+
 ## Licensing Info
 
 Copyright 2018 Ted Laderas
