@@ -33,6 +33,8 @@ I'd love to hear any suggestions on what people thought worked and didn't work f
 
 ## Acknowledgements
 
+Thank you to the PDX R User Group for being so supportive and enthusiastic! 
+
 This workshop was partially funded from a NLM T15 Training Grant supplement for Data Science: T15-LM007088-23
 
 ## Licensing Info
