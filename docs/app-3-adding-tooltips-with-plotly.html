@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 The Finished App | A gRadual intRoduction to Shiny</title>
+  <title>5 App 3: Adding tooltips with plotly | A gRadual intRoduction to Shiny</title>
   <meta name="description" content="A gradual and gentle introduction to interactive programming concepts in Shiny." />
   <meta name="generator" content="bookdown 0.10.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 The Finished App | A gRadual intRoduction to Shiny" />
+  <meta property="og:title" content="5 App 3: Adding tooltips with plotly | A gRadual intRoduction to Shiny" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://laderast.github.io/gradual_shiny/" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 The Finished App | A gRadual intRoduction to Shiny" />
+  <meta name="twitter:title" content="5 App 3: Adding tooltips with plotly | A gRadual intRoduction to Shiny" />
   
   <meta name="twitter:description" content="A gradual and gentle introduction to interactive programming concepts in Shiny." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="app-4-adding-in-a-file-loader-observe-and-update-.html">
-<link rel="next" href="testing-and-debugging-apps.html">
+<link rel="prev" href="app-2-reactives.html">
+<link rel="next" href="app-4-adding-in-a-file-loader-observe-and-update-.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -184,17 +184,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-finished-app" class="section level1">
-<h1><span class="header-section-number">7</span> The Finished App</h1>
-<p>Open up the app in <code>05_all_together_now</code> and run it.</p>
-<p>Check to see if you can use different <code>.csv</code> files with it.</p>
-<div id="extensions" class="section level2">
-<h2><span class="header-section-number">7.1</span> Extensions</h2>
-<p>Now that you have some knowledge of <code>shiny</code>, try extending the app!</p>
+<div id="app-3-adding-tooltips-with-plotly" class="section level1">
+<h1><span class="header-section-number">5</span> App 3: Adding tooltips with <code>plotly</code></h1>
+<p>Tooltips are great for examining single datapoints in the data. We’re going to add tooltips to our scatterplot so that users can hover over a datapoint and see all the other values that go along with a datapoint.</p>
+<p>There is an easy way to add tooltips to our graphs: use the <code>plotly</code> library. This is a JavaScript (built on top of <code>d3.js</code>) library that makes your <code>ggplots</code> more interactive, with built in tooltips.</p>
+<p>The <code>plotly</code> library itself relies on <code>d3.js</code>, which is a client-side visualization library. So if you add <code>plotly</code>, does this make your shiny app client-based? Not quite. All of the controls and data serving are still done <em>server-side</em>. It’s only the last bit that is translated to JavaScript and is <em>client-side</em>.</p>
+<p>Please note that we’re not putting anything on the <code>plotly</code> servers when we do this. All of the data still lives on your server. We’re just using the JavaScript library.</p>
+<div id="exercise-2" class="section level2">
+<h2><span class="header-section-number">5.1</span> Exercise</h2>
 <ol style="list-style-type: decimal">
-<li><p>Change <code>05_all_together_now</code> to only use a few <code>fivethirtyeight</code> datasets, such as <code>biopics</code>, <code>bechdel</code> and <code>bad_drivers</code>. You’ll have to change the file loader to a select box, and you may want to load the datasets up as a named list.</p></li>
-<li><p>Add a summary view of the incoming data using <code>skimr</code>.</p></li>
+<li>Try running the <code>app.R</code> in <code>03_tooltips_plotly</code>. Mouse over a datapoint. Neat, huh?</li>
 </ol>
+<pre class="sourceCode r"><code class="sourceCode r">shiny<span class="op">::</span><span class="kw">runApp</span>(<span class="st">&quot;03_tooltips_plotly&quot;</span>)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>How did we supply the infomation to the tooltip? Take a look at the <code>aes_string()</code> code. Notice we’re passing in a bunch of dummy variables into <code>aes_string</code>. Do these variables appear in the tooltip?</li>
+</ol>
+</div>
+<div id="for-more-info-2" class="section level2">
+<h2><span class="header-section-number">5.2</span> For More Info</h2>
+<p>The <code>plotly</code> package can instantly make your graphs more interactive using the <code>ggplotly()</code> function. For more info and some recipes, go here: <a href="https://plot.ly/ggplot2/" class="uri">https://plot.ly/ggplot2/</a></p>
 
 </div>
 </div>
@@ -203,8 +211,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="app-4-adding-in-a-file-loader-observe-and-update-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="testing-and-debugging-apps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-2-reactives.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-4-adding-in-a-file-loader-observe-and-update-.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
