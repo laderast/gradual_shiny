@@ -21,6 +21,76 @@ Before we get started, we need to talk a little bit about the architecture of `s
 
 There are a lot of benefits to server-based frameworks, namely that your users don't need to have a heavy-duty computer to visit your site, and that your data is sitting behind a protected server. One of the difficulties is that it can be difficult to scale for lots of users.
 
+## Functions in R
+
+In order to use Shiny we need to have an understanding of R code syntax and how to use functions in R.
+
+Functions take an argument (input) and produce a result (output). A simple function is `mean()`. The input argument is a numeric vector such as `c(1,5,3.2,0.001)` and the output is a numeric value that is the mean of the vector.
+
+```r
+mean(x = c(1,5,3.2,0.001))
+```
+
+Note we could also not specify the name of the argument since R uses the inputs as arguments in the order it sees them.
+
+```r
+mean(c(1,5,3.2,0.001))
+```
+
+To see what arguments the function `mean()` requires, try looking it up in help:
+
+```{r}
+?mean
+```
+
+We can see that `mean()` takes optional arguments `trim` and `na.rm`. Compare the output from these two uses of `mean()`:
+
+```r
+mean(x = c(1,2,NA))
+mean(x = c(1,2,NA), na.rm = TRUE)
+```
+
+The `NA` value signifies missing data in R. The addition of other arguments changes how the function is used.
+
+
+### Writing our own functions
+
+In Shiny, we will use functions such as `fluidPage()` and `shinyApp()`.
+
+We will also create our own function `server()`. To define functions, the syntax is:
+
+```r
+name_of_function <- function(input) {
+  # code
+}
+```
+
+For example:
+
+```r
+myfunction <- function(a, b, div = 2) {
+  (a + b)/div
+}
+```
+
+Here, we must specify the inputs `a` and `b` and optionally `div`. Now we can use our function:
+
+```r
+myfunction(a = 3, b = 4)
+myfunction(a = 3, b = 4, div = 1)
+```
+
+If we just type
+
+```r
+myfunction
+```
+
+R prints the definition of our function.
+
+For more information on functions, see [Advanced R](http://adv-r.had.co.nz/Functions.html) book's chapter on functions.
+
+
 ## The concept of `ui` and `server` elements
 
 Every shiny app has two elements. The first is `ui`, which handles both the user controls and the layout and placement of output elements, such as plots or tables. `ui` usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is `server`, which handles all of the calculations and the generation of plots for `ui`. 

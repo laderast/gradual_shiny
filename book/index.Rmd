@@ -1,6 +1,6 @@
 --- 
 title: "A gRadual intRoduction to Shiny"
-author: "Ted Laderas and Jessical Minnier"
+author: "Ted Laderas and Jessica Minnier"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book

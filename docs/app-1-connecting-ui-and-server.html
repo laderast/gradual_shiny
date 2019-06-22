@@ -21,10 +21,10 @@
   <meta name="twitter:description" content="A gradual and gentle introduction to interactive programming concepts in Shiny." />
   
 
-<meta name="author" content="Ted Laderas" />
+<meta name="author" content="Ted Laderas and Jessica Minnier" />
 
 
-<meta name="date" content="2019-05-21" />
+<meta name="date" content="2019-06-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,13 +131,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#setup"><i class="fa fa-check"></i><b>2.1</b> Setup</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#introducing-shiny"><i class="fa fa-check"></i><b>2.2</b> Introducing Shiny</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#the-concept-of-ui-and-server-elements"><i class="fa fa-check"></i><b>2.3</b> The concept of <code>ui</code> and <code>server</code> elements</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Functions in R</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#writing-our-own-functions"><i class="fa fa-check"></i><b>2.3.1</b> Writing our own functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#the-concept-of-ui-and-server-elements"><i class="fa fa-check"></i><b>2.4</b> The concept of <code>ui</code> and <code>server</code> elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html"><i class="fa fa-check"></i><b>3</b> App 1: Connecting <code>ui</code> and <code>server</code></a><ul>
 <li class="chapter" data-level="3.1" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#making-a-ggplot-interactive"><i class="fa fa-check"></i><b>3.1</b> Making a ggplot interactive</a></li>
 <li class="chapter" data-level="3.2" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#exercise"><i class="fa fa-check"></i><b>3.2</b> Exercise</a></li>
-<li class="chapter" data-level="3.3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#what-youve-learned-so-far"><i class="fa fa-check"></i><b>3.3</b> What you’ve learned so far</a></li>
-<li class="chapter" data-level="3.4" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#for-more-info"><i class="fa fa-check"></i><b>3.4</b> For More Info</a></li>
+<li class="chapter" data-level="3.3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#more-about-inputs-and-outputs"><i class="fa fa-check"></i><b>3.3</b> More about Inputs and Outputs</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#interactive-control-tools-from-ui-to-server"><i class="fa fa-check"></i><b>3.3.1</b> Interactive control tools (from UI to server)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#display-output-from-server-to-ui"><i class="fa fa-check"></i><b>3.3.2</b> Display output (from server to UI)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#what-youve-learned-so-far"><i class="fa fa-check"></i><b>3.4</b> What you’ve learned so far</a></li>
+<li class="chapter" data-level="3.5" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#for-more-info"><i class="fa fa-check"></i><b>3.5</b> For More Info</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="app-2-reactives.html"><a href="app-2-reactives.html"><i class="fa fa-check"></i><b>4</b> App 2: Reactives</a><ul>
 <li class="chapter" data-level="4.1" data-path="app-2-reactives.html"><a href="app-2-reactives.html#exercise-1"><i class="fa fa-check"></i><b>4.1</b> Exercise</a></li>
@@ -240,8 +247,162 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 ## $ subject_sex        &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Ma...
 ## $ lead_actor_actress &lt;chr&gt; &quot;Richard Attenborough&quot;, &quot;Chiwetel Ejiofor&quot;,...</code></pre>
 </div>
+<div id="more-about-inputs-and-outputs" class="section level2">
+<h2><span class="header-section-number">3.3</span> More about Inputs and Outputs</h2>
+<p>As you start to program Shiny apps, you’ll need to know the different kinds of inputs and the different kinds of outputs. This is a quick tour of the various types.</p>
+<div id="interactive-control-tools-from-ui-to-server" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Interactive control tools (from UI to server)</h3>
+<p>In the above image, the UI uses a function <code>selectInput()</code> to allow the user to interactively select the color variable. In the server, this selected color is called <code>input$color_var</code>.</p>
+<p>This function <code>selectInput()</code> creates a box with choices for the user to select from. There are amny types of selecting tools, including drop down menus, checkboxes, radio buttons, numeric sliders, text input, etc. They all have their own function and they all require an argument <code>id=</code> which tells the server what the input is named.</p>
+<p>A list of useful control functions can be found below (a more complete list with examples is in <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/">shiny.rstudio.com lesson 3</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>function</th>
+<th>tool or widget description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>actionButton</code></td>
+<td>action button</td>
+</tr>
+<tr class="even">
+<td><code>checkboxInput</code></td>
+<td>checkbox input, multiple options allowed</td>
+</tr>
+<tr class="odd">
+<td><code>fileInput</code></td>
+<td>file upload</td>
+</tr>
+<tr class="even">
+<td><code>numericInput</code></td>
+<td>numeric value input</td>
+</tr>
+<tr class="odd">
+<td><code>radioButtons</code></td>
+<td>radio buttons where only one option is allowed</td>
+</tr>
+<tr class="even">
+<td><code>selectInput</code></td>
+<td>a box that a user can type into and choose from choices</td>
+</tr>
+<tr class="odd">
+<td><code>sliderInput</code></td>
+<td>a slider bar</td>
+</tr>
+<tr class="even">
+<td><code>textInput</code></td>
+<td>text/string input</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="display-output-from-server-to-ui" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Display output (from server to UI)</h3>
+<p>In our above example, the server uses a function <code>renderPlot()</code> to send a boxplot image to the UI to display using the function <code>plotOutput()</code>.</p>
+<p>An example in the server function might be:</p>
+<pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+
+  output<span class="op">$</span>box_plot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({
+    <span class="co"># R code goes here</span>
+    <span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">y=</span>Sepal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()
+  })
+
+}</code></pre>
+<p>Now, we’ve used <code>ggplot()</code> to make our boxplot, and <code>renderPlot()</code> assigns this plot to <code>output$box_plot</code>. The UI uses</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plotOutput</span>(<span class="dt">outputId =</span> <span class="st">&quot;box_plot&quot;</span>)</code></pre>
+<p>which adds the plot stored in <code>output$box_plot</code> to the app.</p>
+<p>There are many <code>render*</code> functions that are reactive functions producing reactive output. Remember, the server is where all the hard work goes. The UI just listens to what the server is giving it.</p>
+<p>A list of render and output functions are found in <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/">shiny.rstudio.com lesson 4</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>render function</th>
+<th>creates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>renderDataTable</code></td>
+<td>DataTable</td>
+</tr>
+<tr class="even">
+<td><code>renderImage</code></td>
+<td>images (saved as a link to a source file)</td>
+</tr>
+<tr class="odd">
+<td><code>renderPlot</code></td>
+<td>plots</td>
+</tr>
+<tr class="even">
+<td><code>renderPrint</code></td>
+<td>any printed output</td>
+</tr>
+<tr class="odd">
+<td><code>renderTable</code></td>
+<td>data frame, matrix, other table like structures</td>
+</tr>
+<tr class="even">
+<td><code>renderText</code></td>
+<td>character strings</td>
+</tr>
+<tr class="odd">
+<td><code>renderUI</code></td>
+<td>a Shiny tag object or HTML</td>
+</tr>
+</tbody>
+</table>
+<p>Once the result is rendered, the UI takes this output and uses an <code>*Output</code> function to produce it in the app:</p>
+<table>
+<thead>
+<tr class="header">
+<th>output function</th>
+<th>shows/creates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dataTableOutput</code></td>
+<td>DataTable</td>
+</tr>
+<tr class="even">
+<td><code>htmlOutput</code></td>
+<td>raw HTML</td>
+</tr>
+<tr class="odd">
+<td><code>imageOutput</code></td>
+<td>image</td>
+</tr>
+<tr class="even">
+<td><code>plotOutput</code></td>
+<td>plot</td>
+</tr>
+<tr class="odd">
+<td><code>tableOutput</code></td>
+<td>table</td>
+</tr>
+<tr class="even">
+<td><code>textOutput</code></td>
+<td>text</td>
+</tr>
+<tr class="odd">
+<td><code>uiOutput</code></td>
+<td>raw HTML</td>
+</tr>
+<tr class="even">
+<td><code>verbatimTextOutput</code></td>
+<td>text</td>
+</tr>
+</tbody>
+</table>
+<p>Render functions take one argument (code) wrapped in <code>({})</code> such as</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">renderText</span>({<span class="st">&quot;Hello World&quot;</span>})</code></pre>
+<p>Output functions take the name of the output object that is the result of a <code>render*</code> function.</p>
+</div>
+</div>
 <div id="what-youve-learned-so-far" class="section level2">
-<h2><span class="header-section-number">3.3</span> What you’ve learned so far</h2>
+<h2><span class="header-section-number">3.4</span> What you’ve learned so far</h2>
 <ul>
 <li>The architecture of shiny apps</li>
 <li>How <code>ui</code> and <code>server</code> communicate through <code>output</code> and <code>input</code></li>
@@ -251,7 +412,7 @@ biopics <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </ul>
 </div>
 <div id="for-more-info" class="section level2">
-<h2><span class="header-section-number">3.4</span> For More Info</h2>
+<h2><span class="header-section-number">3.5</span> For More Info</h2>
 <p>Dean Attali is, next to Joe Cheng, a real Shiny expert and a great teacher. He has a great course on DataCamp called “<a href="https://www.datacamp.com/courses/building-web-applications-in-r-with-shiny-case-studies">Shiny Case Studies</a>” that would be a great next step into learning more about Shiny.</p>
 
 </div>

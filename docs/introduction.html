@@ -21,10 +21,10 @@
   <meta name="twitter:description" content="A gradual and gentle introduction to interactive programming concepts in Shiny." />
   
 
-<meta name="author" content="Ted Laderas" />
+<meta name="author" content="Ted Laderas and Jessica Minnier" />
 
 
-<meta name="date" content="2019-05-21" />
+<meta name="date" content="2019-06-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,13 +131,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#setup"><i class="fa fa-check"></i><b>2.1</b> Setup</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#introducing-shiny"><i class="fa fa-check"></i><b>2.2</b> Introducing Shiny</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#the-concept-of-ui-and-server-elements"><i class="fa fa-check"></i><b>2.3</b> The concept of <code>ui</code> and <code>server</code> elements</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Functions in R</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#writing-our-own-functions"><i class="fa fa-check"></i><b>2.3.1</b> Writing our own functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#the-concept-of-ui-and-server-elements"><i class="fa fa-check"></i><b>2.4</b> The concept of <code>ui</code> and <code>server</code> elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html"><i class="fa fa-check"></i><b>3</b> App 1: Connecting <code>ui</code> and <code>server</code></a><ul>
 <li class="chapter" data-level="3.1" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#making-a-ggplot-interactive"><i class="fa fa-check"></i><b>3.1</b> Making a ggplot interactive</a></li>
 <li class="chapter" data-level="3.2" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#exercise"><i class="fa fa-check"></i><b>3.2</b> Exercise</a></li>
-<li class="chapter" data-level="3.3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#what-youve-learned-so-far"><i class="fa fa-check"></i><b>3.3</b> What you’ve learned so far</a></li>
-<li class="chapter" data-level="3.4" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#for-more-info"><i class="fa fa-check"></i><b>3.4</b> For More Info</a></li>
+<li class="chapter" data-level="3.3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#more-about-inputs-and-outputs"><i class="fa fa-check"></i><b>3.3</b> More about Inputs and Outputs</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#interactive-control-tools-from-ui-to-server"><i class="fa fa-check"></i><b>3.3.1</b> Interactive control tools (from UI to server)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#display-output-from-server-to-ui"><i class="fa fa-check"></i><b>3.3.2</b> Display output (from server to UI)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#what-youve-learned-so-far"><i class="fa fa-check"></i><b>3.4</b> What you’ve learned so far</a></li>
+<li class="chapter" data-level="3.5" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#for-more-info"><i class="fa fa-check"></i><b>3.5</b> For More Info</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="app-2-reactives.html"><a href="app-2-reactives.html"><i class="fa fa-check"></i><b>4</b> App 2: Reactives</a><ul>
 <li class="chapter" data-level="4.1" data-path="app-2-reactives.html"><a href="app-2-reactives.html#exercise-1"><i class="fa fa-check"></i><b>4.1</b> Exercise</a></li>
@@ -203,8 +210,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Before we get started, we need to talk a little bit about the architecture of <code>shiny</code> apps. <code>shiny</code> apps are <em>server-based</em>, which means that all of the calculations and plot rendering happen on a server (when you’re running them in RStudio, your server is your computer). Compare this to JavaScript visualization frameworks such as <code>D3.js</code>, where the client’s computer needs to do all of the computing of the visualization.</p>
 <p>There are a lot of benefits to server-based frameworks, namely that your users don’t need to have a heavy-duty computer to visit your site, and that your data is sitting behind a protected server. One of the difficulties is that it can be difficult to scale for lots of users.</p>
 </div>
+<div id="functions-in-r" class="section level2">
+<h2><span class="header-section-number">2.3</span> Functions in R</h2>
+<p>In order to use Shiny we need to have an understanding of R code syntax and how to use functions in R.</p>
+<p>Functions take an argument (input) and produce a result (output). A simple function is <code>mean()</code>. The input argument is a numeric vector such as <code>c(1,5,3.2,0.001)</code> and the output is a numeric value that is the mean of the vector.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">3.2</span>,<span class="fl">0.001</span>))</code></pre>
+<p>Note we could also not specify the name of the argument since R uses the inputs as arguments in the order it sees them.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">3.2</span>,<span class="fl">0.001</span>))</code></pre>
+<p>To see what arguments the function <code>mean()</code> requires, try looking it up in help:</p>
+<pre class="sourceCode r"><code class="sourceCode r">?mean</code></pre>
+<p>We can see that <code>mean()</code> takes optional arguments <code>trim</code> and <code>na.rm</code>. Compare the output from these two uses of <code>mean()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>))
+<span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
+<p>The <code>NA</code> value signifies missing data in R. The addition of other arguments changes how the function is used.</p>
+<div id="writing-our-own-functions" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Writing our own functions</h3>
+<p>In Shiny, we will use functions such as <code>fluidPage()</code> and <code>shinyApp()</code>.</p>
+<p>We will also create our own function <code>server()</code>. To define functions, the syntax is:</p>
+<pre class="sourceCode r"><code class="sourceCode r">name_of_function &lt;-<span class="st"> </span><span class="cf">function</span>(input) {
+  <span class="co"># code</span>
+}</code></pre>
+<p>For example:</p>
+<pre class="sourceCode r"><code class="sourceCode r">myfunction &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, <span class="dt">div =</span> <span class="dv">2</span>) {
+  (a <span class="op">+</span><span class="st"> </span>b)<span class="op">/</span>div
+}</code></pre>
+<p>Here, we must specify the inputs <code>a</code> and <code>b</code> and optionally <code>div</code>. Now we can use our function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">myfunction</span>(<span class="dt">a =</span> <span class="dv">3</span>, <span class="dt">b =</span> <span class="dv">4</span>)
+<span class="kw">myfunction</span>(<span class="dt">a =</span> <span class="dv">3</span>, <span class="dt">b =</span> <span class="dv">4</span>, <span class="dt">div =</span> <span class="dv">1</span>)</code></pre>
+<p>If we just type</p>
+<pre class="sourceCode r"><code class="sourceCode r">myfunction</code></pre>
+<p>R prints the definition of our function.</p>
+<p>For more information on functions, see <a href="http://adv-r.had.co.nz/Functions.html">Advanced R</a> book’s chapter on functions.</p>
+</div>
+</div>
 <div id="the-concept-of-ui-and-server-elements" class="section level2">
-<h2><span class="header-section-number">2.3</span> The concept of <code>ui</code> and <code>server</code> elements</h2>
+<h2><span class="header-section-number">2.4</span> The concept of <code>ui</code> and <code>server</code> elements</h2>
 <p>Every shiny app has two elements. The first is <code>ui</code>, which handles both the user controls and the layout and placement of output elements, such as plots or tables. <code>ui</code> usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is <code>server</code>, which handles all of the calculations and the generation of plots for <code>ui</code>.</p>
 <p><code>ui</code> and <code>server</code> are only connected by two objects <code>input</code>, and <code>output</code> (they actually are environments, but we’ll just say they are objects). <code>ui</code> puts the values from the controls into <code>input</code>, which can be accessed by <code>server</code>. For example, if we have a slider called <code>year_release</code> in <code>ui</code>, we can access the value of that slider in <code>server</code> through <code>input$year_release</code>.</p>
 <p><code>server</code> will then do something with the slider value and generate some output. Where does it put the output? If you guessed <code>output</code>, then give yourself a star! <code>ui</code> then takes <code>output</code> and will then display it using the various _Output functions (such as <code>plotOutput</code>, <code>textOutput</code> and<code>tableOutput</code>).</p>
