@@ -14,8 +14,15 @@ description: "A gradual and gentle introduction to interactive programming conce
 ## Workshop Expectations
 
 We want to foster a positive learning environment in this workshop. We expect everyone to adhere to the [Code of Conduct](https://github.com/laderast/gradual_shiny/blob/master/CODE_OF_CONDUCT.md). In short, be respectful of each other's learning styles, don't be dismissive or mean to someone who knows less than you, and try to help people if you see them struggle and you can help. We will enforce this and ask you to leave if you are not respectful to others. 
-
 Additionally, please work together! The people in my workshops who have a really bad time and don't get anything out of it are the ones who try to do it alone. To quote Legend of Zelda, "*It's dangerous to go alone*". Talking through the material with someone will help you understand it.
 
-We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. *Green* means "I'm okay, don't bug me", *Red* means "I need some help!".
+We also are giving people post-it notes. Put them on your laptops so we can identify you if you need help or not. *Yellow* means "I'm okay, I'm done, don't bug me", *Red* means "I need some help!".
 
+
+## Learning Objectives
+
+By the end of this workshop, you should be able to:
+
+1. **Browse** examples in the shiny gallery and understand how they work.
+2. **Understand** the components of a Shiny app and how they communicate.,
+3. **Learn** three basic design patterns to the shiny apps.
