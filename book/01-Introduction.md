@@ -1,6 +1,12 @@
 # Introduction
 
-## Setup
+## Setup (On RStudio Cloud)
+
+If you're running this workshop on RStudio Cloud, you will need to register for an RStudio Cloud account and then join the invite. This will be provided in the workshop.
+
+You will not need to download anything on the cloud instance.
+
+## Setup (On your Computer)
 
 1) Make sure that you have the following packages installed:
 

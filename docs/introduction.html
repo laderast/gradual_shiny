@@ -129,12 +129,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-expectations"><i class="fa fa-check"></i><b>1.1</b> Workshop Expectations</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#setup"><i class="fa fa-check"></i><b>2.1</b> Setup</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#introducing-shiny"><i class="fa fa-check"></i><b>2.2</b> Introducing Shiny</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Functions in R</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#writing-our-own-functions"><i class="fa fa-check"></i><b>2.3.1</b> Writing our own functions</a></li>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#setup-on-rstudio-cloud"><i class="fa fa-check"></i><b>2.1</b> Setup (On RStudio Cloud)</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#setup-on-your-computer"><i class="fa fa-check"></i><b>2.2</b> Setup (On your Computer)</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#introducing-shiny"><i class="fa fa-check"></i><b>2.3</b> Introducing Shiny</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#functions-in-r"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#writing-our-own-functions"><i class="fa fa-check"></i><b>2.4.1</b> Writing our own functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#the-concept-of-ui-and-server-elements"><i class="fa fa-check"></i><b>2.4</b> The concept of <code>ui</code> and <code>server</code> elements</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#the-concept-of-ui-and-server-elements"><i class="fa fa-check"></i><b>2.5</b> The concept of <code>ui</code> and <code>server</code> elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html"><i class="fa fa-check"></i><b>3</b> App 1: Connecting <code>ui</code> and <code>server</code></a><ul>
 <li class="chapter" data-level="3.1" data-path="app-1-connecting-ui-and-server.html"><a href="app-1-connecting-ui-and-server.html#making-a-ggplot-interactive"><i class="fa fa-check"></i><b>3.1</b> Making a ggplot interactive</a></li>
@@ -193,8 +194,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">2</span> Introduction</h1>
-<div id="setup" class="section level2">
-<h2><span class="header-section-number">2.1</span> Setup</h2>
+<div id="setup-on-rstudio-cloud" class="section level2">
+<h2><span class="header-section-number">2.1</span> Setup (On RStudio Cloud)</h2>
+<p>If you’re running this workshop on RStudio Cloud, you will need to register for an RStudio Cloud account and then join the invite. This will be provided in the workshop.</p>
+<p>You will not need to download anything on the cloud instance.</p>
+</div>
+<div id="setup-on-your-computer" class="section level2">
+<h2><span class="header-section-number">2.2</span> Setup (On your Computer)</h2>
 <ol style="list-style-type: decimal">
 <li>Make sure that you have the following packages installed:</li>
 </ol>
@@ -205,13 +211,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="introducing-shiny" class="section level2">
-<h2><span class="header-section-number">2.2</span> Introducing Shiny</h2>
+<h2><span class="header-section-number">2.3</span> Introducing Shiny</h2>
 <p>Welcome to Shiny! Shiny is a framework in R for making interactive visualizations for the web created by Joe Cheng. Nearly any plot in R can be made into an interactive visualization by adding some simple interface elements and mapping these interface elements into the plot. It’s an extremely powerful technique for visualization and communication of findings.</p>
 <p>Before we get started, we need to talk a little bit about the architecture of <code>shiny</code> apps. <code>shiny</code> apps are <em>server-based</em>, which means that all of the calculations and plot rendering happen on a server (when you’re running them in RStudio, your server is your computer). Compare this to JavaScript visualization frameworks such as <code>D3.js</code>, where the client’s computer needs to do all of the computing of the visualization.</p>
 <p>There are a lot of benefits to server-based frameworks, namely that your users don’t need to have a heavy-duty computer to visit your site, and that your data is sitting behind a protected server. One of the difficulties is that it can be difficult to scale for lots of users.</p>
 </div>
 <div id="functions-in-r" class="section level2">
-<h2><span class="header-section-number">2.3</span> Functions in R</h2>
+<h2><span class="header-section-number">2.4</span> Functions in R</h2>
 <p>In order to use Shiny we need to have an understanding of R code syntax and how to use functions in R.</p>
 <p>Functions take an argument (input) and produce a result (output). A simple function is <code>mean()</code>. The input argument is a numeric vector such as <code>c(1,5,3.2,0.001)</code> and the output is a numeric value that is the mean of the vector.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">3.2</span>,<span class="fl">0.001</span>))</code></pre>
@@ -224,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <p>The <code>NA</code> value signifies missing data in R. The addition of other arguments changes how the function is used.</p>
 <div id="writing-our-own-functions" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Writing our own functions</h3>
+<h3><span class="header-section-number">2.4.1</span> Writing our own functions</h3>
 <p>In Shiny, we will use functions such as <code>fluidPage()</code> and <code>shinyApp()</code>.</p>
 <p>We will also create our own function <code>server()</code>. To define functions, the syntax is:</p>
 <pre class="sourceCode r"><code class="sourceCode r">name_of_function &lt;-<span class="st"> </span><span class="cf">function</span>(input) {
@@ -244,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="the-concept-of-ui-and-server-elements" class="section level2">
-<h2><span class="header-section-number">2.4</span> The concept of <code>ui</code> and <code>server</code> elements</h2>
+<h2><span class="header-section-number">2.5</span> The concept of <code>ui</code> and <code>server</code> elements</h2>
 <p>Every shiny app has two elements. The first is <code>ui</code>, which handles both the user controls and the layout and placement of output elements, such as plots or tables. <code>ui</code> usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is <code>server</code>, which handles all of the calculations and the generation of plots for <code>ui</code>.</p>
 <p><code>ui</code> and <code>server</code> are only connected by two objects <code>input</code>, and <code>output</code> (they actually are environments, but we’ll just say they are objects). <code>ui</code> puts the values from the controls into <code>input</code>, which can be accessed by <code>server</code>. For example, if we have a slider called <code>year_release</code> in <code>ui</code>, we can access the value of that slider in <code>server</code> through <code>input$year_release</code>.</p>
 <p><code>server</code> will then do something with the slider value and generate some output. Where does it put the output? If you guessed <code>output</code>, then give yourself a star! <code>ui</code> then takes <code>output</code> and will then display it using the various _Output functions (such as <code>plotOutput</code>, <code>textOutput</code> and<code>tableOutput</code>).</p>
