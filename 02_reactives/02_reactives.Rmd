@@ -298,6 +298,8 @@ biopics_filtered <- reactive({
 ```
 ## Final App
 
+Here is the final app (also available in `02_reactives/app.R`).
+
 ```{r}
 library(shiny)
 library(tidyverse)

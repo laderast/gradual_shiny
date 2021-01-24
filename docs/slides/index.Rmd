@@ -202,7 +202,6 @@ server <- function(input, output) {
 #ui
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
-  flair("color_select", background = "lightblue") %>%
   flair("selectInput", background = "orange")
 
 ```
@@ -212,16 +211,37 @@ decorate("ui2") %>%
 .pull-right[
 #server
 ```{r, echo=FALSE}
+decorate("server2") 
+```
+]
+
+---
+# Wiring in the Input
+
+.pull-left[
+## ui
+```{r, echo=FALSE}
+decorate("ui2") %>% 
+  flair("color_select", background = "lightblue") %>%
+  flair("selectInput", background = "orange")
+
+```
+]
+
+.pull-right[
+## server
+```{r, echo=FALSE}
 decorate("server2") %>% 
   flair("color_select", background = "lightblue")
 
 ```
 ]
 
+
 ---
 class: center, middle
 
-# Making Data Reactive
+# 02: Making Data Reactive
 
 ---
 # Making a Dataset Filterable
@@ -294,7 +314,6 @@ renderPlot({
 .pull-left[
 ```{r, echo=FALSE}
 decorate("reactive2") %>%
-  
   flair("biopics_filtered")
 
 ```
@@ -309,4 +328,10 @@ decorate("reactive3") %>%
 ]
 
 ---
+# Some Tips
+
+- Always call reactives with the `()` 
+- Example: `biopics_filtered()`
+
+
 

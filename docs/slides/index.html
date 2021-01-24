@@ -88,7 +88,7 @@ class: center, middle
 ]
 
 .pull-right[
-![](slides_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](index_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 ]
 ---
 
@@ -141,6 +141,20 @@ class: center, middle
 .pull-left[
 #ui
 
+&lt;code class ='r hljs remark-code'&gt;ui &lt;- fluidPage(&lt;br&gt;&amp;nbsp;&amp;nbsp;plotOutput("paired_plot"),&lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="background-color:orange"&gt;selectInput&lt;/span&gt;(inputId = "color_select", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;label = "Select Categorical Variable", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;choices = categoricalVars)&lt;br&gt;)&lt;/code&gt;
+
+]
+
+.pull-right[
+#server
+
+&lt;code class ='r hljs remark-code'&gt;server &lt;- function(input, output) {&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;output$paired_plot &lt;- renderPlot({&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ggplot(biopics) +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;aes_string(x="year_release", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y="box_office", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;color=input$color_select) +&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;geom_point()&lt;br&gt;&amp;nbsp;&amp;nbsp;})&lt;br&gt;&lt;br&gt;}&lt;/code&gt;
+]
+
+---
+.pull-left[
+#ui
+
 &lt;code class ='r hljs remark-code'&gt;ui &lt;- fluidPage(&lt;br&gt;&amp;nbsp;&amp;nbsp;plotOutput("paired_plot"),&lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="background-color:orange"&gt;selectInput&lt;/span&gt;(inputId = "&lt;span style="background-color:lightblue"&gt;color_select&lt;/span&gt;", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;label = "Select Categorical Variable", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;choices = categoricalVars)&lt;br&gt;)&lt;/code&gt;
 
 ]
@@ -150,6 +164,7 @@ class: center, middle
 
 &lt;code class ='r hljs remark-code'&gt;server &lt;- function(input, output) {&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;output$paired_plot &lt;- renderPlot({&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ggplot(biopics) +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;aes_string(x="year_release", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y="box_office", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;color=input$&lt;span style="background-color:lightblue"&gt;color_select&lt;/span&gt;) +&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;geom_point()&lt;br&gt;&amp;nbsp;&amp;nbsp;})&lt;br&gt;&lt;br&gt;}&lt;/code&gt;
 ]
+
 
 ---
 class: center, middle
@@ -194,22 +209,19 @@ sliderInput(inputId = "year_filter",
 
 .pull-left[
 
-
 &lt;code class ='r hljs remark-code'&gt;&lt;span style="background-color:#ffff7f"&gt;biopics_filtered&lt;/span&gt; &lt;- reactive({&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;biopics %&gt;%&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;filter(year_release &gt; &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;input$year_filter)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;})&lt;/code&gt;
-
-
 ]
 
 .pull-right[
 
-
 &lt;code class ='r hljs remark-code'&gt;renderPlot({&lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;ggplot(&lt;span style="background-color:#ffff7f"&gt;biopics_filtered()&lt;/span&gt;) + &lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;aes_string(y="box_office", &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;x="year_release") + &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point()&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;br&gt;})&lt;/code&gt;
 
 
-<div id="out9c8834e3201d0d2d" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
-
-
+<div id="outf6e4c483560c5889" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
 ]
+
+---
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
