@@ -1,0 +1,312 @@
+---
+title: "Shiny Concepts"
+author: "Ted Laderas"
+institute: "BioData Club"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "midnightblue",
+  header_font_google = google_font("Josefin Sans"),
+  link_color = "steelblue",
+  text_font_size = "20px",
+  footnote_font_size = "20px"
+)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "logo", "tachyons"))
+xaringanExtra::use_panelset()
+xaringanExtra::use_tachyons()
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(flair)
+library(shiny)
+categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
+library(fivethirtyeight)
+library(ggplot2)
+data(biopics)
+```
+
+class: center, middle
+
+# Getting to know basic shiny app architecture
+
+---
+
+```{r, echo=FALSE}
+knitr::include_graphics("image/architecture_peng.jpg")
+```
+
+Illustration: Vivian Peng
+
+---
+# Minimal Shiny App
+
+
+.pull-left[
+##ui
+```{r ui_min, eval=FALSE}
+ui <- fluidPage()
+```
+  
+]
+
+.pull-right[
+##server
+```{r server_min, eval=FALSE}
+server <- function(input, output) {}
+```
+]
+
+```{r eval=FALSE}
+shinyApp(ui = ui, server = server)
+```
+
+---
+class: center, middle
+
+# Adding a Plot to our App
+
+---
+## Let's Add This Plot
+
+.pull-left[
+```{r, eval=FALSE}
+    ggplot(biopics) + 
+      aes_string(x="year_release", 
+                 y="box_office", 
+                 color= "type_of_subject") +
+      geom_point()
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE, warning=FALSE}
+    ggplot(biopics) + 
+      aes_string(x="year_release", 
+                 y="box_office", 
+                 color= "type_of_subject") +
+      geom_point()
+```
+]
+---
+
+```{r uibasic, include=FALSE, eval=FALSE}
+ui <- fluidPage(
+  plotOutput("paired_plot")
+)
+```
+
+
+```{r serverbasic, include=FALSE, eval=FALSE}
+server <- function(input, output) {
+
+ output$paired_plot <- renderPlot({
+
+  ggplot(biopics) + 
+    aes_string(x="year_release", 
+               y="box_office", 
+               color= "type_of_subject") +
+    geom_point()
+
+})
+
+}
+
+```
+
+.pull-left[
+#ui
+```{r, echo=FALSE}
+decorate("uibasic") %>% 
+  flair("paired_plot")
+
+```
+
+]
+
+.pull-right[
+#server
+```{r, echo=FALSE}
+decorate("serverbasic") %>% 
+  flair("paired_plot")
+
+```
+
+
+]
+
+---
+class: center, middle
+
+# Let's Add a Control
+
+.pull-left[
+```{r eval=FALSE}
+  selectInput(inputId = "color_select", 
+              label = "Select Categorical Variable", 
+              choices = categoricalVars)
+```
+]
+
+.pull-right[
+`r knitr::include_graphics("image/selectInput.jpg")`
+
+]
+---
+#Adding the selectInput
+
+```{r ui2, include=FALSE, eval=FALSE}
+ui <- fluidPage(
+  plotOutput("paired_plot"),
+  selectInput(inputId = "color_select", 
+              label = "Select Categorical Variable", 
+              choices = categoricalVars)
+)
+```
+
+
+```{r server2, include=FALSE, eval=FALSE}
+server <- function(input, output) {
+
+  output$paired_plot <- renderPlot({
+
+    ggplot(biopics) +
+      
+    aes_string(x="year_release", 
+               y="box_office", 
+               color=input$color_select) +
+
+      geom_point()
+  })
+
+}
+```
+
+.pull-left[
+#ui
+```{r, echo=FALSE}
+decorate("ui2") %>% 
+  flair("color_select", background = "lightblue") %>%
+  flair("selectInput", background = "orange")
+
+```
+
+]
+
+.pull-right[
+#server
+```{r, echo=FALSE}
+decorate("server2") %>% 
+  flair("color_select", background = "lightblue")
+
+```
+]
+
+---
+class: center, middle
+
+# Making Data Reactive
+
+---
+# Making a Dataset Filterable
+
+```{r eval=FALSE}
+biopics %>%
+  filter(year > 1917)
+
+```
+
+---
+# Making your data listen
+
+```{r reactive1, eval=FALSE, include=FALSE}
+biopics_filtered <- reactive({
+    
+    ##add code after biopics here
+    biopics %>%
+        filter(year_release > input$year_filter)
+    
+  })
+
+```
+
+```{r echo=FALSE}
+decorate("reactive1") %>%
+  flair("reactive({", background="orange") %>%
+  flair("})", background="orange") %>%
+  flair("input$year_filter", background="lightblue")
+```
+
+---
+# Adding our control: sliderInput()
+
+```{r eval=FALSE}
+sliderInput(inputId = "year_filter", 
+            "Select Lowest Year", 
+            min = 1915,
+            max=2014, 
+            value = 1915)
+
+```
+
+---
+# Using our Reactive
+
+```{r reactive2, include=FALSE, eval=FALSE}
+biopics_filtered <- reactive({
+    biopics %>%
+        filter(year_release > 
+                 input$year_filter)
+     })
+
+```
+
+```{r reactive3, include=FALSE, eval=FALSE}
+renderPlot({
+  
+  ggplot(biopics_filtered()) + 
+  
+  aes_string(y="box_office", 
+             x="year_release") + 
+      
+  geom_point()
+     
+})
+
+```
+
+.pull-left[
+```{r, echo=FALSE}
+decorate("reactive2") %>%
+  
+  flair("biopics_filtered")
+
+```
+]
+
+.pull-right[
+```{r, echo=FALSE}
+decorate("reactive3") %>%
+  flair("biopics_filtered()")
+
+```
+]
+
+---
+

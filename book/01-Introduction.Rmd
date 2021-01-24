@@ -97,6 +97,41 @@ R prints the definition of our function.
 For more information on functions, see [Advanced R](http://adv-r.had.co.nz/Functions.html) book's chapter on functions.
 
 
+## Learning how to read the basic architecture of Shiny Apps
+
+Most Shiny apps have two elements: a `ui` (User Interface) and a `server` element.
+
+Once you define these elements
+
+```{r eval = FALSE}
+
+library(shiny)
+
+ui <- fluidPage(
+  
+)
+
+server <- function(input, output, session) {
+  
+}
+
+shinyApp(ui, server) 
+```
+
+Some things to notice about `ui`: 
+
+```
+ui <- fluidPage(
+  
+)
+```
+
+Some things to notice about `server`:
+
+```
+
+```
+
 ## The concept of `ui` and `server` elements
 
 Every shiny app has two elements. The first is `ui`, which handles both the user controls and the layout and placement of output elements, such as plots or tables. `ui` usually consists of a layout scheme, with user controls (such as sliders, select boxes, radio boxes, etc) specified here. The second element is `server`, which handles all of the calculations and the generation of plots for `ui`. 
