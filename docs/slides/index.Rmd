@@ -286,6 +286,11 @@ sliderInput(inputId = "year_filter",
 ```
 
 ---
+
+
+
+
+---
 # Using our Reactive
 
 ```{r reactive2, include=FALSE, eval=FALSE}
@@ -334,4 +339,10 @@ decorate("reactive3") %>%
 - Example: `biopics_filtered()`
 
 
+---
+class: center, middle
 
+# 03: Adding Tooltips with `plotly`
+
+
+---
