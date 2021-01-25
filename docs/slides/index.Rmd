@@ -38,6 +38,7 @@ library(shiny)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 library(fivethirtyeight)
 library(ggplot2)
+library(plotly)
 data(biopics)
 ```
 
@@ -104,11 +105,56 @@ class: center, middle
       geom_point()
 ```
 ]
+
 ---
+
+
+```{r uibasic2, include=FALSE, eval=FALSE}
+ui <- fluidPage(
+  plotOutput("movie_plot")
+)
+```
+
+
+```{r serverbasic2, include=FALSE, eval=FALSE}
+server <- function(input, output) {
+
+ output$movie_plot <- renderPlot({
+
+})
+
+}
+
+```
+
+.pull-left[
+#ui
+```{r, echo=FALSE}
+decorate("uibasic2") %>% 
+  flair("movie_plot", background="lightblue")
+
+```
+
+]
+
+.pull-right[
+#server
+```{r, echo=FALSE}
+decorate("serverbasic2") %>% 
+  flair("movie_plot", background="lightblue") 
+
+```
+
+
+]
+
+
+---
+
 
 ```{r uibasic, include=FALSE, eval=FALSE}
 ui <- fluidPage(
-  plotOutput("paired_plot")
+  plotOutput("movie_plot")
 )
 ```
 
@@ -116,7 +162,7 @@ ui <- fluidPage(
 ```{r serverbasic, include=FALSE, eval=FALSE}
 server <- function(input, output) {
 
- output$paired_plot <- renderPlot({
+ output$movie_plot <- renderPlot({
 
   ggplot(biopics) + 
     aes_string(x="year_release", 
@@ -134,7 +180,7 @@ server <- function(input, output) {
 #ui
 ```{r, echo=FALSE}
 decorate("uibasic") %>% 
-  flair("paired_plot")
+  flair("movie_plot", background="lightblue")
 
 ```
 
@@ -144,7 +190,8 @@ decorate("uibasic") %>%
 #server
 ```{r, echo=FALSE}
 decorate("serverbasic") %>% 
-  flair("paired_plot")
+  flair("movie_plot", background="lightblue") %>%
+  flair_lines(5:9)
 
 ```
 
@@ -156,27 +203,32 @@ class: center, middle
 
 # Let's Add a Control
 
+---
+# selectInput
+
 .pull-left[
-```{r eval=FALSE}
-  selectInput(inputId = "color_select", 
-              label = "Select Categorical Variable", 
-              choices = categoricalVars)
+```{r selbox, eval=FALSE}
+selectInput(
+  inputId = "color_select", 
+  label = "Select Categorical Variable", 
+  choices = categoricalVars
+  )
 ```
 ]
 
 .pull-right[
 `r knitr::include_graphics("image/selectInput.jpg")`
-
 ]
 ---
-#Adding the selectInput
+# Adding the selectInput
 
 ```{r ui2, include=FALSE, eval=FALSE}
 ui <- fluidPage(
-  plotOutput("paired_plot"),
-  selectInput(inputId = "color_select", 
-              label = "Select Categorical Variable", 
-              choices = categoricalVars)
+  plotOutput("movie_plot"),
+  selectInput(
+    inputId = "color_select", 
+    label = "Select Categorical Variable", 
+    choices = categoricalVars)
 )
 ```
 
@@ -184,10 +236,9 @@ ui <- fluidPage(
 ```{r server2, include=FALSE, eval=FALSE}
 server <- function(input, output) {
 
-  output$paired_plot <- renderPlot({
+  output$movie_plot <- renderPlot({
 
     ggplot(biopics) +
-      
     aes_string(x="year_release", 
                y="box_office", 
                color=input$color_select) +
@@ -202,10 +253,9 @@ server <- function(input, output) {
 #ui
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
-  flair("selectInput", background = "orange")
+  flair_lines(3:6)
 
 ```
-
 ]
 
 .pull-right[
@@ -223,7 +273,7 @@ decorate("server2")
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
   flair("color_select", background = "lightblue") %>%
-  flair("selectInput", background = "orange")
+  flair("selectInput")
 
 ```
 ]
@@ -276,6 +326,7 @@ decorate("reactive1") %>%
 ---
 # Adding our control: sliderInput()
 
+.pull-left[
 ```{r eval=FALSE}
 sliderInput(inputId = "year_filter", 
             "Select Lowest Year", 
@@ -284,9 +335,33 @@ sliderInput(inputId = "year_filter",
             value = 1915)
 
 ```
+]
+
+.pull-right[
+
+
+]
 
 ---
+# Adding sliderInput
 
+```{r slider_ui, eval=FALSE, include=FALSE}
+ui <- fluidPage(
+   
+      plotOutput("scatter_plot"),
+      sliderInput("year_filter", 
+                  "Select Lowest Year", 
+                  min = 1915,
+                  max=2014, 
+                  value = 1915)
+         
+)
+```
+
+```{r echo=FALSE}
+decorate("slider_ui") %>%
+  flair_lines(4:8)
+```
 
 
 
@@ -342,7 +417,121 @@ decorate("reactive3") %>%
 ---
 class: center, middle
 
-# 03: Adding Tooltips with `plotly`
+# 03: Adding Tooltips with `{plotly}`
+
+---
+# What are Tooltips?
+
+- When you mouse over or click on data points, you will see info
+
+---
+# What is {plotly}?
+
+A library that makes your interactive plots more interactive.
+
+---
+# Making a ggplot into a plotly plot
+
+.pull-left[
+```{r eval=FALSE}
+
+my_plot <- ggplot(biopics) +
+  aes_string(x = "box_office", 
+             y="year_release",
+             color="subject") +
+  geom_point()
+
+ggplotly(my_plot)
+```
+]
+
+.pull-right[
+```{r echo=FALSE, warning=FALSE}
+my_plot <- ggplot(biopics) +
+  aes_string(x = "box_office", 
+             y="year_release",
+             color="type_of_subject") +
+  geom_point() +
+  theme(legend.position="none")
+
+ggplotly(my_plot)
+```
+]
+---
+# Adding more tooltip information
+
+Add to `aes_string()`:
+
+```{r plotly1, eval=FALSE, include=FALSE}
+my_plot <- ggplot(biopics) +
+  aes_string(x = "box_office", 
+             y="year_release",
+             title="title",
+             color="type_of_subject",
+             director="director",
+             box_office="box_office", 
+             subject="subject") +
+  geom_point()
+
+#ggplotly(my_plot)
+```
+
+
+.pull-left[
+```{r echo=FALSE}
+decorate("plotly1") %>%
+  flair_lines(4:8)
+```
+]
+
+.pull-right[
+```{r echo=FALSE, warning=FALSE}
+my_plot <- ggplot(biopics) +
+  aes_string(x = "box_office", 
+             y="year_release",
+             color="type_of_subject",
+             title="title",
+             director="director",
+             box_office="box_office", 
+             subject="subject") +
+  geom_point() +
+  theme(legend.position="none")
+
+ggplotly(my_plot)
+```
+]
 
 
 ---
+# Adding to our app - make these changes
+
+.pull-left[## in ui:
+
+Change
+
+```
+plotOutput()
+```
+to
+
+```
+plotlyOutput()
+```
+]
+
+.pull-right[## in server:
+Change
+
+```
+renderPlot()
+```
+
+to
+
+```
+renderPlotly()
+```
+
+]
+
+

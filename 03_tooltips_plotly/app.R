@@ -30,14 +30,14 @@ server <- function(input, output, session) {
     ##tooltips output everything mapped to an aesthetic under aes_string
     ##Here, we are passing in "dummy" variables: Movie, director, subject
     ##actor_actress, gender, subject_race
-    g <- ggplot(myDataFrame, aes_string(Movie="title", y="box_office", x="year_release", 
+    g <- ggplot(myDataFrame, aes_string(y="box_office", x="year_release", 
                                        color=input$color_variable, director="director",
                                        subject="subject", actor_actress="lead_actor_actress",
                                        gender="subject_sex", subject_race="subject_race")) + 
       geom_point()
     
     ##notice we pass our ggplot into ggplotly, which makes it more interactive
-    g <- ggplotly(g, tooltip="all")
+    ggplotly(g, tooltip="all")
   })
 
 }

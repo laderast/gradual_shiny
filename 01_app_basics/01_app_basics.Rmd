@@ -1,3 +1,18 @@
+---
+title: "01 - Adding a plot and control"
+author: "Ted Laderas"
+---
+
+```{r setup, include=FALSE}
+library(shiny)
+library(ggplot2)
+library(fivethirtyeight)
+data(biopics)
+```
+
+# Slides
+
+
 
 
 ## Starting with a minimal shiny app
