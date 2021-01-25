@@ -92,6 +92,9 @@ class: center, middle
       geom_point()
 ```
 
+- We use `aes_string()` instead of `aes()` because we can specify variables as `characters`
+- Will be helpful later
+
 ]
 
 .pull-right[
@@ -304,7 +307,7 @@ decorate("ui2") %>%
 
 .pull-right[
 ```{r, echo=FALSE}
-decorate("server2") %>% 
+decorate("server3") %>% 
   flair("color_select", background = "lightblue")
 
 ```
@@ -368,6 +371,7 @@ decorate("reactive1") %>%
 - started with a `reactive({})`
 - The curly brackets let us use more than one line of code `{}`
 ---
+# Reactive Flow: from slider to data to plot
 
 <img src="image/reactive.png" width = 750>
 
@@ -465,24 +469,24 @@ decorate("reactive3") %>%
 ---
 class: center, middle
 
-# 03: Adding Tooltips with `{plotly}`
+# Let's open 02_reactives.Rmd in RStudio.cloud
 
 ---
-# What are Tooltips?
+class: center, middle
 
-- When you mouse over or click on data points, you will see info
+# 03: Adding Tooltips with `{plotly}`
 
 ---
 # What is {plotly}?
 
-A library that makes your interactive plots more interactive.
+- A JavaScript library that makes your interactive plots more interactive.
+- accessed with the `{plotly}` package
 
 ---
 # Making a ggplot into a plotly plot
 
 .pull-left[
 ```{r eval=FALSE}
-
 my_plot <- ggplot(biopics) +
   aes_string(x = "box_office", 
              y="year_release",
@@ -491,6 +495,9 @@ my_plot <- ggplot(biopics) +
 
 ggplotly(my_plot)
 ```
+
+- assign our plot to `my_plot`
+- run `ggplotly()` on `my_plot`
 ]
 
 .pull-right[
@@ -507,8 +514,6 @@ ggplotly(my_plot)
 ]
 ---
 # Adding more tooltip information
-
-Add to `aes_string()`:
 
 ```{r plotly1, eval=FALSE, include=FALSE}
 my_plot <- ggplot(biopics) +
@@ -530,6 +535,8 @@ my_plot <- ggplot(biopics) +
 decorate("plotly1") %>%
   flair_lines(4:8)
 ```
+
+- add to `aes_string()`
 ]
 
 .pull-right[
@@ -553,7 +560,7 @@ ggplotly(my_plot)
 ---
 # Adding to our app - make these changes
 
-.pull-left[## in ui:
+.pull-left[## in `ui`:
 
 Change
 
@@ -567,7 +574,7 @@ plotlyOutput()
 ```
 ]
 
-.pull-right[## in server:
+.pull-right[## in `server`:
 Change
 
 ```
@@ -608,20 +615,20 @@ server <- function(input, output) {
     
     ggplotly(my_plot)
   })
-
+}
 ```
 
 .pull-left[
 ```{r echo=FALSE}
 decorate("ui_plotly") %>%
-  flair("plotlyOutput", color="lightblue")
+  flair("plotlyOutput", background="lightblue")
 ```
 ]
 
 .pull-right[
 ```{r echo=FALSE}
 decorate("server_plotly") %>%
-  flair("renderPlotly", color="lightblue") %>%
+  flair("renderPlotly", background="lightblue") %>%
   flair_lines(5:12)
 ```
 ]
