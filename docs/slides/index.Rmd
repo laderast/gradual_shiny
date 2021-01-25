@@ -122,6 +122,9 @@ server <- function(input, output) {
 
  output$movie_plot <- renderPlot({
 
+   
+   
+   
 })
 
 }
@@ -200,7 +203,6 @@ decorate("serverbasic") %>%
 ```
 
 - Now we add our `ggplot()` statement in
-
 ]
 
 ---
