@@ -48,14 +48,12 @@ class: center, middle
 
 ---
 
-```{r, echo=FALSE}
-knitr::include_graphics("image/architecture_peng.jpg")
-```
+<img src="image/architecture_peng.jpg" width=800>
 
 Illustration: Vivian Peng
 
 ---
-# Minimal Shiny App
+# 1.1 Minimal Shiny App
 
 
 .pull-left[
@@ -80,7 +78,7 @@ shinyApp(ui = ui, server = server)
 ---
 class: center, middle
 
-# Adding a Plot to our App
+# 1.2 Adding a Plot to our App
 
 ---
 ## Let's Add This Plot
@@ -135,6 +133,8 @@ decorate("uibasic2") %>%
 
 ```
 
+- for `ui`, need to add a `plotOutput()` to display the plot
+- note the argument `"movie_plot"` to `plotOutput()`
 ]
 
 .pull-right[
@@ -144,7 +144,8 @@ decorate("serverbasic2") %>%
   flair("movie_plot", background="lightblue") 
 
 ```
-
+- for `server`, need to add a `renderPlot()` to generate the plot
+- assign into `output$movie_plot` so `ui` can display it
 
 ]
 
@@ -195,13 +196,14 @@ decorate("serverbasic") %>%
 
 ```
 
+- Now we add our `ggplot()` statement in
 
 ]
 
 ---
 class: center, middle
 
-# Let's Add a Control
+# 1.3 Let's Add a Control
 
 ---
 # selectInput
@@ -219,6 +221,9 @@ selectInput(
 .pull-right[
 `r knitr::include_graphics("image/selectInput.jpg")`
 ]
+
+- Want to control the variable we **color** with the `selectInput()` control!
+
 ---
 # Adding the selectInput
 
@@ -241,7 +246,7 @@ server <- function(input, output) {
     ggplot(biopics) +
     aes_string(x="year_release", 
                y="box_office", 
-               color=input$color_select) +
+               color="type_of_subject") +
 
       geom_point()
   })
@@ -256,20 +261,39 @@ decorate("ui2") %>%
   flair_lines(3:6)
 
 ```
+
+- Here we add the `selectInput()` control
+- Note the comma after `plotOutput("movie_plot")`
 ]
 
 .pull-right[
 #server
 ```{r, echo=FALSE}
-decorate("server2") 
+decorate("server2") %>%
+  flair('color="type_of_subject"')
 ```
 ]
 
 ---
 # Wiring in the Input
 
+```{r server3, include=FALSE, eval=FALSE}
+server <- function(input, output) {
+
+  output$movie_plot <- renderPlot({
+
+    ggplot(biopics) +
+    aes_string(x="year_release", 
+               y="box_office", 
+               color=input$color_select) +
+
+      geom_point()
+  })
+
+}
+```
+
 .pull-left[
-## ui
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
   flair("color_select", background = "lightblue") %>%
@@ -279,19 +303,34 @@ decorate("ui2") %>%
 ]
 
 .pull-right[
-## server
 ```{r, echo=FALSE}
 decorate("server2") %>% 
   flair("color_select", background = "lightblue")
 
 ```
+
+- now we connect our `selectInput` to our `ggplot`
+- use `input$color_select` as argument to `color` in `aes_string()`
 ]
+
+
+---
+# The Flow: from `selectInput()` to `plotOutput()`
+
+<img src="image/shiny-architecture.png" width = 800>
 
 
 ---
 class: center, middle
 
+Let's open `01_app_basics.Rmd`
+
+---
+class: center, middle
+
 # 02: Making Data Reactive
+
+<img src="image/reactive.png", width = 600>
 
 ---
 # Making a Dataset Filterable
@@ -299,8 +338,11 @@ class: center, middle
 ```{r eval=FALSE}
 biopics %>%
   filter(year > 1917)
-
 ```
+
+- We want to make this `filter()` statement dynamic
+- Move a slider, and change the year
+- We'll need to put it in a `reactive` expression
 
 ---
 # Making your data listen
@@ -308,8 +350,7 @@ biopics %>%
 ```{r reactive1, eval=FALSE, include=FALSE}
 biopics_filtered <- reactive({
     
-    ##add code after biopics here
-    biopics %>%
+      biopics %>%
         filter(year_release > input$year_filter)
     
   })
@@ -322,6 +363,13 @@ decorate("reactive1") %>%
   flair("})", background="orange") %>%
   flair("input$year_filter", background="lightblue")
 ```
+
+- **reactive** expressions listen to changes in `input`
+- started with a `reactive({})`
+- The curly brackets let us use more than one line of code `{}`
+---
+
+<img src="image/reactive.png" width = 750>
 
 ---
 # Adding our control: sliderInput()
@@ -343,12 +391,12 @@ sliderInput(inputId = "year_filter",
 ]
 
 ---
-# Adding sliderInput
+# Adding sliderInput (in `ui`)
 
 ```{r slider_ui, eval=FALSE, include=FALSE}
 ui <- fluidPage(
    
-      plotOutput("scatter_plot"),
+      plotOutput("movie_plot"),
       sliderInput("year_filter", 
                   "Select Lowest Year", 
                   min = 1915,
@@ -363,10 +411,10 @@ decorate("slider_ui") %>%
   flair_lines(4:8)
 ```
 
-
+- Don't forget the comma after `plotOutput("movie_plot")`!
 
 ---
-# Using our Reactive
+# Using our Reactive (in `server`)
 
 ```{r reactive2, include=FALSE, eval=FALSE}
 biopics_filtered <- reactive({
@@ -534,4 +582,46 @@ renderPlotly()
 
 ]
 
+---
+# Modified App for `plotly` tooltips
 
+```{r ui_plotly, include=FALSE, eval=FALSE}
+ui <- fluidPage(
+  plotlyOutput("movie_plot"),
+  selectInput(inputId = "color_select", 
+              label = "Select Categorical Variable", 
+              choices = categoricalVars)
+)
+```
+
+```{r, server_plotly, include=FALSE, eval=FALSE}
+server <- function(input, output) {
+  
+  output$scatter_plot <- renderPlotly({
+    
+    my_plot <- ggplot(biopics) +
+      aes_string(x = "box_office", 
+                 y="year_release",
+                 color="type_of_subject") +
+      geom_point() +
+      theme(legend.position="none")
+    
+    ggplotly(my_plot)
+  })
+
+```
+
+.pull-left[
+```{r echo=FALSE}
+decorate("ui_plotly") %>%
+  flair("plotlyOutput", color="lightblue")
+```
+]
+
+.pull-right[
+```{r echo=FALSE}
+decorate("server_plotly") %>%
+  flair("renderPlotly", color="lightblue") %>%
+  flair_lines(5:12)
+```
+]

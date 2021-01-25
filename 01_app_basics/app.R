@@ -1,40 +1,27 @@
 library(shiny)
-library(tidyverse)
 library(fivethirtyeight)
-
-##load the biopics data
 data(biopics)
-biopics <- biopics %>% filter(!is.na(box_office))
+categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
-# Define UI for application that plots 
 ui <- fluidPage(
-   
-   plotOutput("scatter_plot"),
-   sliderInput("year_filter", 
-               "Select Lowest Year", 
-               min = 1915,
-               max=2014, 
-               value = 1915)
-   
+   plotOutput("movie_plot"),
+   selectInput(inputId = "color_select", 
+               label = "Select Categorical Variable", 
+               choices = categoricalVars)
 )
 
-##Server is where all of the computations happen
 server <- function(input, output) {
    
-   biopics_filtered <- reactive({
-      biopics %>%
-         filter(year_release > input$year_filter)
+   output$movie_plot <- renderPlot({
+      
+      ggplot(biopics) + 
+         aes_string(x="year_release", 
+                    y="box_office", 
+                    color= input$color_select) +
+         geom_point()
    })
    
-   output$scatter_plot <- renderPlot({
-      
-      ggplot(biopics_filtered()) +
-         aes_string(y="box_office", 
-                    x="year_release") + 
-         geom_point()
-      
-   })
 }
 
-# Run the application 
+shinyApp(ui = ui, server = server)
 shinyApp(ui = ui, server = server)

@@ -15,12 +15,12 @@ biopics <- biopics %>% filter(!is.na(box_office))
 # Define UI for application that plots 
 ui <- fluidPage(
    
-      plotOutput("scatter_plot"),
+      plotOutput("movie_plot"),
       sliderInput("year_filter", 
                   "Select Lowest Year", 
                   min = 1915,
                   max=2014, 
-                  value = 1915)
+                  value = 2014)
          
 )
 
@@ -29,10 +29,10 @@ server <- function(input, output) {
   
   biopics_filtered <- reactive({
     biopics %>%
-        filter(year_release > input$year_filter)
+        filter(year_release < input$year_filter)
      })
    
-   output$scatter_plot <- renderPlot({
+   output$movie_plot <- renderPlot({
       
        ggplot(biopics_filtered()) +
          aes_string(y="box_office", 

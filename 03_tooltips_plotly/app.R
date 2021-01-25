@@ -1,43 +1,32 @@
-## 04B - Tooltips using plotly
-## You will need to install the latest ggplot2 and plotly
-## devtools::install_github("hadley/ggplot2")
-## install.packages("plotly")
-
-#Sys.setlocale("LC_ALL", "C")
-library(tidyverse)
 library(shiny)
-library(plotly)
 library(fivethirtyeight)
-data("biopics")
-myDataFrame <- biopics
+data(biopics)
+categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
-source("helper.R")
-categoricalVars <- get_category_variables(myDataFrame)
-
-library(shiny)
-
-ui <- shinyUI(
-  fluidPage(
-    selectInput("color_variable", "Select Color Variable", names(categoricalVars), selected = names(categoricalVars[1])),
-    plotlyOutput("scatter_plot")
-  )
+ui <- fluidPage(
+  plotlyOutput("movie_plot"),
+  selectInput(inputId = "color_select", 
+              label = "Select Categorical Variable", 
+              choices = categoricalVars)
 )
 
-server <- function(input, output, session) {
+server <- function(input, output) {
   
   output$scatter_plot <- renderPlotly({
     
-    ##tooltips output everything mapped to an aesthetic under aes_string
-    ##Here, we are passing in "dummy" variables: Movie, director, subject
-    ##actor_actress, gender, subject_race
-    g <- ggplot(myDataFrame, aes_string(y="box_office", x="year_release", 
-                                       color=input$color_variable, director="director",
-                                       subject="subject", actor_actress="lead_actor_actress",
-                                       gender="subject_sex", subject_race="subject_race")) + 
-      geom_point()
+    my_plot <- ggplot(biopics) +
+      aes_string(x = "box_office", 
+                 y="year_release",
+                 color="type_of_subject",
+                 title="title",
+                 director="director",
+                 box_office="box_office", 
+                 subject="subject") +
+      geom_point() +
+      theme(legend.position="none")
     
     ##notice we pass our ggplot into ggplotly, which makes it more interactive
-    ggplotly(g, tooltip="all")
+    ggplotly(my_plot)
   })
 
 }
