@@ -12,7 +12,10 @@ data(biopics)
 
 # Slides
 
+```{r}
+knitr::include_url("https://laderast.github.io/gradual_shiny/slides/")
 
+```
 
 
 ## Starting with a minimal shiny app
