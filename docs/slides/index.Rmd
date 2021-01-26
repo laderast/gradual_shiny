@@ -216,24 +216,25 @@ server <- function(input, output) {
 .pull-left.tiny[
 ```{r, echo=FALSE}
 decorate("uibasic2") %>% 
-  flair("movie_plot", background="lightblue") 
+  flair("movie_plot", background="#cdecff") %>%
+  flair("plotOutput", background = "#ffb700")
 
 ```
 
-- for `ui`, need to add a `plotOutput()` to display the plot
-- note the argument `"movie_plot"` to `plotOutput()`
+- for `ui`, need to add a .bg-gold[`plotOutput()`] to display the plot
+- note the argument .bg-lightest-blue[`"movie_plot"`]
 ]
 
 .pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("serverbasic2") %>% 
-  flair("movie_plot", background="lightblue") %>%
-  flair("renderPlot({", background="orange") %>%
-  flair("})", background="orange")
+  flair("movie_plot", background="#cdecff") %>%
+  flair("renderPlot({", background="#ffb700") %>%
+  flair("})", background="#ffb700")
 
 ```
-- for `server`, need to add a `renderPlot()` to generate the plot
-- assign into `output$movie_plot` so `ui` can display it
+- for `server`, need to add a .bg-gold[`renderPlot()`] to generate the plot
+- assign into .bg-lightest-blue[`output$movie_plot`] so `ui` can display it
 
 ]
 
@@ -268,7 +269,7 @@ server <- function(input, output) {
 .pull-left.tiny[
 ```{r, echo=FALSE}
 decorate("uibasic") %>% 
-  flair("movie_plot", background="lightblue")
+  flair("movie_plot", background="#cdecff")
 
 ```
 
@@ -277,12 +278,12 @@ decorate("uibasic") %>%
 .pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("serverbasic") %>% 
-  flair("movie_plot", background="lightblue") %>%
+  flair("movie_plot", background="#cdecff") %>%
   flair_lines(5:9)
 
 ```
 
-- Now we add our `ggplot()` statement in
+- Now we add our .bg-light-yellow[`ggplot()`] statement in
 ]
 
 ---
@@ -346,7 +347,7 @@ decorate("ui2") %>%
 
 ```
 
-- Here we add the `selectInput()` control
+- Here we add the .bg-light-yellow[`selectInput()`] control
 - Note the comma after `plotOutput("movie_plot")`
 ]
 
@@ -379,8 +380,8 @@ server <- function(input, output) {
 .pull-left.tiny[
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
-  flair("color_select", background = "lightblue") %>%
-  flair("selectInput")
+  flair("color_select", background = "#cdecff") %>%
+  flair("selectInput", background = "#fbf1a9")
 
 ```
 ]
@@ -388,12 +389,12 @@ decorate("ui2") %>%
 .pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("server3") %>% 
-  flair("color_select", background = "lightblue")
+  flair("color_select", background = "#cdecff")
 
 ```
 
-- now we connect our `selectInput` to our `ggplot`
-- use `input$color_select` as argument to `color` in `aes_string()`
+- now we connect our .bg-light-yellow[`selectInput`] to our `ggplot`
+- use .bg-lightest-blue[`input$color_select`] as argument to `color` in `aes_string()`
 ]
 
 
@@ -418,12 +419,17 @@ class: center, middle
 ---
 # Making a Dataset Filterable
 
-```{r eval=FALSE}
-biopics %>%
-  filter(year > 1917)
+```{r filter, include=FALSE, eval=FALSE}
+biopics[1:5, 1:5] %>%
+  filter(year_release > 1917)
 ```
 
-- We want to make this `filter()` statement dynamic
+```{r echo=FALSE}
+decorate("filter") %>%
+  flair("filter", background = "#ffb700")
+```
+
+- We want to make this .bg-gold[`filter()`] statement dynamic
 - Move a slider, and change the year
 - We'll need to put it in a `reactive` expression
 
@@ -437,23 +443,22 @@ biopics_filtered <- reactive({
         filter(year_release > input$year_filter)
     
   })
-
 ```
 
 ```{r echo=FALSE}
 decorate("reactive1") %>%
-  flair("reactive({", background="orange") %>%
-  flair("})", background="orange") %>%
-  flair("input$year_filter", background="lightblue")
+  flair("reactive({", background="#ffb700") %>%
+  flair("})", background="#ffb700") %>%
+  flair("input$year_filter", background="#cdecff")
 ```
 
-- **reactive** expressions listen to changes in `input`
-- started with a `reactive({})`
-- The curly brackets let us use more than one line of code `{}`
+- **reactive** expressions listen to changes in .bg-lightest-blue[`input`]
+- started with a .bg-gold[`reactive({})`]
+- The curly brackets in .bg-gold[`reactive({})`] let us use more than one line of code `{}`
 ---
 # Reactive Flow: from slider to data to plot
 
-<img src="image/reactive.png" width = 750>
+<img src="image/reactive.png" width = 800>
 
 ---
 # Adding our control: sliderInput()
@@ -486,7 +491,6 @@ ui <- fluidPage(
                   min = 1915,
                   max=2014, 
                   value = 1915)
-         
 )
 ```
 
@@ -565,8 +569,7 @@ class: center, middle
 ---
 # Making a ggplot into a plotly plot
 
-.pull-left.tiny[
-```{r eval=FALSE}
+```{r plotly2, eval=FALSE, include=FALSE}
 my_plot <- ggplot(biopics) +
   aes_string(x = "box_office", 
              y="year_release",
@@ -576,8 +579,17 @@ my_plot <- ggplot(biopics) +
 ggplotly(my_plot)
 ```
 
-- assign our plot to `my_plot`
-- run `ggplotly()` on `my_plot`
+
+
+.pull-left.tiny[
+```{r echo=FALSE}
+decorate("plotly2") %>%
+  flair("my_plot", background = "#cdecff") %>%
+  flair("ggplotly(", background = "#ffb700")
+```
+
+- assign our plot to .bg-lightest-blue[`my_plot`]
+- run .bg-gold[`ggplotly()`] on .bg-lightest-blue[`my_plot`]
 ]
 
 .pull-right.tiny[
@@ -684,7 +696,7 @@ ui <- fluidPage(
 ```{r, server_plotly, include=FALSE, eval=FALSE}
 server <- function(input, output) {
   
-  output$scatter_plot <- renderPlotly({
+  output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics) +
       aes_string(x = "box_office", 
@@ -701,14 +713,14 @@ server <- function(input, output) {
 .pull-left.tiny[
 ```{r echo=FALSE}
 decorate("ui_plotly") %>%
-  flair("plotlyOutput", background="lightblue")
+  flair("plotlyOutput", background="#cdecff")
 ```
 ]
 
 .pull-right.tiny[
 ```{r echo=FALSE}
 decorate("server_plotly") %>%
-  flair("renderPlotly", background="lightblue") %>%
+  flair("renderPlotly", background="#cdecff") %>%
   flair_lines(5:12)
 ```
 ]
@@ -721,6 +733,27 @@ class: center, middle
 ---
 class: center, middle
 # Wrap up and Tips
+
+---
+# More about inputs and outputs
+
+Further reading on the different control inputs, and data output types here:
+
+https://laderast.github.io/gradual_shiny/app-1-connecting-ui-and-server.html#more-about-inputs-and-outputs
+
+---
+# Layouts
+
+Ways to lay out elements of your application
+
+`fluidPage`
+`flexdashboard`
+`shinydashboard`
+
+---
+# Extensions
+
+More info here: https://laderast.github.io/gradual_shiny/where-next.html
 
 ---
 # Shiny at OHSU
