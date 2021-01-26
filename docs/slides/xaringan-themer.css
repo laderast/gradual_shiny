@@ -34,7 +34,7 @@
   --code-font-family: 'Source Code Pro';
   --code-font-is-google: 1;
   --base-font-size: 20px;
-  --text-font-size: 20px;
+  --text-font-size: 24px;
   --code-font-size: 0.9rem;
   --code-inline-font-size: 1em;
   --header-h1-font-size: 2.75rem;
@@ -76,7 +76,7 @@ h1, h2, h3 {
 }
 .remark-slide-content {
   background-color: var(--background-color);
-  font-size: 20px;
+  font-size: 24px;
   padding: 16px 64px 16px 64px;
   width: 100%;
   height: 100%;

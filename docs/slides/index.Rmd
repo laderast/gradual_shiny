@@ -20,7 +20,7 @@ style_mono_accent(
   base_color = "midnightblue",
   header_font_google = google_font("Josefin Sans"),
   link_color = "steelblue",
-  text_font_size = "20px",
+  text_font_size = "24px",
   footnote_font_size = "20px"
 )
 ```
@@ -40,6 +40,13 @@ library(fivethirtyeight)
 library(ggplot2)
 library(plotly)
 data(biopics)
+```
+
+```{css, echo=FALSE}
+.tiny .remark-code { /*Change made here*/
+  font-size: 80% !important;
+}
+
 ```
 
 ---
@@ -88,7 +95,7 @@ Illustration: Vivian Peng
 # 1.1 Minimal Shiny App
 
 
-.pull-left[
+.pull-left.tiny[
 ##ui
 ```{r ui_min, eval=FALSE}
 ui <- fluidPage()
@@ -96,7 +103,7 @@ ui <- fluidPage()
   
 ]
 
-.pull-right[
+.pull-right.tiny[
 ##server
 ```{r server_min, eval=FALSE}
 server <- function(input, output) {}
@@ -125,20 +132,23 @@ class: center, middle
 ## Let's Add This Plot
 
 .pull-left[
+.tiny[
 ```{r, eval=FALSE}
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes_string(
+        x="year_release", 
+        y="box_office", 
+        color= "type_of_subject") +
       geom_point()
 ```
 
 - We use `aes_string()` instead of `aes()` because we can specify variables as `characters`
 - Will be helpful later
-
+]
 ]
 
 .pull-right[
+.tiny[
 ```{r echo=FALSE, warning=FALSE}
     ggplot(biopics) + 
       aes_string(x="year_release", 
@@ -146,6 +156,7 @@ class: center, middle
                  color= "type_of_subject") +
       geom_point()
 ```
+]
 ]
 
 ---
@@ -172,11 +183,11 @@ server <- function(input, output) {
 
 ```
 
-.pull-left[
+.pull-left.tiny[
 #ui
 ```{r, echo=FALSE}
 decorate("uibasic2") %>% 
-  flair("movie_plot", background="lightblue")
+  flair("movie_plot", background="lightblue") 
 
 ```
 
@@ -184,11 +195,13 @@ decorate("uibasic2") %>%
 - note the argument `"movie_plot"` to `plotOutput()`
 ]
 
-.pull-right[
+.pull-right.tiny[
 #server
 ```{r, echo=FALSE}
 decorate("serverbasic2") %>% 
-  flair("movie_plot", background="lightblue") 
+  flair("movie_plot", background="lightblue") %>%
+  flair("renderPlot({", background="orange") %>%
+  flair("})", background="orange")
 
 ```
 - for `server`, need to add a `renderPlot()` to generate the plot
@@ -224,7 +237,7 @@ server <- function(input, output) {
 
 ```
 
-.pull-left[
+.pull-left.tiny[
 #ui
 ```{r, echo=FALSE}
 decorate("uibasic") %>% 
@@ -234,7 +247,7 @@ decorate("uibasic") %>%
 
 ]
 
-.pull-right[
+.pull-right.tiny[
 #server
 ```{r, echo=FALSE}
 decorate("serverbasic") %>% 
@@ -254,7 +267,7 @@ class: center, middle
 ---
 # selectInput
 
-.pull-left[
+.pull-left.tiny[
 ```{r selbox, eval=FALSE}
 selectInput(
   inputId = "color_select", 
@@ -264,7 +277,7 @@ selectInput(
 ```
 ]
 
-.pull-right[
+.pull-right.tiny[
 `r knitr::include_graphics("image/selectInput.jpg")`
 ]
 
@@ -300,7 +313,7 @@ server <- function(input, output) {
 }
 ```
 
-.pull-left[
+.pull-left.tiny[
 #ui
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
@@ -312,7 +325,7 @@ decorate("ui2") %>%
 - Note the comma after `plotOutput("movie_plot")`
 ]
 
-.pull-right[
+.pull-right.tiny[
 #server
 ```{r, echo=FALSE}
 decorate("server2") %>%
@@ -339,7 +352,7 @@ server <- function(input, output) {
 }
 ```
 
-.pull-left[
+.pull-left.tiny[
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
   flair("color_select", background = "lightblue") %>%
@@ -348,7 +361,7 @@ decorate("ui2") %>%
 ```
 ]
 
-.pull-right[
+.pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("server3") %>% 
   flair("color_select", background = "lightblue")
@@ -421,7 +434,7 @@ decorate("reactive1") %>%
 ---
 # Adding our control: sliderInput()
 
-.pull-left[
+.pull-left.tiny[
 ```{r eval=FALSE}
 sliderInput(inputId = "year_filter", 
             "Select Lowest Year", 
@@ -432,7 +445,7 @@ sliderInput(inputId = "year_filter",
 ```
 ]
 
-.pull-right[
+.pull-right.tiny[
 
 
 ]
@@ -486,7 +499,7 @@ renderPlot({
 
 ```
 
-.pull-left[
+.pull-left.tiny[
 ```{r, echo=FALSE}
 decorate("reactive2") %>%
   flair("biopics_filtered")
@@ -494,7 +507,7 @@ decorate("reactive2") %>%
 ```
 ]
 
-.pull-right[
+.pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("reactive3") %>%
   flair("biopics_filtered()")
@@ -528,7 +541,7 @@ class: center, middle
 ---
 # Making a ggplot into a plotly plot
 
-.pull-left[
+.pull-left.tiny[
 ```{r eval=FALSE}
 my_plot <- ggplot(biopics) +
   aes_string(x = "box_office", 
@@ -543,7 +556,7 @@ ggplotly(my_plot)
 - run `ggplotly()` on `my_plot`
 ]
 
-.pull-right[
+.pull-right.tiny[
 ```{r echo=FALSE, warning=FALSE}
 my_plot <- ggplot(biopics) +
   aes_string(x = "box_office", 
@@ -573,7 +586,7 @@ my_plot <- ggplot(biopics) +
 ```
 
 
-.pull-left[
+.pull-left.tiny[
 ```{r echo=FALSE}
 decorate("plotly1") %>%
   flair_lines(4:8)
@@ -582,7 +595,7 @@ decorate("plotly1") %>%
 - add to `aes_string()`
 ]
 
-.pull-right[
+.pull-right.tiny[
 ```{r echo=FALSE, warning=FALSE}
 my_plot <- ggplot(biopics) +
   aes_string(x = "box_office", 
@@ -603,7 +616,7 @@ ggplotly(my_plot)
 ---
 # Adding to our app - make these changes
 
-.pull-left[## in `ui`:
+.pull-left.tiny[## in `ui`:
 
 Change
 
@@ -617,7 +630,7 @@ plotlyOutput()
 ```
 ]
 
-.pull-right[## in `server`:
+.pull-right.tiny[## in `server`:
 Change
 
 ```
@@ -661,14 +674,14 @@ server <- function(input, output) {
 }
 ```
 
-.pull-left[
+.pull-left.tiny[
 ```{r echo=FALSE}
 decorate("ui_plotly") %>%
   flair("plotlyOutput", background="lightblue")
 ```
 ]
 
-.pull-right[
+.pull-right.tiny[
 ```{r echo=FALSE}
 decorate("server_plotly") %>%
   flair("renderPlotly", background="lightblue") %>%
@@ -725,6 +738,7 @@ You should now know enough to start learning from the examples:
 - Jessica Minnier
 - Pierrette Lo
 - Dar'ya Pozhidayeva
+- Vivian Peng
 
 NLM T15: 
 
