@@ -48,11 +48,25 @@ data(biopics)
 }
 
 ```
-
 ---
 class: center, middle
 # Logistics
+---
+# Where are these slides?
 
+http://bit.ly/bdc_shiny_slides
+
+---
+# What is BioData Club?
+
+BioData Club is an interdisciplinary community at OHSU dedicated to promoting a fun and supportive culture of co-learning in data science skills and open science principles. 
+
+We host workshops and social events where attendees can learn and work on projects among friends and colleagues. Biodata Club welcomes everyone who wants to better their know-how in all things data, regardless of skill level. 
+
+We want to replace statistics anxiety and code fear with inspiration and motivation to learn and share. BioData Club is supported by the [OHSU Library](https://www.ohsu.edu/library) and [DMICE](https://www.ohsu.edu/school-of-medicine/medical-informatics-and-clinical-epidemiology).
+
+- [Slack Invitation](https://join.slack.com/t/biodata-club/shared_invite/zt-l15bsq41-OwDFU~1Fwvv0~mu3g4gs7A) - If expired, email bdc-organizers@ohsu.edu
+- [Email bdc-organizers@ohsu.edu](email:bdc-organizers@ohsu.edu) to be added to mailing list for announcements
 ---
 # BioData Club Code of Conduct
 
@@ -63,6 +77,15 @@ This workshop is meant to be a psychologically safe space where it's ok to ask q
 I want to normalize your own curiosity and fuel your desire to learn more.
 
 If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
+
+---
+# Code of Conduct Violation Reporting
+
+If you need to report a Code of Conduct Violation, please do so here: 
+
+https://ohsu.ca1.qualtrics.com/jfe/form/SV_8joYAQSpzU6kwuN
+
+All reporting is anonymous. We will review and take appropriate action.
 
 ---
 # What is Shiny?
@@ -80,14 +103,13 @@ If you are disruptive to class learning or disparaging to other students, I may 
 - Leverages R and its visualization tools
 
 ---
-
 class: center, middle
 
 # Getting to know basic shiny app architecture
 
 ---
 
-<img src="image/architecture_peng.jpg" width=800>
+<img src="image/architecture_peng.jpg" width=850>
 
 Illustration: Vivian Peng
 
@@ -122,6 +144,14 @@ shinyApp(ui = ui, server = server)
     - passes on information on state of controls
     - 
 - `server`: listens to `input` and puts info into `output`
+
+---
+# `biopics` dataset
+
+```{r echo=FALSE}
+gt::gt(biopics[1:5,])
+
+```
 
 ---
 class: center, middle
@@ -184,7 +214,6 @@ server <- function(input, output) {
 ```
 
 .pull-left.tiny[
-#ui
 ```{r, echo=FALSE}
 decorate("uibasic2") %>% 
   flair("movie_plot", background="lightblue") 
@@ -196,7 +225,6 @@ decorate("uibasic2") %>%
 ]
 
 .pull-right.tiny[
-#server
 ```{r, echo=FALSE}
 decorate("serverbasic2") %>% 
   flair("movie_plot", background="lightblue") %>%
@@ -238,7 +266,6 @@ server <- function(input, output) {
 ```
 
 .pull-left.tiny[
-#ui
 ```{r, echo=FALSE}
 decorate("uibasic") %>% 
   flair("movie_plot", background="lightblue")
@@ -248,7 +275,6 @@ decorate("uibasic") %>%
 ]
 
 .pull-right.tiny[
-#server
 ```{r, echo=FALSE}
 decorate("serverbasic") %>% 
   flair("movie_plot", background="lightblue") %>%
@@ -314,7 +340,6 @@ server <- function(input, output) {
 ```
 
 .pull-left.tiny[
-#ui
 ```{r, echo=FALSE}
 decorate("ui2") %>% 
   flair_lines(3:6)
@@ -326,7 +351,6 @@ decorate("ui2") %>%
 ]
 
 .pull-right.tiny[
-#server
 ```{r, echo=FALSE}
 decorate("server2") %>%
   flair('color="type_of_subject"')
@@ -382,7 +406,7 @@ decorate("server3") %>%
 ---
 class: center, middle
 
-Let's open `01_app_basics.Rmd`
+# Let's open `01_app_basics.Rmd`
 
 ---
 class: center, middle
@@ -688,6 +712,11 @@ decorate("server_plotly") %>%
   flair_lines(5:12)
 ```
 ]
+
+---
+class: center, middle
+
+# Let's open `03_plotly.Rmd`
 
 ---
 class: center, middle
