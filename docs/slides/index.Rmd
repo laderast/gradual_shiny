@@ -482,7 +482,7 @@ class: center, middle
 # What is {plotly}?
 
 - A JavaScript library that makes your interactive plots more interactive.
-- accessed with the `{plotly}` package
+- accessed with the `{plotly}` package in R
 
 ---
 # Making a ggplot into a plotly plot
@@ -634,3 +634,4 @@ decorate("server_plotly") %>%
   flair_lines(5:12)
 ```
 ]
+
