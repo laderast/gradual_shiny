@@ -1,5 +1,5 @@
 ---
-title: "Shiny Concepts"
+title: "a gRadual intRoduction to Shiny"
 author: "Ted Laderas"
 institute: "BioData Club"
 date: "`r Sys.Date()`"
@@ -41,6 +41,38 @@ library(ggplot2)
 library(plotly)
 data(biopics)
 ```
+
+---
+class: center, middle
+# Logistics
+
+---
+# BioData Club Code of Conduct
+
+This workshop is governed by the [BioData Club Code of Conduct](https://biodata-club.github.io/code_of_conduct/).
+
+This workshop is meant to be a psychologically safe space where it's ok to ask questions.
+
+I want to normalize your own curiosity and fuel your desire to learn more.
+
+If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
+
+---
+# What is Shiny?
+
+- A web based framework for interactive visuals
+- Developed by Joe Cheng and RStudio
+- Server based: requires an installation of R to work
+
+---
+# Why Shiny?
+
+- Interactive figures that help users explore data
+- Dashboards for showing people summaries of data
+- Widely Used
+- Leverages R and its visualization tools
+
+---
 
 class: center, middle
 
@@ -635,3 +667,50 @@ decorate("server_plotly") %>%
 ```
 ]
 
+---
+class: center, middle
+# Wrap up and Tips
+
+---
+# Shiny at OHSU
+
+- OCTRI has an RStudio Connect server that is accessible within the firewall
+- Requires a developer's fee and user fee
+
+---
+# Shiny in the Real World
+
+- shinyapps.io lets you host shiny apps externally
+- sign up for an account
+
+---
+# Deploying Apps on shinyapps.io
+
+- Requires installing `{rsconnect}` package
+- When you first try to deploy, it will ask you for your account info
+
+---
+# Shiny Gallery
+
+You should know enough to start learning from the examples:
+
+- https://shiny.rstudio.com/gallery/
+- Look at demos
+
+---
+# Going Further
+
+- Try to precompute as many statistics as possible in advance
+- Learn more about how to dynamically update the `ui`
+- Look at `htmlwidgets` for possible JavaScript visualizations you can leverage
+
+---
+# Suggested Reading
+
+- [Mastering Shiny](https://mastering-shiny.org/) by Hadley Wickham
+- [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/) by Carson Sievert
+
+---
+class: center, middle
+
+# Questions?
