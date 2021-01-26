@@ -17,7 +17,7 @@ ui <- fluidPage(
    
       plotOutput("movie_plot"),
       sliderInput("year_filter", 
-                  "Select Lowest Year", 
+                  "Select Highest Year", 
                   min = 1915,
                   max=2014, 
                   value = 2014)
