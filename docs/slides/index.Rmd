@@ -108,6 +108,15 @@ shinyApp(ui = ui, server = server)
 ```
 
 ---
+# `input` and `output` are how `ui` and `server` communicate
+
+- `ui` and `server` are continuously running and listening to each other
+- `ui`: listens to `output` and puts info into `input`
+    - passes on information on state of controls
+    - 
+- `server`: listens to `input` and puts info into `output`
+
+---
 class: center, middle
 
 # 1.2 Adding a Plot to our App
@@ -692,7 +701,7 @@ class: center, middle
 ---
 # Shiny Gallery
 
-You should know enough to start learning from the examples:
+You should now know enough to start learning from the examples:
 
 - https://shiny.rstudio.com/gallery/
 - Look at demos
@@ -709,6 +718,15 @@ You should know enough to start learning from the examples:
 
 - [Mastering Shiny](https://mastering-shiny.org/) by Hadley Wickham
 - [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/) by Carson Sievert
+
+---
+# Acknowledgements
+
+- Jessica Minnier
+- Pierrette Lo
+- Dar'ya Pozhidayeva
+
+NLM T15: 
 
 ---
 class: center, middle
