@@ -1,7 +1,7 @@
 ---
 title: "a gRadual intRoduction to Shiny"
 author: "Ted Laderas"
-institute: "BioData Club"
+institute: "BioData Club<br><img src='image/bdc.png' width=250>"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -48,48 +48,16 @@ data(biopics)
 }
 
 ```
-
-# Welcome
-
 ---
 
-# Ted Laderas, PhD
+class: center, middle
+# Welcome and Logistics
 
-.pull-left[
-- Assistant Professor, Department of Medical Informatics and Clinical Epidemiology 
-- Interactive Visualization/Flow Cytometry
-- Certified RStudio/Carpentries Instructor
-- Co-founder of
-  - [BioData Club](http://biodata-club.github.io)
-  - [Cascadia-R Conference](https://cascadiarconf.com)
-- https://laderast.github.io 
-]
-.pull-right[
-<img src="image/week1/ted.jpg" width = 400>
-]
-
----
-# Workshop TAs
-
-.pull-left[
-- Eric Earl
-- Eric Leung
-- Pierrette Lo
-- Dar'ya Pozhidayeva
-- Marijane White (Traffic Controller)
-]
-
-.pull-right[
-.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-If you need assistance, please message Marijane and she will add you to a breakout room and assign a TA to help you.]
-]
 ---
 class: center, middle
-# Logistics
----
 # Where are these slides?
 
-http://bit.ly/bdc_shiny_slides
+## http://bit.ly/bdc_shiny_slides
 
 ---
 # What is BioData Club?
@@ -113,6 +81,7 @@ I want to normalize your own curiosity and fuel your desire to learn more.
 
 If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
 
+.footnote[https://bit.ly/bdc_shiny_slides]
 ---
 # Code of Conduct Violation Reporting
 
@@ -121,6 +90,38 @@ If you need to report a Code of Conduct Violation, please do so here:
 https://ohsu.ca1.qualtrics.com/jfe/form/SV_8joYAQSpzU6kwuN
 
 All reporting is anonymous. We will review and take appropriate action.
+---
+# Ted Laderas, PhD
+
+.pull-left[
+- Assistant Professor, Department of Medical Informatics and Clinical Epidemiology 
+- Interactive Visualization/Flow Cytometry
+- Certified RStudio/Carpentries Instructor
+- Co-founder of
+  - [BioData Club](http://biodata-club.github.io)
+  - [Cascadia-R Conference](https://cascadiarconf.com)
+- https://laderast.github.io 
+]
+.pull-right[
+<img src="image/ted.jpg" width = 250>
+]
+
+---
+# Workshop TAs
+
+.pull-left[
+- Eric Earl
+- Eric Leung
+- Pierrette Lo
+- Dar'ya Pozhidayeva
+- Marijane White (Traffic Controller)
+]
+
+.pull-right[
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+If you need assistance, please message Marijane and she will add you to a breakout room and assign a TA to help you.]
+]
+
 
 ---
 # What is Shiny?
@@ -138,6 +139,7 @@ knitr::include_graphics("image/shiny.png")
 
 ]
 
+.footnote[https://bit.ly/bdc_shiny_slides]
 ---
 # Why Shiny?
 
@@ -146,6 +148,7 @@ knitr::include_graphics("image/shiny.png")
 - Widely Used
 - Leverages R and its visualization tools
 
+.footnote[https://bit.ly/bdc_shiny_slides]
 ---
 class: center, middle
 
@@ -157,6 +160,7 @@ class: center, middle
 
 Illustration: Vivian Peng
 
+.footnote[https://bit.ly/bdc_shiny_slides]
 ---
 # 1.1 Minimal Shiny App
 
@@ -197,16 +201,19 @@ decorate("server_min") %>%
 shinyApp(ui = ui, server = server)
 ```
 
-
+.footnote[https://bit.ly/bdc_shiny_slides]
 ---
 # `input` and `output` are how `ui` and `server` communicate
 
 - `ui` and `server` are continuously running and listening to each other
-- `ui`: listens to `output` and puts info into `input`
-    - passes on information on state of controls
-    - 
+- `ui`: listens to `output` and puts info into `input` 
+    - passes on information on state of controls into `input` (`input$my_slider`)
+    - listens to `output` for generated plots and tables and changes
 - `server`: listens to `input` and puts info into `output`
+    - passes on plots and tables into `output` (`output$my_plot`)
+    - listens to `input` for changes in controls
 
+.footnote[https://bit.ly/bdc_shiny_slides]
 ---
 # `biopics` dataset
 
@@ -796,6 +803,27 @@ class: center, middle
 # Let's open `03_plotly.Rmd`
 
 ---
+# `app.R`
+
+We've been running Shiny apps as code blocks so far.
+
+Apps are usually set up in a folder with `app.R`
+
+---
+class: center, middle
+
+# Open up `04_full_app/app.R`
+
+---
+# Making a new app as a project
+
+In a project, use 
+
+**File > New Project > New Directory > Shiny Web Application**
+
+And then name your app.
+
+---
 class: center, middle
 # Wrap up and Tips
 
@@ -809,11 +837,10 @@ https://laderast.github.io/gradual_shiny/app-1-connecting-ui-and-server.html#mor
 ---
 # Layouts
 
-Ways to lay out elements of your application
+Ways to lay out elements of your application:
 
-`fluidPage`
-`flexdashboard`
-`shinydashboard`
+- `fluidPage` - https://shiny.rstudio.com/articles/layout-guide.html
+- `flexdashboard` - https://rmarkdown.rstudio.com/flexdashboard/
 
 ---
 # Extensions
@@ -823,20 +850,22 @@ More info here: https://laderast.github.io/gradual_shiny/where-next.html
 ---
 # Shiny at OHSU
 
-- OCTRI has an RStudio Connect server that is accessible within the firewall
+- OCTRI has an RStudio Connect server that is accessible within the OHSU firewall
 - Requires a developer's fee and user fee
 
 ---
 # Shiny in the Real World
 
-- shinyapps.io lets you host shiny apps externally
+- shinyapps.io lets you host Shiny apps externally
 - sign up for an account
+- Be very careful about PHI
 
 ---
 # Deploying Apps on shinyapps.io
 
 - Requires installing `{rsconnect}` package
 - When you first try to deploy, it will ask you for your account info
+- When you run the app, there is a "Publish" button
 
 ---
 # Shiny Gallery
