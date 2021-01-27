@@ -48,6 +48,41 @@ data(biopics)
 }
 
 ```
+
+# Welcome
+
+---
+
+# Ted Laderas, PhD
+
+.pull-left[
+- Assistant Professor, Department of Medical Informatics and Clinical Epidemiology 
+- Interactive Visualization/Flow Cytometry
+- Certified RStudio/Carpentries Instructor
+- Co-founder of
+  - [BioData Club](http://biodata-club.github.io)
+  - [Cascadia-R Conference](https://cascadiarconf.com)
+- https://laderast.github.io 
+]
+.pull-right[
+<img src="image/week1/ted.jpg" width = 400>
+]
+
+---
+# Workshop TAs
+
+.pull-left[
+- Eric Earl
+- Eric Leung
+- Pierrette Lo
+- Dar'ya Pozhidayeva
+- Marijane White (Traffic Controller)
+]
+
+.pull-right[
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+If you need assistance, please message Marijane and she will add you to a breakout room and assign a TA to help you.]
+]
 ---
 class: center, middle
 # Logistics
@@ -90,9 +125,18 @@ All reporting is anonymous. We will review and take appropriate action.
 ---
 # What is Shiny?
 
+.pull-left[
 - A web based framework for interactive visuals
 - Developed by Joe Cheng and RStudio
 - Server based: requires an installation of R to work
+]
+
+.pull-right[
+```{r echo=FALSE}
+knitr::include_graphics("image/shiny.png")
+```
+
+]
 
 ---
 # Why Shiny?
@@ -119,22 +163,40 @@ Illustration: Vivian Peng
 
 .pull-left.tiny[
 ##ui
-```{r ui_min, eval=FALSE}
+```{r ui_min, eval=FALSE, include=FALSE}
 ui <- fluidPage()
 ```
+
+```{r echo=FALSE}
+decorate("ui_min") %>%
+  flair("()", background="#cdecff") 
+```
+
+- note that `fluidPage` is a `function`
+- uses .bg-lightest-blue[`()`], so arguments need to be comma separated
   
 ]
 
 .pull-right.tiny[
 ##server
-```{r server_min, eval=FALSE}
+```{r server_min, eval=FALSE, include=FALSE}
 server <- function(input, output) {}
 ```
+
+```{r echo=FALSE}
+decorate("server_min") %>%
+  flair("{}", background="#ffb700")
+```
+
+- Note that `server` defines a new function
+- Uses .bg-gold[{}] (curly brackets), so code is separated by line
+
 ]
 
 ```{r eval=FALSE}
 shinyApp(ui = ui, server = server)
 ```
+
 
 ---
 # `input` and `output` are how `ui` and `server` communicate
@@ -163,8 +225,8 @@ class: center, middle
 
 .pull-left[
 .tiny[
-```{r, eval=FALSE}
-    ggplot(biopics) + 
+```{r aes1, eval=FALSE, include=FALSE}
+my_plot <-  ggplot(biopics) + 
       aes_string(
         x="year_release", 
         y="box_office", 
@@ -172,8 +234,13 @@ class: center, middle
       geom_point()
 ```
 
-- We use `aes_string()` instead of `aes()` because we can specify variables as `characters`
-- Will be helpful later
+```{r echo=FALSE}
+decorate("aes1") %>%
+   flair("aes_string", background="#ffb700")
+```
+
+- We use .bg-gold[`aes_string()`] instead of `aes()` because we can specify variables as `character` - such as `"year_release"`
+- Will be helpful later when we add a control
 ]
 ]
 
@@ -190,7 +257,7 @@ class: center, middle
 ]
 
 ---
-
+# Adding a plot: plotOutput and renderPlot
 
 ```{r uibasic2, include=FALSE, eval=FALSE}
 ui <- fluidPage(
@@ -240,7 +307,7 @@ decorate("serverbasic2") %>%
 
 
 ---
-
+# Adding our ggplot code
 
 ```{r uibasic, include=FALSE, eval=FALSE}
 ui <- fluidPage(
@@ -530,7 +597,7 @@ renderPlot({
 .pull-left.tiny[
 ```{r, echo=FALSE}
 decorate("reactive2") %>%
-  flair("biopics_filtered")
+  flair("biopics_filtered", background="#ffb700")
 
 ```
 ]
@@ -538,7 +605,7 @@ decorate("reactive2") %>%
 .pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("reactive3") %>%
-  flair("biopics_filtered()")
+  flair("biopics_filtered()", background="#ffb700")
 
 ```
 ]
@@ -576,10 +643,8 @@ my_plot <- ggplot(biopics) +
              color="subject") +
   geom_point()
 
-ggplotly(my_plot)
+#ggplotly(my_plot)
 ```
-
-
 
 .pull-left.tiny[
 ```{r echo=FALSE}
