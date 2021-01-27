@@ -1,5 +1,8 @@
 library(shiny)
 library(fivethirtyeight)
+library(ggplot2)
+library(plotly)
+
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
@@ -12,12 +15,12 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   
-  output$scatter_plot <- renderPlotly({
+  output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics) +
       aes_string(x = "box_office", 
                  y="year_release",
-                 color="type_of_subject",
+                 color=input$color_select,
                  title="title",
                  director="director",
                  box_office="box_office", 

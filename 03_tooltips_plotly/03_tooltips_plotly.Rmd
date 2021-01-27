@@ -1,0 +1,150 @@
+---
+title: '03: Plotly'
+author: "Ted Laderas"
+date: "1/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(shiny)
+library(fivethirtyeight)
+library(ggplot2)
+library(plotly)
+data(biopics)
+categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
+
+```
+
+# Converting a ggplot to plotly using `ggplotly()`
+
+
+```{r}
+
+my_plot <- ggplot(biopics) +
+      aes_string(y = "box_office", 
+                 x="year_release",
+                 color="type_of_subject") +
+      geom_point() +
+      theme(legend.position="none")
+
+my_plot
+```
+
+You can convert `my_plot` to a plotly object using the ggplotly function:
+
+```{r}
+ggplotly(my_plot)
+```
+
+You can also control which aesthetics are shown using the `tooltip` argument:
+
+```{r}
+ggplotly(my_plot, tooltip = c("box_office", "year_release"))
+
+```
+
+Now to add this to an app, we can add our plotly object to an app using `plotlyOutput()` for `ui`, and `renderPlotly({})` for `server`:
+
+```{r}
+ui <- fluidPage(
+  plotlyOutput("movie_plot")
+)
+
+server <- function(input, output) {
+  
+  output$movie_plot <- renderPlotly({
+    
+    my_plot <- ggplot(biopics) +
+      aes_string(x = "box_office", 
+                 y="year_release",
+                 color="type_of_subject") +
+      geom_point() +
+      theme(legend.position="none")
+    
+    ##notice we pass our ggplot into ggplotly, which makes it more interactive
+    ggplotly(my_plot)
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
+## Exercise
+
+1. Add more aesthetics to your ggplot `aes_string()` statement, such as movie_title="title". Here's a list of the variables in `biopics` for your reference.
+
+```{r}
+colnames(biopics)
+```
+
+2. Then select a subset of these aesthetics to display using the `tooltip` argument to `ggplotly()`.
+
+
+```{r}
+ui <- fluidPage(
+  plotlyOutput("movie_plot")
+)
+
+server <- function(input, output) {
+  
+  output$movie_plot <- renderPlotly({
+    
+    my_plot <- ggplot(biopics) +
+      aes_string(x = "box_office", 
+                 y="year_release",
+                 color="type_of_subject",
+                 ----------------------,
+                 ----------------------,) +
+      geom_point() +
+      theme(legend.position="none")
+    
+    ##notice we pass our ggplot into ggplotly, which makes it more interactive
+    ggplotly(my_plot, tooltip = c(---------------------))
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
+
+# Final App
+
+Here's the final app using our new `plotly` plot.
+
+
+```{r}
+data(biopics)
+categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
+
+ui <- fluidPage(
+  plotlyOutput("movie_plot"),
+  selectInput(inputId = "color_select", 
+              label = "Select Categorical Variable", 
+              choices = categoricalVars)
+)
+
+server <- function(input, output) {
+  
+  output$movie_plot <- renderPlotly({
+    
+    my_plot <- ggplot(biopics) +
+      aes_string(x = "box_office", 
+                 y="year_release",
+                 color=input$color_select,
+                 title="title",
+                 director="director",
+                 box_office="box_office", 
+                 subject="subject") +
+      geom_point() +
+      theme(legend.position="none")
+    
+    ##notice we pass our ggplot into ggplotly, which makes it more interactive
+    ggplotly(my_plot)
+  })
+
+}
+
+shinyApp(ui, server)
+```
