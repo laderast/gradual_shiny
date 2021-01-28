@@ -4,10 +4,8 @@ Welcome to the workshop! We'll introduce you to the basics behind Shiny, an easy
 
 01) Getting the basics down
 02) What are reactives for?
-03) Observe/isolate/update
-04) (A) Tooltips and graph interactivity
-04) (B, *optional*) Tooltips the plotly way
-05) Bringing it all together
+03) (A) Tooltips and graph interactivity
+04) Bringing it all together
 
 ## Requirements
 
@@ -25,7 +23,7 @@ install.packages("plotly")
 
 ## Getting Started
 
-Open up the tutorial at http://laderast.github.io/gradual_shiny. There's more info on getting started in there.
+Open up the tutorial at http://laderast.github.io/gradual_shiny/slides/. There's more info on getting started in there.
 
 ## Contributing
 
@@ -39,7 +37,7 @@ This workshop was partially funded from a NLM T15 Training Grant supplement for 
 
 ## Licensing Info
 
-Copyright 2018 Ted Laderas
+Copyright 2020 Ted Laderas and Jessica Minnier
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
