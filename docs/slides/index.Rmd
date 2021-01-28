@@ -834,6 +834,8 @@ Further reading on the different control inputs, and data output types here:
 
 https://laderast.github.io/gradual_shiny/app-1-connecting-ui-and-server.html#more-about-inputs-and-outputs
 
+Shiny Widget Gallery: https://shiny.rstudio.com/gallery/widget-gallery.html
+
 ---
 # Layouts
 
@@ -891,10 +893,13 @@ You should now know enough to start learning from the examples:
 ---
 # Acknowledgements
 
+- Biodata Club
 - Jessica Minnier
 - Pierrette Lo
 - Dar'ya Pozhidayeva
 - Vivian Peng
+- Eric Leung
+- Eric Earl
 
 NLM T15: 
 
