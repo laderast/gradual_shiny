@@ -55,7 +55,7 @@ meta() %>%
 
 # Description
 
-This was a two hour workshop given for BioData Club on 2021-01-28 introducing the basic concepts of Shiny. It runs about two hours long.
+This was a two hour workshop given for [OHSU BioData Club](https://biodata-club.github.io) on 2021-01-28 introducing the basic concepts of Shiny. It runs about two hours long.
 
 There are videos for each part, along with slides. We use an RStudio.cloud project to try the basic Shiny concepts.
 
