@@ -103,12 +103,12 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   
-  biopics_filtered <- reactive{(
+  biopics_filtered <- reactive({
     
     biopics %>%
       filter(year < input$_______)
     
-  )}
+  })
   
 
   output$paired_plot <- renderPlot({
@@ -145,10 +145,10 @@ ui <- fluidPage(
    
       plotOutput("scatter_plot"),
       sliderInput("year_filter", 
-                  "Select Highest Year", 
+                  "Select Highest Year",
                   min = 1915,
                   max=2014, 
-                  value = 1915)
+                  value = 2014)
          
 )
 
@@ -164,7 +164,8 @@ server <- function(input, output) {
       
        ggplot(biopics_filtered()) +
          aes_string(y="box_office", 
-         x="year_release") + 
+         x="year_release",
+         color="type_of_subject") + 
        geom_point()
      
    })

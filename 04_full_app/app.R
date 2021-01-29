@@ -1,6 +1,5 @@
 library(shiny)
 library(fivethirtyeight)
-library(withr)
 library(plotly)
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
@@ -37,11 +36,10 @@ server <- function(input, output) {
                  subject="subject") +
       geom_point() +
       ggtitle("Biopics: year released vs. total box office") + 
-      theme(legend.position="none") +
-      scale_y_continuous(labels=scales::label_dollar())
+      theme(legend.position="none")
     
     ##notice we pass our ggplot into ggplotly, which makes it interactive
-    withr::with_options(list(digits=6), ggplotly(my_plot))
+    ggplotly(my_plot)
   })
 
 }
