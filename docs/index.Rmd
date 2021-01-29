@@ -47,10 +47,10 @@ Intermediate R users and students. Students should be familiar with `{ggplot2}`,
 - **Learn** the basic architecture of Shiny Apps
 - **Learn** how `server` and `ui` communicate with the `input` and `output` objects
 - **Add** `ggplot2` code to our app and display it with `plotOutput` and `renderOutput`
-- **Add** a control to control the aesthetics of 
-- **Make** a reactive dataset using reactive expressions and control it with a slider.
+- **Add** a control to control the aesthetics of our `ggplot`
+- **Make** a reactive dataset using reactive expressions and control it with a slider
 - **Use** `{plotly}` to add tooltips to our data
-- **Learn** about the Shiny Widget Gallery and how to use it.
+- **Learn** about the Shiny Widget Gallery and how to use it to add controls to your app
 
 
 # RStudio Cloud Project
