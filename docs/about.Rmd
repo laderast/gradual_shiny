@@ -29,23 +29,3 @@ Thank you to Vivian Peng, for inspiring the layout for the slides.
 Slides done in [`{xaringan}`](https://bookdown.org/yihui/rmarkdown/xaringan.html) with [`{flair}`](https://github.com/r-for-educators/flair) and [`{xaringanExtra}`](https://github.com/gadenbuie/xaringanExtra).
 
 Site done with [`{distill}`](https://rstudio.github.io/distill/).
-
-# Licensing Information
-
-Copyright 2021 Ted Laderas and Jessica Minnier
-
-All teaching materials are licensed under a Creative Commons Attribution NonCommercial 4.0 International (CC BY-NC 4.0) License. https://creativecommons.org/licenses/by-nc/4.0/
-
-We have put a lot of effort and time into this workshop. The least you can do is credit us and our work.
-
-Code Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.

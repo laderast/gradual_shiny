@@ -9,4 +9,6 @@ navbar:
       href: index.html
     - text: "Acknowledgements"
       href: about.html
+    - text: "License"
+      href: licensing.html
 output: distill::distill_article
