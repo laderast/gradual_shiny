@@ -1,0 +1,72 @@
+---
+title: "a gRadual intRoduction to Shiny"
+description: |
+  Introductory Workshop to Basic Shiny Concepts
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+```
+
+# RStudio Project
+
+Make sure to save a permanent copy to your own workspace!
+
+https://rstudio.cloud/project/2125039  
+
+# Part 1: Basic Architecture of a Shiny App
+
+
+## Slides
+
+```{r}
+knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#10")
+```
+
+## Video
+
+```{r}
+knitr::include_url("https://youtu.be/_UuuL-cFqjs?t=170")
+```
+
+## Project
+
+Open up `gradual_shiny/01_app_basics/01_app_basics.Rmd` in RStudio Project
+
+
+# Part 2: Reactives
+
+## Slides
+
+```{r}
+knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#27")
+```
+
+## Video
+
+```{r}
+knitr::include_url("https://youtu.be/_UuuL-cFqjs?t=3080")
+```
+
+## Project
+
+Open up `gradual_shiny/02_reactives/02_reactives.Rmd` in RStudio Project
+
+# Part 3: Tooltips with `{plotly}`; Wrapping up
+
+## Slides
+
+```{r}
+knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#42")
+```
+
+## Video
+
+```{r}
+knitr::include_url("https://youtu.be/_UuuL-cFqjs?t=4881")
+```

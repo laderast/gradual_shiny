@@ -1,0 +1,27 @@
+---
+title: "Acknowledgements"
+description: |
+   Thank You
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This workshop has been given multiple times.
+
+Thank you to PDX-R for hosting the workshop multiple times.
+
+Thank you to Jessica Minnier who contributed and taught this workshop with me for WNAR2019.
+
+Thank you to BioData Club for the latest version of the workshop, including:
+
+- Pierrette Lo
+- Dar'ya Pozhidayeva
+- Eric Leung
+- Marijane White
+- Eric Earl
+
+Thank you to Vivian Peng, for inspiring the layout for the slides.
+
+Slides done in [{xaringan}](https://bookdown.org/yihui/rmarkdown/xaringan.html) with [{flair}](https://github.com/r-for-educators/flair) and [{xaringanExtra}](https://github.com/gadenbuie/xaringanExtra).

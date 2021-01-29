@@ -1,0 +1,21 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "Acknowledgements",
+      "description": "Thank You",
+      "author": [],
+      "contents": "\r\nThis workshop has been given multiple times.\r\nThank you to PDX-R for hosting the workshop multiple times.\r\nThank you to Jessica Minnier who contributed and taught this workshop with me for WNAR2019.\r\nThank you to BioData Club for the latest version of the workshop, including:\r\nPierrette Lo\r\nDar’ya Pozhidayeva\r\nEric Leung\r\nMarijane White\r\nEric Earl\r\nThank you to Vivian Peng, for inspiring the layout for the slides.\r\nSlides done in {xaringan} with {flair} and {xaringanExtra}.\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-28T19:52:17-08:00"
+    },
+    {
+      "path": "index.html",
+      "title": "a gRadual intRoduction to Shiny",
+      "description": "Introductory Workshop to Basic Shiny Concepts\n",
+      "author": [],
+      "contents": "\r\nRStudio Project\r\nMake sure to save a permanent copy to your own workspace!\r\nhttps://rstudio.cloud/project/2125039\r\nPart 1: Basic Architecture of a Shiny App\r\nSlides\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/01_app_basics/01_app_basics.Rmd in RStudio Project\r\nPart 2: Reactives\r\nSlides\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/02_reactives/02_reactives.Rmd in RStudio Project\r\nPart 3: Tooltips with {plotly}; Wrapping up\r\nSlides\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-28T19:52:18-08:00"
+    }
+  ],
+  "collections": []
+}
