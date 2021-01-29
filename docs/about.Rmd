@@ -14,13 +14,15 @@ Thank you to PDX-R for hosting the workshop multiple times.
 
 Thank you to Jessica Minnier who contributed and taught this workshop with me for WNAR2019.
 
-Thank you to BioData Club for the latest version of the workshop, including:
+Thank you to BioData Club for the latest version of the workshop, including our TAs:
 
 - Pierrette Lo
 - Dar'ya Pozhidayeva
 - Eric Leung
 - Marijane White
 - Eric Earl
+
+Special Thanks to both Pierrette and Dar'ya for sharing their experiences and stumbling blocks about learning Shiny - they definitely helped me to reformulate how to teach Shiny and focus on the basics.
 
 Thank you to Vivian Peng, for inspiring the layout for the slides.
 
