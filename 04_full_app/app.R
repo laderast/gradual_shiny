@@ -1,3 +1,5 @@
+Sys.setlocale('LC_ALL','C')
+
 library(shiny)
 library(fivethirtyeight)
 library(plotly)
