@@ -13,6 +13,27 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+# Description
+
+This was a two hour workshop given for BioData Club on 2021-01-28 introducing the basic concepts of Shiny. It runs about two hours long.
+
+There are videos for each part, along with slides. We use an RStudio.cloud project to try the basic Shiny concepts.
+
+# Audience
+
+Intermediate R users and students. Students should be familiar with `{ggplot2}`, `{dplyr}`, and how functions work.
+
+# Learning Objectives
+
+- **Learn** the basic architecture of Shiny Apps
+- **Learn** how `server` and `ui` communicate with the `input` and `output` objects
+- **Add** `ggplot2` code to our app and display it with `plotOutput` and `renderOutput`
+- **Add** a control to control the aesthetics of 
+- **Make** a reactive dataset using reactive expressions and control it with a slider.
+- **Use** `{plotly}` to add tooltips to our data
+- **Learn** about the Shiny Widget Gallery and how to use it.
+
+
 # RStudio Project
 
 Make sure to save a permanent copy to your own workspace!
@@ -31,7 +52,7 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#10")
 ## Video
 
 ```{r}
-knitr::include_url("https://www.youtube.com/_UuuL-cFqjs?t=170")
+vembedr::embed_youtube("_UuuL-cFqjs?t=170")
 ```
 
 ## Project
@@ -50,7 +71,7 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#27")
 ## Video
 
 ```{r}
-knitr::include_url("https://www.youtube.com/_UuuL-cFqjs?t=3080")
+vembedr::embed_youtube("_UuuL-cFqjs?t=3080")
 ```
 
 ## Project
@@ -68,5 +89,10 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#42")
 ## Video
 
 ```{r}
-knitr::include_url("https://www.youtube.com/_UuuL-cFqjs?t=4881")
+vembedr::embed_youtube("_UuuL-cFqjs?t=4881")
 ```
+
+## Project
+
+Open up `gradual_shiny/02_reactives/02_reactives.Rmd` in RStudio Project.
+

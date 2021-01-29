@@ -1997,6 +1997,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+  <link href="site_libs/vembedr-0.1.4/css/vembedr.css" rel="stylesheet" />
   <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
@@ -2025,7 +2026,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
+<a href="about.html">Acknowledgements</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2043,6 +2044,21 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="d-article">
+<h1 id="description">Description</h1>
+<p>This was a two hour workshop given for BioData Club on 2021-01-28 introducing the basic concepts of Shiny. It runs about two hours long.</p>
+<p>There are videos for each part, along with slides. We use an RStudio.cloud project to try the basic Shiny concepts.</p>
+<h1 id="audience">Audience</h1>
+<p>Intermediate R users and students. Students should be familiar with <code>{ggplot2}</code>, <code>{dplyr}</code>, and how functions work.</p>
+<h1 id="learning-objectives">Learning Objectives</h1>
+<ul>
+<li><strong>Learn</strong> the basic architecture of Shiny Apps</li>
+<li><strong>Learn</strong> how <code>server</code> and <code>ui</code> communicate with the <code>input</code> and <code>output</code> objects</li>
+<li><strong>Add</strong> <code>ggplot2</code> code to our app and display it with <code>plotOutput</code> and <code>renderOutput</code></li>
+<li><strong>Add</strong> a control to control the aesthetics of</li>
+<li><strong>Make</strong> a reactive dataset using reactive expressions and control it with a slider.</li>
+<li><strong>Use</strong> <code>{plotly}</code> to add tooltips to our data</li>
+<li><strong>Learn</strong> about the Shiny Widget Gallery and how to use it.</li>
+</ul>
 <h1 id="rstudio-project">RStudio Project</h1>
 <p>Make sure to save a permanent copy to your own workspace!</p>
 <p><a href="https://rstudio.cloud/project/2125039" class="uri">https://rstudio.cloud/project/2125039</a></p>
@@ -2054,8 +2070,11 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h2 id="video">Video</h2>
 <div class="layout-chunk" data-layout="l-body">
-<iframe src="https://www.youtube.com/_UuuL-cFqjs?t=170" width="624" height="400px">
-</iframe>
+<div class="vembedr">
+<div>
+<iframe src="https://www.youtube.com/embed/_UuuL-cFqjs?t=170" width="533" height="300" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
 </div>
 <h2 id="project">Project</h2>
 <p>Open up <code>gradual_shiny/01_app_basics/01_app_basics.Rmd</code> in RStudio Project</p>
@@ -2067,8 +2086,11 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h2 id="video-1">Video</h2>
 <div class="layout-chunk" data-layout="l-body">
-<iframe src="https://www.youtube.com/_UuuL-cFqjs?t=3080" width="624" height="400px">
-</iframe>
+<div class="vembedr">
+<div>
+<iframe src="https://www.youtube.com/embed/_UuuL-cFqjs?t=3080" width="533" height="300" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
 </div>
 <h2 id="project-1">Project</h2>
 <p>Open up <code>gradual_shiny/02_reactives/02_reactives.Rmd</code> in RStudio Project</p>
@@ -2080,9 +2102,14 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h2 id="video-2">Video</h2>
 <div class="layout-chunk" data-layout="l-body">
-<iframe src="https://www.youtube.com/_UuuL-cFqjs?t=4881" width="624" height="400px">
-</iframe>
+<div class="vembedr">
+<div>
+<iframe src="https://www.youtube.com/embed/_UuuL-cFqjs?t=4881" width="533" height="300" frameborder="0" allowfullscreen=""></iframe>
 </div>
+</div>
+</div>
+<h2 id="project-2">Project</h2>
+<p>Open up <code>gradual_shiny/02_reactives/02_reactives.Rmd</code> in RStudio Project.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
