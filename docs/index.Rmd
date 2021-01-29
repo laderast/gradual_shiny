@@ -10,8 +10,26 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Learn more about creating websites with Distill at:
 # https://rstudio.github.io/distill/website.html
-
+library(metathis)
 ```
+
+```{r}
+meta() %>%
+  meta_description(
+    "This workshop is a gentle introduction to Shiny and related concepts"
+  ) %>% 
+  meta_name("github-repo" = "laderast/gradual_shiny") %>% 
+  meta_viewport() %>% 
+  meta_social(
+    title = "a gRadual intRoduction to Shiny",
+    url = "https://laderast.github.io/gradual_shiny",
+    og_type = "Workshop",
+    og_author = c("Ted Laderas", "Jessica Minnier"),
+    twitter_card_type = "summary",
+    twitter_creator = "@tladeras"
+  )
+```
+
 
 # Description
 
