@@ -94,5 +94,5 @@ vembedr::embed_youtube("_UuuL-cFqjs?t=4881")
 
 ## Project
 
-Open up `gradual_shiny/02_reactives/02_reactives.Rmd` in RStudio Project.
+Open up `gradual_shiny/03_tooltips_plotly/03_tooltips_plotly.Rmd` in RStudio Project.
 
