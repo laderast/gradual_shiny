@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 # Learn more about creating websites with Distill at:
 # https://rstudio.github.io/distill/website.html
 library(metathis)
+library(vembedr)
 ```
 
 ```{r}
@@ -70,7 +71,8 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#10")
 ## Video
 
 ```{r}
-vembedr::embed_youtube("_UuuL-cFqjs?t=170")
+vembedr::embed_youtube("_UuuL-cFqjs") %>%
+  use_start_time("2m48")
 ```
 
 ## Project
@@ -89,7 +91,8 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#27")
 ## Video
 
 ```{r}
-vembedr::embed_youtube("_UuuL-cFqjs?t=3080")
+vembedr::embed_youtube("_UuuL-cFqjs") %>%
+  vembedr::use_start_time("51m20")
 ```
 
 ## Project
@@ -101,16 +104,22 @@ Open up `gradual_shiny/02_reactives/02_reactives.Rmd` in RStudio Project
 ## Slides
 
 ```{r}
-knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#42")
+knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#36")
 ```
 
 ## Video
 
 ```{r}
-vembedr::embed_youtube("_UuuL-cFqjs?t=4881")
+vembedr::embed_youtube("_UuuL-cFqjs") %>%
+  vembedr::use_start_time("81m21")
 ```
 
 ## Project
 
 Open up `gradual_shiny/03_tooltips_plotly/03_tooltips_plotly.Rmd` in RStudio Project.
 
+# Survey
+
+If you've taken the workshop, please take our survey and give us feedback: https://ohsu.ca1.qualtrics.com/jfe/form/SV_afaOiEAnNpWZIoK
+
+If you want to use the workshop materials, please drop us a line at [tedladeras] [at] [gmail]. We'd love to hear from you.
