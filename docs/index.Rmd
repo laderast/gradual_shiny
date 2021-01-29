@@ -2,7 +2,28 @@
 title: "a gRadual intRoduction to Shiny"
 description: |
   Introductory Workshop to Basic Shiny Concepts
+author:
+  - first_name: "Ted"
+    last_name: "Laderas"
+    url: https://laderast.github.io
+    affiliation: Division of Bioinformatics and Computational Biomedicine, Medical Informatics and Clinical Epidemiology; Knight Cancer Institute, Oregon Health & Science University
+  - first_name: "Jessica"
+    last_name: "Minnier"
+    url: https://jessicaminnier.com
+    affiliation: PSU/OHSU School of Public Health; Knight Cancer Institute, Oregon Health & Science University
+  - first_name: "Pierrette"
+    last_name: "Lo"
+    affiliation: Knight Cancer Institute, Oregon Health & Science University
+    url: https://lopierra.rbind.io/
+  - first_name: "Dar'ya"
+    last_name: "Pozhidayeva"
+    affiliation: Oregon Clinical Translational Research Institute; Medical Informatics and Clinical Epidemiology, Oregon Health & Science University.
+date: January 28, 2018
 site: distill::distill_website
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}

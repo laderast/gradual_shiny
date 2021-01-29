@@ -6,15 +6,33 @@
       "description": "Thank You",
       "author": [],
       "contents": "\r\nThis workshop has been given multiple times. This workshop was partially funded with a NLM T15 Training Grant supplement for Data Science: T15-LM007088-23\r\nThank you to PDX-R for hosting the workshop multiple times.\r\nThank you to Jessica Minnier who contributed and taught this workshop with me for WNAR2019.\r\nThank you to BioData Club for the latest version of the workshop, including our TAs:\r\nPierrette Lo\r\nDar’ya Pozhidayeva\r\nEric Leung\r\nMarijane White\r\nEric Earl\r\nSpecial Thanks to both Pierrette and Dar’ya for sharing their experiences and stumbling blocks about learning Shiny - they definitely helped me to reformulate how to teach Shiny and focus on the basics.\r\nThank you to Vivian Peng, for inspiring the layout for the slides.\r\nSlides done in {xaringan} with {flair} and {xaringanExtra}.\r\nSite done with {distill}.\r\nLicensing Information\r\nCopyright 2021 Ted Laderas and Jessica Minnier\r\nAll teaching materials are licensed under a Creative Commons Attribution NonCommercial 4.0 International (CC BY-NC 4.0) License. https://creativecommons.org/licenses/by-nc/4.0/\r\nWe have put a lot of effort and time into this workshop. The least you can do is credit us and our work.\r\nCode Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at\r\nhttp://www.apache.org/licenses/LICENSE-2.0\r\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-01-29T10:21:53-08:00"
+      "last_modified": "2021-01-29T12:55:07-08:00"
     },
     {
       "path": "index.html",
       "title": "a gRadual intRoduction to Shiny",
       "description": "Introductory Workshop to Basic Shiny Concepts\n",
-      "author": [],
-      "contents": "\r\n\r\n\r\n\r\nDescription\r\nThis was a two hour workshop given for BioData Club on 2021-01-28 introducing the basic concepts of Shiny. It runs about two hours long.\r\nThere are videos for each part, along with slides. We use an RStudio.cloud project to try the basic Shiny concepts.\r\nAudience\r\nIntermediate R users and students. Students should be familiar with {ggplot2}, {dplyr}, and how functions work.\r\nLearning Objectives\r\nLearn the basic architecture of Shiny Apps\r\nLearn how server and ui communicate with the input and output objects\r\nAdd ggplot2 code to our app and display it with plotOutput and renderOutput\r\nAdd a control to control the aesthetics of our ggplot\r\nMake a reactive dataset using reactive expressions and control it with a slider\r\nUse {plotly} to add tooltips to our data\r\nLearn about the Shiny Widget Gallery and how to use it to add controls to your app\r\nRStudio Cloud Project\r\nMake sure to save a permanent copy to your own workspace!\r\nhttps://rstudio.cloud/project/2125039\r\nPart 1: Basic Architecture of a Shiny App\r\nSlides\r\nOpen slides in a separate window: https://laderast.github.io/gradual_shiny/slides/#10\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/01_app_basics/01_app_basics.Rmd in RStudio Project\r\nPart 2: Reactives\r\nSlides\r\nOpen slides in a separate window: https://laderast.github.io/gradual_shiny/slides/#27\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/02_reactives/02_reactives.Rmd in RStudio Project\r\nPart 3: Tooltips with {plotly}; Wrapping up\r\nSlides\r\nOpen slides in a separate window: https://laderast.github.io/gradual_shiny/slides/#36\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/03_tooltips_plotly/03_tooltips_plotly.Rmd in RStudio Project.\r\nSurvey\r\nIf you’ve taken the workshop, please take our survey and give us feedback: https://ohsu.ca1.qualtrics.com/jfe/form/SV_afaOiEAnNpWZIoK\r\nIf you want to use the workshop materials, please drop us a line at [tedladeras] [at] [gmail]. We’d love to hear from you.\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-01-29T10:21:54-08:00"
+      "author": [
+        {
+          "name": {},
+          "url": "https://laderast.github.io"
+        },
+        {
+          "name": {},
+          "url": "https://jessicaminnier.com"
+        },
+        {
+          "name": {},
+          "url": "https://lopierra.rbind.io/"
+        },
+        {
+          "name": {},
+          "url": {}
+        }
+      ],
+      "date": "January 28, 2018",
+      "contents": "\r\n\r\nContents\r\nDescription\r\nAudience\r\nLearning Objectives\r\nRStudio Cloud Project\r\nPart 1: Basic Architecture of a Shiny App\r\nSlides\r\nVideo\r\nProject\r\n\r\nPart 2: Reactives\r\nSlides\r\nVideo\r\nProject\r\n\r\nPart 3: Tooltips with {plotly}; Wrapping up\r\nSlides\r\nVideo\r\nProject\r\n\r\nSurvey\r\n\r\n\r\n\r\n\r\nDescription\r\nThis was a two hour workshop given for BioData Club on 2021-01-28 introducing the basic concepts of Shiny. It runs about two hours long.\r\nThere are videos for each part, along with slides. We use an RStudio.cloud project to try the basic Shiny concepts.\r\nAudience\r\nIntermediate R users and students. Students should be familiar with {ggplot2}, {dplyr}, and how functions work.\r\nLearning Objectives\r\nLearn the basic architecture of Shiny Apps\r\nLearn how server and ui communicate with the input and output objects\r\nAdd ggplot2 code to our app and display it with plotOutput and renderOutput\r\nAdd a control to control the aesthetics of our ggplot\r\nMake a reactive dataset using reactive expressions and control it with a slider\r\nUse {plotly} to add tooltips to our data\r\nLearn about the Shiny Widget Gallery and how to use it to add controls to your app\r\nRStudio Cloud Project\r\nMake sure to save a permanent copy to your own workspace!\r\nhttps://rstudio.cloud/project/2125039\r\nPart 1: Basic Architecture of a Shiny App\r\nSlides\r\nOpen slides in a separate window: https://laderast.github.io/gradual_shiny/slides/#10\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/01_app_basics/01_app_basics.Rmd in RStudio Project\r\nPart 2: Reactives\r\nSlides\r\nOpen slides in a separate window: https://laderast.github.io/gradual_shiny/slides/#27\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/02_reactives/02_reactives.Rmd in RStudio Project\r\nPart 3: Tooltips with {plotly}; Wrapping up\r\nSlides\r\nOpen slides in a separate window: https://laderast.github.io/gradual_shiny/slides/#36\r\n\r\n\r\n\r\n\r\nVideo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nProject\r\nOpen up gradual_shiny/03_tooltips_plotly/03_tooltips_plotly.Rmd in RStudio Project.\r\nSurvey\r\nIf you’ve taken the workshop, please take our survey and give us feedback: https://ohsu.ca1.qualtrics.com/jfe/form/SV_afaOiEAnNpWZIoK\r\nIf you want to use the workshop materials, please drop us a line at [tedladeras] [at] [gmail]. We’d love to hear from you.\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-29T12:55:08-08:00"
     }
   ],
   "collections": []

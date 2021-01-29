@@ -90,6 +90,13 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   <meta property="description" itemprop="description" content="Introductory Workshop to Basic Shiny Concepts"/>
 
 
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2018-01-28"/>
+  <meta property="article:created" itemprop="dateCreated" content="2018-01-28"/>
+  <meta name="article:author" content="Ted Laderas"/>
+  <meta name="article:author" content="Jessica Minnier"/>
+  <meta name="article:author" content="Pierrette Lo"/>
+  <meta name="article:author" content="Dar&#39;ya Pozhidayeva"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="a gRadual intRoduction to Shiny"/>
@@ -107,7 +114,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["a gRadual intRoduction to Shiny"]},{"type":"character","attributes":{},"value":["Introductory Workshop to Basic Shiny Concepts\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","site","output"]}},"value":[{"type":"character","attributes":{},"value":["a gRadual intRoduction to Shiny"]},{"type":"character","attributes":{},"value":["Introductory Workshop to Basic Shiny Concepts\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Ted"]},{"type":"character","attributes":{},"value":["Laderas"]},{"type":"character","attributes":{},"value":["https://laderast.github.io"]},{"type":"character","attributes":{},"value":["Division of Bioinformatics and Computational Biomedicine, Medical Informatics and Clinical Epidemiology; Knight Cancer Institute, Oregon Health & Science University"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Jessica"]},{"type":"character","attributes":{},"value":["Minnier"]},{"type":"character","attributes":{},"value":["https://jessicaminnier.com"]},{"type":"character","attributes":{},"value":["PSU/OHSU School of Public Health; Knight Cancer Institute, Oregon Health & Science University"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","affiliation","url"]}},"value":[{"type":"character","attributes":{},"value":["Pierrette"]},{"type":"character","attributes":{},"value":["Lo"]},{"type":"character","attributes":{},"value":["Knight Cancer Institute, Oregon Health & Science University"]},{"type":"character","attributes":{},"value":["https://lopierra.rbind.io/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Dar'ya"]},{"type":"character","attributes":{},"value":["Pozhidayeva"]},{"type":"character","attributes":{},"value":["Oregon Clinical Translational Research Institute; Medical Informatics and Clinical Epidemiology, Oregon Health & Science University."]}]}]},{"type":"character","attributes":{},"value":["January 28, 2018"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2030,7 +2037,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"a gRadual intRoduction to Shiny","description":"Introductory Workshop to Basic Shiny Concepts","authors":[]}
+{"title":"a gRadual intRoduction to Shiny","description":"Introductory Workshop to Basic Shiny Concepts","authors":[{"author":"Ted Laderas","authorURL":"https://laderast.github.io","affiliation":"Division of Bioinformatics and Computational Biomedicine, Medical Informatics and Clinical Epidemiology; Knight Cancer Institute, Oregon Health & Science University","affiliationURL":"#","orcidID":""},{"author":"Jessica Minnier","authorURL":"https://jessicaminnier.com","affiliation":"PSU/OHSU School of Public Health; Knight Cancer Institute, Oregon Health & Science University","affiliationURL":"#","orcidID":""},{"author":"Pierrette Lo","authorURL":"https://lopierra.rbind.io/","affiliation":"Knight Cancer Institute, Oregon Health & Science University","affiliationURL":"#","orcidID":""},{"author":"Dar'ya Pozhidayeva","authorURL":"#","affiliation":"Oregon Clinical Translational Research Institute; Medical Informatics and Clinical Epidemiology, Oregon Health & Science University.","affiliationURL":"#","orcidID":""}],"publishedDate":"2018-01-28T00:00:00.000-08:00","citationText":"Laderas, et al., 2018"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2058,8 +2065,53 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <p><p>Introductory Workshop to Basic Shiny Concepts</p></p>
 </div>
 
+<div class="d-byline">
+  
+  true
+  
+,   
+  true
+  
+,   
+  true
+  
+,   
+  true
+  
+<br/>January 28, 2018
+</div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#audience">Audience</a></li>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+<li><a href="#rstudio-cloud-project">RStudio Cloud Project</a></li>
+<li><a href="#part-1-basic-architecture-of-a-shiny-app">Part 1: Basic Architecture of a Shiny App</a>
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#video">Video</a></li>
+<li><a href="#project">Project</a></li>
+</ul></li>
+<li><a href="#part-2-reactives">Part 2: Reactives</a>
+<ul>
+<li><a href="#slides-1">Slides</a></li>
+<li><a href="#video-1">Video</a></li>
+<li><a href="#project-1">Project</a></li>
+</ul></li>
+<li><a href="#part-3-tooltips-with-plotly-wrapping-up">Part 3: Tooltips with <code>{plotly}</code>; Wrapping up</a>
+<ul>
+<li><a href="#slides-2">Slides</a></li>
+<li><a href="#video-2">Video</a></li>
+<li><a href="#project-2">Project</a></li>
+</ul></li>
+<li><a href="#survey">Survey</a></li>
+</ul>
+</nav>
+</div>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
