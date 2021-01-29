@@ -31,7 +31,7 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#10")
 ## Video
 
 ```{r}
-knitr::include_url("https://youtu.be/_UuuL-cFqjs?t=170")
+knitr::include_url("https://www.youtube.com/_UuuL-cFqjs?t=170")
 ```
 
 ## Project
@@ -50,7 +50,7 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#27")
 ## Video
 
 ```{r}
-knitr::include_url("https://youtu.be/_UuuL-cFqjs?t=3080")
+knitr::include_url("https://www.youtube.com/_UuuL-cFqjs?t=3080")
 ```
 
 ## Project
@@ -68,5 +68,5 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#42")
 ## Video
 
 ```{r}
-knitr::include_url("https://youtu.be/_UuuL-cFqjs?t=4881")
+knitr::include_url("https://www.youtube.com/_UuuL-cFqjs?t=4881")
 ```
