@@ -53,7 +53,7 @@ Intermediate R users and students. Students should be familiar with `{ggplot2}`,
 - **Learn** about the Shiny Widget Gallery and how to use it.
 
 
-# RStudio Project
+# RStudio Cloud Project
 
 Make sure to save a permanent copy to your own workspace!
 
@@ -61,8 +61,10 @@ https://rstudio.cloud/project/2125039
 
 # Part 1: Basic Architecture of a Shiny App
 
-
 ## Slides
+
+Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#10" target="_blank">https://laderast.github.io/gradual_shiny/slides/#10</a>
+
 
 ```{r}
 knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#10")
@@ -84,6 +86,9 @@ Open up `gradual_shiny/01_app_basics/01_app_basics.Rmd` in RStudio Project
 
 ## Slides
 
+Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#27" target="_blank">https://laderast.github.io/gradual_shiny/slides/#27</a>
+
+
 ```{r}
 knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#27")
 ```
@@ -102,6 +107,9 @@ Open up `gradual_shiny/02_reactives/02_reactives.Rmd` in RStudio Project
 # Part 3: Tooltips with `{plotly}`; Wrapping up
 
 ## Slides
+
+Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#36" target="_blank">https://laderast.github.io/gradual_shiny/slides/#36</a>
+
 
 ```{r}
 knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#36")
