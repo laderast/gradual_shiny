@@ -8,7 +8,7 @@ data("biopics")
 
 # Slides about Reactives
 
-https://laderast.github.io/gradual_shiny/slides/#13
+https://laderast.github.io/gradual_shiny/slides/#27
 
 
 # Video

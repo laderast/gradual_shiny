@@ -16,13 +16,15 @@ categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex"
 
 ```
 
+# Slides
+
+https://laderast.github.io/gradual_shiny/slides/#42
+
 # Video
 
 ```{r}
-
 vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=4881")
 ```
-
 
 # Converting a ggplot to plotly using `ggplotly()`
 

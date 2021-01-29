@@ -13,7 +13,7 @@ data(biopics)
 
 # Slides
 
-https://laderast.github.io/gradual_shiny/slides/#2
+https://laderast.github.io/gradual_shiny/slides/#10
 
 # Video
 
