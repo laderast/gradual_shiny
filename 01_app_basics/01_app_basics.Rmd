@@ -7,12 +7,20 @@ author: "Ted Laderas"
 library(shiny)
 library(ggplot2)
 library(fivethirtyeight)
+library(vembedr)
 data(biopics)
 ```
 
 # Slides
 
 https://laderast.github.io/gradual_shiny/slides/#2
+
+# Video
+
+```{r}
+vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=170")
+```
+
 
 ## Starting with a minimal shiny app
 

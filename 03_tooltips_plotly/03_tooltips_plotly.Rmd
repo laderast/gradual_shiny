@@ -10,10 +10,19 @@ library(shiny)
 library(fivethirtyeight)
 library(ggplot2)
 library(plotly)
+library(vembedr)
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
 ```
+
+# Video
+
+```{r}
+
+vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=4881")
+```
+
 
 # Converting a ggplot to plotly using `ggplotly()`
 

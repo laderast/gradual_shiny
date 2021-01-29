@@ -1,10 +1,21 @@
 ```{r}
 library(shiny)
+library(vembedr)
+library(tidyverse)
+library(fivethirtyeight)
+data("biopics")
 ```
 
 # Slides about Reactives
 
 https://laderast.github.io/gradual_shiny/slides/#13
+
+
+# Video
+
+```{r}
+vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=3080")
+```
 
 
 # Making a `reactive()` dataset for our app.
