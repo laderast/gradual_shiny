@@ -1,7 +1,7 @@
 ---
 title: "License"
 description: |
-  A new article created using the Distill format.
+  Licensing Information.
 date: "`r Sys.Date()`"
 output: distill::distill_article
 ---
