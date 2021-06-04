@@ -1,7 +1,7 @@
 ---
 title: "a gRadual intRoduction to Shiny"
 author: "Ted Laderas"
-institute: "BioData Club<br><img src='image/bdc.png' width=250>"
+institute: "Cascadia-R 2021"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -35,7 +35,10 @@ xaringanExtra::use_tachyons()
 options(htmltools.dir.version = FALSE)
 library(flair)
 library(shiny)
-categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
+categoricalVars <- c("country", 
+                     "type_of_subject", 
+                     "subject_race", 
+                     "subject_sex")
 library(fivethirtyeight)
 library(ggplot2)
 library(plotly)
@@ -60,17 +63,6 @@ class: center, middle
 ## http://bit.ly/bdc_shiny_slides
 
 ---
-# What is BioData Club?
-
-BioData Club is an interdisciplinary community at OHSU dedicated to promoting a fun and supportive culture of co-learning in data science skills and open science principles. 
-
-We host workshops and social events where attendees can learn and work on projects among friends and colleagues. Biodata Club welcomes everyone who wants to better their know-how in all things data, regardless of skill level. 
-
-We want to replace statistics anxiety and code fear with inspiration and motivation to learn and share. BioData Club is supported by the [OHSU Library](https://www.ohsu.edu/library) and [DMICE](https://www.ohsu.edu/school-of-medicine/medical-informatics-and-clinical-epidemiology).
-
-- [Slack Invitation](https://join.slack.com/t/biodata-club/shared_invite/zt-l15bsq41-OwDFU~1Fwvv0~mu3g4gs7A) - If expired, email bdc-organizers@ohsu.edu
-- [Email bdc-organizers@ohsu.edu](email:bdc-organizers@ohsu.edu) to be added to mailing list for announcements
----
 # BioData Club Code of Conduct
 
 This workshop is governed by the [BioData Club Code of Conduct](https://biodata-club.github.io/code_of_conduct/).
@@ -83,19 +75,10 @@ If you are disruptive to class learning or disparaging to other students, I may 
 
 .footnote[https://bit.ly/bdc_shiny_slides]
 ---
-# Code of Conduct Violation Reporting
-
-If you need to report a Code of Conduct Violation, please do so here: 
-
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_8joYAQSpzU6kwuN
-
-All reporting is anonymous. We will review and take appropriate action.
----
 # Ted Laderas, PhD
 
 .pull-left[
-- Assistant Professor, Department of Medical Informatics and Clinical Epidemiology 
-- Interactive Visualization/Flow Cytometry
+- Bioinformatics Trainer, DNAnexus
 - Certified RStudio/Carpentries Instructor
 - Co-founder of
   - [BioData Club](http://biodata-club.github.io)
@@ -107,21 +90,22 @@ All reporting is anonymous. We will review and take appropriate action.
 ]
 
 ---
-# Workshop TAs
+# Workshop TA
 
 .pull-left[
-- Eric Earl
-- Eric Leung
-- Pierrette Lo
-- Dar'ya Pozhidayeva
-- Marijane White (Traffic Controller)
-]
+- Kate Hertweck
 
-.pull-right[
 .bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-If you need assistance, please message Marijane and she will add you to a breakout room and assign a TA to help you.]
+    If you have any questions you don't want to ask me, you can message Kate privately.
+]
 ]
 
+---
+# Introduce Yourself in Chat
+
+- Your Name
+- Affiliation
+- What you hope to learn in today's workshop
 
 ---
 # What is Shiny?
@@ -218,7 +202,7 @@ shinyApp(ui = ui, server = server)
 # `biopics` dataset
 
 ```{r echo=FALSE}
-gt::gt(biopics[1:5,])
+knitr::kable(biopics[1:5,])
 
 ```
 
@@ -234,20 +218,20 @@ class: center, middle
 .tiny[
 ```{r aes1, eval=FALSE, include=FALSE}
 my_plot <-  ggplot(biopics) + 
-      aes_string(
-        x="year_release", 
-        y="box_office", 
-        color= "type_of_subject") +
+      aes(
+        x=year_release, 
+        y=box_office, 
+        color= type_of_subject) +
       geom_point()
 ```
 
 ```{r echo=FALSE}
 decorate("aes1") %>%
-   flair("aes_string", background="#ffb700")
+   flair("aes", background="#ffb700")
 ```
 
-- We use .bg-gold[`aes_string()`] instead of `aes()` because we can specify variables as `character` - such as `"year_release"`
-- Will be helpful later when we add a control
+- We use .bg-gold[`aes()`] here
+- Makes things a little difficult when we wire a control in
 ]
 ]
 
@@ -255,9 +239,9 @@ decorate("aes1") %>%
 .tiny[
 ```{r echo=FALSE, warning=FALSE}
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+          y=box_office, 
+          color= type_of_subject) +
       geom_point()
 ```
 ]
@@ -329,9 +313,9 @@ server <- function(input, output) {
  output$movie_plot <- renderPlot({
 
   ggplot(biopics) + 
-    aes_string(x="year_release", 
-               y="box_office", 
-               color= "type_of_subject") +
+    aes(x=year_release, 
+        y=box_office, 
+        color= type_of_subject) +
     geom_point()
 
 })
@@ -404,9 +388,9 @@ server <- function(input, output) {
   output$movie_plot <- renderPlot({
 
     ggplot(biopics) +
-    aes_string(x="year_release", 
-               y="box_office", 
-               color="type_of_subject") +
+    aes(x=year_release, 
+        y=box_office, 
+        color=type_of_subject) +
 
       geom_point()
   })
@@ -428,28 +412,12 @@ decorate("ui2") %>%
 .pull-right.tiny[
 ```{r, echo=FALSE}
 decorate("server2") %>%
-  flair('color="type_of_subject"')
+  flair('color=type_of_subject')
 ```
 ]
 
 ---
 # Wiring in the Input
-
-```{r server3, include=FALSE, eval=FALSE}
-server <- function(input, output) {
-
-  output$movie_plot <- renderPlot({
-
-    ggplot(biopics) +
-    aes_string(x="year_release", 
-               y="box_office", 
-               color=input$color_select) +
-
-      geom_point()
-  })
-
-}
-```
 
 .pull-left.tiny[
 ```{r, echo=FALSE}
@@ -460,23 +428,47 @@ decorate("ui2") %>%
 ```
 ]
 
-.pull-right.tiny[
-```{r, echo=FALSE}
+.pull-right[
+
+```{r server3, eval=FALSE}
+server <- function(input, output) {
+
+  output$movie_plot <- renderPlot({
+
+    ggplot(biopics) +
+    aes(x=year_release, 
+        y=box_office, 
+        color= .data[[input$color_select]] ) +
+
+      geom_point()
+  })
+
+}
+```
+
+```{r, echo=FALSE, eval=FALSE}
 decorate("server3") %>% 
   flair("color_select", background = "#cdecff")
 
 ```
 
-- now we connect our .bg-light-yellow[`selectInput`] to our `ggplot`
-- use .bg-lightest-blue[`input$color_select`] as argument to `color` in `aes_string()`
+- connect our .bg-light-yellow[`selectInput`] to our `ggplot`
+- use .bg-lightest-blue[`.data[[input$color_select]]`] as argument to `color` in `aes_string()`
 ]
-
 
 ---
 # The Flow: from `selectInput()` to `plotOutput()`
 
 <img src="image/shiny-architecture.png" width = 800>
 
+
+---
+# Why do we use `.data[[]]` (Data Masking)?
+
+- Need a way of taking our `selectInput` value (`character`) and use it to refer to the column name in the data
+- `.data` is how we refer to the dataset in use in a `tidyverse` workflow 
+- Hence, `.data[[input$color_select]]`
+- More info here: https://mastering-shiny.org/action-tidy.html#data-masking
 
 ---
 class: center, middle
@@ -618,11 +610,27 @@ decorate("reactive3") %>%
 ]
 
 ---
-# Some Tips
+# A Tip
 
 - Always call reactives with the `()` 
 - Example: `biopics_filtered()`
 
+---
+# Required Input: the `req()` function
+
+```{r reactive4, include=FALSE, eval=FALSE}
+biopics_filtered <- reactive({
+    req(input$year_filter)
+  
+    biopics %>%
+        filter(year_release > 
+                 input$year_filter)
+     })
+
+```
+
+- If `input$year_filter` is not specified, then reactive will not work
+- Use the `req()` function to **require** `input$year_filter`. 
 
 ---
 class: center, middle
@@ -645,9 +653,9 @@ class: center, middle
 
 ```{r plotly2, eval=FALSE, include=FALSE}
 my_plot <- ggplot(biopics) +
-  aes_string(x = "box_office", 
-             y="year_release",
-             color="subject") +
+  aes(x =box_office, 
+      y=year_release,
+      color=subject) +
   geom_point()
 
 #ggplotly(my_plot)
@@ -667,9 +675,9 @@ decorate("plotly2") %>%
 .pull-right.tiny[
 ```{r echo=FALSE, warning=FALSE}
 my_plot <- ggplot(biopics) +
-  aes_string(x = "box_office", 
-             y="year_release",
-             color="type_of_subject") +
+  aes(x=box_office, 
+      y=year_release,
+      color=type_of_subject) +
   geom_point() +
   theme(legend.position="none")
 
@@ -681,13 +689,13 @@ ggplotly(my_plot)
 
 ```{r plotly1, eval=FALSE, include=FALSE}
 my_plot <- ggplot(biopics) +
-  aes_string(x = "box_office", 
-             y="year_release",
-             title="title",
-             color="type_of_subject",
-             director="director",
-             box_office="box_office", 
-             subject="subject") +
+  aes(x =box_office, 
+       y=year_release,
+       title=title,
+       color=type_of_subject,
+       director=director,
+       box_office=box_office, 
+       subject=subject) +
   geom_point()
 
 #ggplotly(my_plot)
@@ -700,19 +708,19 @@ decorate("plotly1") %>%
   flair_lines(4:8)
 ```
 
-- add to `aes_string()`
+- add to `aes()`
 ]
 
 .pull-right.tiny[
 ```{r echo=FALSE, warning=FALSE}
 my_plot <- ggplot(biopics) +
-  aes_string(x = "box_office", 
-             y="year_release",
-             color="type_of_subject",
-             title="title",
-             director="director",
-             box_office="box_office", 
-             subject="subject") +
+  aes(x =box_office, 
+      y=year_release,
+      color=type_of_subject,
+      title=title,
+      director=director,
+      box_office=box_office, 
+      subject=subject) +
   geom_point() +
   theme(legend.position="none")
 
@@ -771,9 +779,9 @@ server <- function(input, output) {
   output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics) +
-      aes_string(x = "box_office", 
-                 y="year_release",
-                 color="type_of_subject") +
+      aes(x = box_office, 
+          y= year_release,
+          color=type_of_subject) +
       geom_point() +
       theme(legend.position="none")
     

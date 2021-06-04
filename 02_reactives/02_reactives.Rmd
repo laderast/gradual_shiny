@@ -166,7 +166,11 @@ ui <- fluidPage(
 ##Server is where all of the computations happen
 server <- function(input, output) {
   
+
+  
   biopics_filtered <- reactive({
+    req(input$year_filter)
+    
     biopics %>%
         filter(year_release < input$year_filter)
      })
