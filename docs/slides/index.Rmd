@@ -92,12 +92,10 @@ If you are disruptive to class learning or disparaging to other students, I may 
 ---
 # Workshop TA
 
-.pull-left[
-- Kate Hertweck
+- Martin Monkman
 
 .bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
     If you have any questions you don't want to ask me, you can message Kate privately.
-]
 ]
 
 ---
@@ -851,24 +849,21 @@ Ways to lay out elements of your application:
 
 - `fluidPage` - https://shiny.rstudio.com/articles/layout-guide.html
 - `flexdashboard` - https://rmarkdown.rstudio.com/flexdashboard/
+    - Requires a slightly different set up for your apps: https://pkgs.rstudio.com/flexdashboard/articles/shiny.html
 
 ---
 # Extensions
 
+- [Shiny Modules](https://shiny.rstudio.com/articles/modules.html) (allows you to reuse code)
+- [HTMLwidgets](https://www.htmlwidgets.org/) - JavaScript visualization libraries made for use with Shiny/RMarkdown
+- [r2d3](https://rstudio.github.io/r2d3/) - allows you to use cool visualizations built in d3.js -  
+
 More info here: https://laderast.github.io/gradual_shiny/where-next.html
-
----
-# Shiny at OHSU
-
-- OCTRI has an RStudio Connect server that is accessible within the OHSU firewall
-- Requires a developer's fee and user fee
 
 ---
 # Shiny in the Real World
 
-- shinyapps.io lets you host Shiny apps externally
-- sign up for an account
-- Be very careful about PHI
+- https://shinyapps.io lets you host Shiny apps externally
 
 ---
 # Deploying Apps on shinyapps.io
@@ -876,6 +871,7 @@ More info here: https://laderast.github.io/gradual_shiny/where-next.html
 - Requires installing `{rsconnect}` package
 - When you first try to deploy, it will ask you for your account info
 - When you run the app, there is a "Publish" button
+- More info about getting your app online here: https://docs.rstudio.com/shinyapps.io/getting-started.html
 
 ---
 # Shiny Gallery
@@ -889,7 +885,8 @@ You should now know enough to start learning from the examples:
 # Going Further
 
 - Try to precompute as many statistics as possible in advance
-- Learn more about how to dynamically update the `ui`
+- Try to work from one `data.frame` if possible
+- Learn more about how to dynamically update the `ui` using event handlers
 - Look at `htmlwidgets` for possible JavaScript visualizations you can leverage
 
 ---
@@ -907,9 +904,13 @@ You should now know enough to start learning from the examples:
 - Dar'ya Pozhidayeva
 - Vivian Peng
 - Eric Leung
-- Eric Earl
 
-NLM T15: 
+---
+# Keep in Touch
+
+My Web Page: https://laderast.github.io
+Twitter: https://twitter.com/tladeras
+Email: tedladeras [at] gmail [dot] com
 
 ---
 class: center, middle
