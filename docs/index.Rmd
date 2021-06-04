@@ -129,11 +129,11 @@ Open up `gradual_shiny/02_reactives/02_reactives.Rmd` in RStudio Project
 
 ## Slides
 
-Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#36" target="_blank">https://laderast.github.io/gradual_shiny/slides/#36</a>
+Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#37" target="_blank">https://laderast.github.io/gradual_shiny/slides/#36</a>
 
 
 ```{r}
-knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#36")
+knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#37")
 ```
 
 ## Video
