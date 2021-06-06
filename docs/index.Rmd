@@ -140,7 +140,7 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#37")
 ## Video
 
 ```{r}
-vembedr::embed_youtube("_UuuL-cFqjs") %>%
+vembedr::embed_youtube("6XBb5J6U05Y") %>%
   vembedr::use_start_time("72m48")
 ```
 
