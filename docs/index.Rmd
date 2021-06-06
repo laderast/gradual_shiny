@@ -82,6 +82,10 @@ https://rstudio.cloud/project/2125039
 
 # Part 1: Basic Architecture of a Shiny App
 
+## Note
+
+Keep in mind that any references to `aes_string()` in the video have been fixed in the notebooks.
+
 ## Slides
 
 Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#10" target="_blank">https://laderast.github.io/gradual_shiny/slides/#10</a>
