@@ -1,4 +1,4 @@
-```{r}
+```{r setup}
 library(shiny)
 library(vembedr)
 library(tidyverse)
@@ -60,9 +60,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+          y=box_office, 
+          color= type_of_subject) +
       geom_point()
   })
 
@@ -125,9 +125,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(___________) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+                 y=box_office, 
+                 color= type_of_subject) +
       geom_point()
   })
 
@@ -178,9 +178,9 @@ server <- function(input, output) {
    output$scatter_plot <- renderPlot({
       
        ggplot(biopics_filtered()) +
-         aes_string(y="box_office", 
-         x="year_release",
-         color="type_of_subject") + 
+         aes(y=box_office, 
+         x=year_release,
+         color=type_of_subject) + 
        geom_point()
      
    })

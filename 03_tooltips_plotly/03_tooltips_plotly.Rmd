@@ -13,7 +13,7 @@ library(plotly)
 library(vembedr)
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
-
+Sys.setlocale('LC_ALL','C')
 ```
 
 # Slides
@@ -57,6 +57,7 @@ ggplotly(my_plot, tooltip = c("box_office", "year_release"))
 Now to add this to an app, we can add our plotly object to an app using `plotlyOutput()` for `ui`, and `renderPlotly({})` for `server`:
 
 ```{r}
+Sys.setlocale('LC_ALL','C')
 ui <- fluidPage(
   plotlyOutput("movie_plot")
 )
@@ -83,7 +84,7 @@ shinyApp(ui, server)
 
 ## Exercise
 
-1. Add more aesthetics to your ggplot `aes_string()` statement, such as movie_title="title". Here's a list of the variables in `biopics` for your reference.
+1. Add more aesthetics to your ggplot `aes()` statement, such as movie_title="title". Here's a list of the variables in `biopics` for your reference.
 
 ```{r}
 colnames(biopics)
@@ -93,6 +94,7 @@ colnames(biopics)
 
 
 ```{r}
+Sys.setlocale('LC_ALL','C')
 ui <- fluidPage(
   plotlyOutput("movie_plot")
 )
@@ -126,6 +128,7 @@ Here's the final app using our new `plotly` plot.
 
 
 ```{r}
+Sys.setlocale('LC_ALL','C')
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 

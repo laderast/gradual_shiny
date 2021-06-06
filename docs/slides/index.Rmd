@@ -908,9 +908,9 @@ You should now know enough to start learning from the examples:
 ---
 # Keep in Touch
 
-My Web Page: https://laderast.github.io
-Twitter: https://twitter.com/tladeras
-Email: tedladeras [at] gmail [dot] com
+- My Web Page: https://laderast.github.io
+- Twitter: https://twitter.com/tladeras
+- Email: tedladeras [at] gmail [dot] com
 
 ---
 class: center, middle

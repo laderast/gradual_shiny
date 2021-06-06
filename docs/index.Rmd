@@ -93,9 +93,10 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#10")
 
 ## Video
 
+https://youtu.be/6XBb5J6U05Y?t=2956
+
 ```{r}
-vembedr::embed_youtube("_UuuL-cFqjs") %>%
-  use_start_time("2m48")
+vembedr::embed_youtube("6XBb5J6U05Y") 
 ```
 
 ## Project
@@ -117,8 +118,8 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#27")
 ## Video
 
 ```{r}
-vembedr::embed_youtube("_UuuL-cFqjs") %>%
-  vembedr::use_start_time("51m20")
+vembedr::embed_youtube("6XBb5J6U05Y") %>%
+  vembedr::use_start_time("49m16")
 ```
 
 ## Project
@@ -140,7 +141,7 @@ knitr::include_url("https://laderast.github.io/gradual_shiny/slides/#37")
 
 ```{r}
 vembedr::embed_youtube("_UuuL-cFqjs") %>%
-  vembedr::use_start_time("81m21")
+  vembedr::use_start_time("72m48")
 ```
 
 ## Project
