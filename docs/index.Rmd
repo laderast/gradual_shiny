@@ -6,7 +6,7 @@ author:
   - first_name: "Ted"
     last_name: "Laderas"
     url: https://laderast.github.io
-    affiliation: Division of Bioinformatics and Computational Biomedicine, Medical Informatics and Clinical Epidemiology; Knight Cancer Institute, Oregon Health & Science University
+    affiliation: DNAnexus
   - first_name: "Jessica"
     last_name: "Minnier"
     url: https://jessicaminnier.com
