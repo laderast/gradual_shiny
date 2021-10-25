@@ -1,7 +1,7 @@
 ---
 title: "a gRadual intRoduction to Shiny"
 author: "Ted Laderas"
-institute: "Cascadia-R 2021"
+institute: "R-Pharma 2021"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -92,10 +92,10 @@ If you are disruptive to class learning or disparaging to other students, I may 
 ---
 # Workshop TA
 
-- Martin Monkman
+- Phil Bowsher
 
 .bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-    If you have any questions you don't want to ask me, you can message Kate privately.
+    If you have any questions you don't want to ask me, you can message Phil privately.
 ]
 
 ---
@@ -446,12 +446,12 @@ server <- function(input, output) {
 
 ```{r, echo=FALSE, eval=FALSE}
 decorate("server3") %>% 
-  flair("color_select", background = "#cdecff")
+  flair(".data[[input$color_select]]", background = "#cdecff")
 
 ```
 
 - connect our .bg-light-yellow[`selectInput`] to our `ggplot`
-- use .bg-lightest-blue[`.data[[input$color_select]]`] as argument to `color` in `aes_string()`
+- use .bg-lightest-blue[`.data[[input$color_select]]`] as argument to `color` in `aes()`
 ]
 
 ---
@@ -582,8 +582,8 @@ renderPlot({
   
   ggplot(biopics_filtered()) + 
   
-  aes_string(y="box_office", 
-             x="year_release") + 
+  aes(y=box_office, 
+      x=year_release) + 
       
   geom_point()
      
