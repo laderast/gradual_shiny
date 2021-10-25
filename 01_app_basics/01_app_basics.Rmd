@@ -50,9 +50,9 @@ Why do we use `aes_string()` instead of `aes()`? With `aes_string()`, we can spe
 
 ```{r}
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+          y=box_office, 
+          color=type_of_subject) +
       geom_point()
 ```
 This part goes into the server portion of our app. So that `ui` can access it, we'll assign it to `output$paired_plot`, so that our `ui` can "see" it. Remember, `server` controls the `output` object.
@@ -63,9 +63,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+          y=box_office, 
+          color= type_of_subject) +
       geom_point()
   })
 
@@ -103,9 +103,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+          y=box_office, 
+          color=type_of_subject) +
       geom_point()
   })
 
@@ -158,9 +158,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+        y=box_office, 
+        color=type_of_subject) +
       geom_point()
   })
 
@@ -199,8 +199,8 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
+      aes(x=year_release, 
+                 y=box_office, 
                  color= _______________) +   #fill in this blank
       geom_point()
   })
@@ -240,8 +240,8 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
+      aes(x=year_release, 
+                 y=box_office, 
                  color= input$color_select) +
       geom_point()
   })
