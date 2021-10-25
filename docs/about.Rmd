@@ -1,0 +1,31 @@
+---
+title: "Acknowledgements"
+description: |
+   Thank You
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This workshop has been given multiple times. This workshop was partially funded with a NLM T15 Training Grant supplement for Data Science: T15-LM007088-23
+
+Thank you to PDX-R for hosting the workshop multiple times.
+
+Thank you to Jessica Minnier who contributed and taught this workshop with me for WNAR2019.
+
+Thank you to BioData Club for the latest version of the workshop, including our TAs:
+
+- Pierrette Lo
+- Dar'ya Pozhidayeva
+- Eric Leung
+- Marijane White
+- Eric Earl
+
+Special Thanks to both Pierrette and Dar'ya for sharing their experiences and stumbling blocks about learning Shiny - they definitely helped me to reformulate how to teach Shiny and focus on the basics.
+
+Thank you to Vivian Peng, for inspiring the layout for the slides.
+
+Slides done in [`{xaringan}`](https://bookdown.org/yihui/rmarkdown/xaringan.html) with [`{flair}`](https://github.com/r-for-educators/flair) and [`{xaringanExtra}`](https://github.com/gadenbuie/xaringanExtra).
+
+Site done with [`{distill}`](https://rstudio.github.io/distill/).

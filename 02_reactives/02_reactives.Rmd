@@ -1,10 +1,21 @@
-```{r}
+```{r setup}
 library(shiny)
+library(vembedr)
+library(tidyverse)
+library(fivethirtyeight)
+data("biopics")
 ```
 
 # Slides about Reactives
 
-https://laderast.github.io/gradual_shiny/slides/#13
+https://laderast.github.io/gradual_shiny/slides/#27
+
+
+# Video
+
+```{r}
+vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=3080")
+```
 
 
 # Making a `reactive()` dataset for our app.
@@ -49,9 +60,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(biopics) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+          y=box_office, 
+          color= type_of_subject) +
       geom_point()
   })
 
@@ -114,9 +125,9 @@ server <- function(input, output) {
   output$paired_plot <- renderPlot({
 
     ggplot(___________) + 
-      aes_string(x="year_release", 
-                 y="box_office", 
-                 color= "type_of_subject") +
+      aes(x=year_release, 
+                 y=box_office, 
+                 color= type_of_subject) +
       geom_point()
   })
 
@@ -155,7 +166,11 @@ ui <- fluidPage(
 ##Server is where all of the computations happen
 server <- function(input, output) {
   
+
+  
   biopics_filtered <- reactive({
+    req(input$year_filter)
+    
     biopics %>%
         filter(year_release < input$year_filter)
      })
@@ -163,9 +178,9 @@ server <- function(input, output) {
    output$scatter_plot <- renderPlot({
       
        ggplot(biopics_filtered()) +
-         aes_string(y="box_office", 
-         x="year_release",
-         color="type_of_subject") + 
+         aes(y=box_office, 
+         x=year_release,
+         color=type_of_subject) + 
        geom_point()
      
    })

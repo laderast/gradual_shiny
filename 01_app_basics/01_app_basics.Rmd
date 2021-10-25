@@ -7,12 +7,20 @@ author: "Ted Laderas"
 library(shiny)
 library(ggplot2)
 library(fivethirtyeight)
+library(vembedr)
 data(biopics)
 ```
 
 # Slides
 
-https://laderast.github.io/gradual_shiny/slides/#2
+https://laderast.github.io/gradual_shiny/slides/#10
+
+# Video
+
+```{r}
+vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=170")
+```
+
 
 ## Starting with a minimal shiny app
 
@@ -159,8 +167,8 @@ server <- function(input, output) {
 
     ggplot(biopics) + 
       aes(x=year_release, 
-        y=box_office, 
-        color=type_of_subject) +
+          y=box_office, 
+          color=type_of_subject) +
       geom_point()
   })
 
@@ -201,7 +209,7 @@ server <- function(input, output) {
     ggplot(biopics) + 
       aes(x=year_release, 
                  y=box_office, 
-                 color= _______________) +   #fill in this blank
+                 color= .data[[_______________]]) +   #fill in this blank
       geom_point()
   })
 
@@ -241,8 +249,8 @@ server <- function(input, output) {
 
     ggplot(biopics) + 
       aes(x=year_release, 
-                 y=box_office, 
-                 color= input$color_select) +
+          y=box_office, 
+          color= .data[[input$color_select]]) +
       geom_point()
   })
 

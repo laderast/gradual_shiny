@@ -28,6 +28,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   biopics_filtered <- reactive({
+    req(input$year_filter)
     biopics %>%
         filter(year_release < input$year_filter)
      })
@@ -35,8 +36,9 @@ server <- function(input, output) {
    output$movie_plot <- renderPlot({
       
        ggplot(biopics_filtered()) +
-         aes_string(y="box_office", 
-         x="year_release") + 
+         aes(y=box_office, 
+         x=year_release,
+         color=type_of_subject) + 
        geom_point()
      
    })

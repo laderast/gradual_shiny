@@ -10,9 +10,20 @@ library(shiny)
 library(fivethirtyeight)
 library(ggplot2)
 library(plotly)
+library(vembedr)
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
+Sys.setlocale('LC_ALL','C')
+```
 
+# Slides
+
+https://laderast.github.io/gradual_shiny/slides/#42
+
+# Video
+
+```{r}
+vembedr::embed_url("https://youtu.be/_UuuL-cFqjs?t=4881")
 ```
 
 # Converting a ggplot to plotly using `ggplotly()`
@@ -21,9 +32,9 @@ categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex"
 ```{r}
 
 my_plot <- ggplot(biopics) +
-      aes_string(y = "box_office", 
-                 x="year_release",
-                 color="type_of_subject") +
+      aes(y = box_office, 
+                 x=year_release,
+                 color=type_of_subject) +
       geom_point() +
       theme(legend.position="none")
 
@@ -46,6 +57,7 @@ ggplotly(my_plot, tooltip = c("box_office", "year_release"))
 Now to add this to an app, we can add our plotly object to an app using `plotlyOutput()` for `ui`, and `renderPlotly({})` for `server`:
 
 ```{r}
+Sys.setlocale('LC_ALL','C')
 ui <- fluidPage(
   plotlyOutput("movie_plot")
 )
@@ -55,9 +67,9 @@ server <- function(input, output) {
   output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics) +
-      aes_string(x = "box_office", 
-                 y="year_release",
-                 color="type_of_subject") +
+      aes(x = box_office, 
+          y = year_release,
+          color=type_of_subject) +
       geom_point() +
       theme(legend.position="none")
     
@@ -72,7 +84,7 @@ shinyApp(ui, server)
 
 ## Exercise
 
-1. Add more aesthetics to your ggplot `aes_string()` statement, such as movie_title="title". Here's a list of the variables in `biopics` for your reference.
+1. Add more aesthetics to your ggplot `aes()` statement, such as movie_title="title". Here's a list of the variables in `biopics` for your reference.
 
 ```{r}
 colnames(biopics)
@@ -82,6 +94,7 @@ colnames(biopics)
 
 
 ```{r}
+Sys.setlocale('LC_ALL','C')
 ui <- fluidPage(
   plotlyOutput("movie_plot")
 )
@@ -91,11 +104,11 @@ server <- function(input, output) {
   output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics) +
-      aes_string(x = "box_office", 
-                 y="year_release",
-                 color="type_of_subject",
+      aes(x = box_office, 
+                 y=year_release,
+                 color=type_of_subject,
                  ----------------------,
-                 ----------------------,) +
+                 ----------------------) +
       geom_point() +
       theme(legend.position="none")
     
@@ -115,6 +128,7 @@ Here's the final app using our new `plotly` plot.
 
 
 ```{r}
+Sys.setlocale('LC_ALL','C')
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
@@ -130,13 +144,13 @@ server <- function(input, output) {
   output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics) +
-      aes_string(x = "box_office", 
-                 y="year_release",
-                 color=input$color_select,
-                 title="title",
-                 director="director",
-                 box_office="box_office", 
-                 subject="subject") +
+      aes(x = box_office, 
+                 y=year_release,
+                 color= .data[[input$color_select]],
+                 title=title,
+                 director=director,
+                 box_office=box_office, 
+                 subject=subject) +
       geom_point() +
       theme(legend.position="none")
     

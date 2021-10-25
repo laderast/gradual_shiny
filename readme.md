@@ -9,25 +9,15 @@ Welcome to the workshop! We'll introduce you to the basics behind Shiny, an easy
 
 ## Requirements
 
-You will need a laptop with RStudio installed. Additionally, you will need the following packages installed:
-
-```
-install.packages(c("fivethirtyeight", "shiny", "tidyverse"))
-```
-
-If you want to use `plotly` in app 04B (which is optional), you'll also need to install it:
-
-```
-install.packages("plotly")
-```
+Please see the website for more information.
 
 ## Getting Started
 
-Open up the tutorial at http://laderast.github.io/gradual_shiny/slides/. There's more info on getting started in there.
+Open up the tutorial at http://laderast.github.io/gradual_shiny/. There's more info on getting started in there.
 
 ## Contributing
 
-I'd love to hear any suggestions on what people thought worked and didn't work for the workshop. [Add comments to this issue](https://github.com/laderast/shiny_workshop_pdxrlang/issues/2)!
+I'd love to hear any suggestions on what people thought worked and didn't work for the workshop. [Add comments to this issue](https://github.com/laderast/gradual_shiny/issues/1)!
 
 ## Acknowledgements
 
@@ -37,7 +27,7 @@ This workshop was partially funded from a NLM T15 Training Grant supplement for 
 
 ## Licensing Info
 
-Copyright 2020 Ted Laderas and Jessica Minnier
+Copyright 2021 Ted Laderas and Jessica Minnier
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

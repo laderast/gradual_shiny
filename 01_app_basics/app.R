@@ -15,9 +15,9 @@ server <- function(input, output) {
    output$movie_plot <- renderPlot({
       
       ggplot(biopics) + 
-         aes_string(x="year_release", 
-                    y="box_office", 
-                    color= input$color_select) +
+         aes(x=year_release, 
+             y=box_office, 
+             color= .data[[input$color_select]]) +
          geom_point()
    })
    

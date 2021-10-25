@@ -29,13 +29,13 @@ server <- function(input, output) {
   output$movie_plot <- renderPlotly({
     
     my_plot <- ggplot(biopics_filtered()) +
-      aes_string(y = "box_office", 
-                 x="year_release",
-                 color=input$color_select,
-                 title="title",
-                 director="director",
-                 box_office="box_office", 
-                 subject="subject") +
+      aes(y = box_office, 
+          x=year_release,
+                 color= .data[[input$color_select]],
+                 title=title,
+                 director=director,
+                 box_office=box_office, 
+                 subject=subject) +
       geom_point() +
       ggtitle("Biopics: year released vs. total box office") + 
       theme(legend.position="none")
