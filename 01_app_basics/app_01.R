@@ -1,10 +1,11 @@
 library(shiny)
 library(fivethirtyeight)
+library(ggplot2)
 data(biopics)
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
 ui <- fluidPage(
-   plotOutput("movie_plot")
+   plotOutput("--------")
 )
 
 server <- function(input, output) {
@@ -14,11 +15,10 @@ server <- function(input, output) {
       ggplot(biopics) + 
          aes(x=year_release, 
              y=box_office, 
-             color=country +
+             color= country) +
          geom_point()
    })
    
 }
 
-shinyApp(ui = ui, server = server)
 shinyApp(ui = ui, server = server)
