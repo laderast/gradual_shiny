@@ -7,7 +7,7 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "Acknowledgements"
+    - text: "Acknowledgements "
       href: about.html
     - text: "License"
       href: licensing.html
