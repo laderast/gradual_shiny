@@ -72,11 +72,11 @@ Intermediate R users and students. Students should be familiar with `{ggplot2}`,
 - **Make** a reactive dataset using reactive expressions and control it with a slider
 
 
-# RStudio Cloud Project
+# Posit Cloud Project
 
-To use this project, you will need to sign up for an https://rstudio.cloud free account. Make sure to [save a permanent copy to your own workspace](https://rstudio.cloud/learn/guide#your-workspace)!
+To use this project, you will need to sign up for an https://posit.cloud free account. Make sure to [save a permanent copy to your own workspace](https://rstudio.cloud/learn/guide#your-workspace)!
 
-https://rstudio.cloud/project/2125039  
+https://posit.cloud/content/11925422
 
 # Part 1: Basic Architecture of a Shiny App
 

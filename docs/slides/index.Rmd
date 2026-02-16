@@ -649,7 +649,7 @@ class: center, middle
 ---
 # Making a ggplot into a plotly plot
 
-```{r plotly2, eval=FALSE, include=FALSE}
+```{r plotly2, eval=FALSE, include=FALSE, warning=FALSE}
 my_plot <- ggplot(biopics) +
   aes(x =box_office, 
       y=year_release,

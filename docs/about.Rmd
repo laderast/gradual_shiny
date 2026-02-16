@@ -2,6 +2,10 @@
 title: "Acknowledgements"
 description: |
    Thank You
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
