@@ -9,6 +9,7 @@ library(ggplot2)
 library(fivethirtyeight)
 library(vembedr)
 data(biopics)
+Sys.setlocale('LC_ALL','C')
 ```
 
 # Slides
