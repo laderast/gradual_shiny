@@ -1,7 +1,7 @@
 ---
 title: "a gRadual intRoduction to Shiny"
 author: "Ted Laderas"
-institute: "R-Pharma 2021"
+institute: "R-Ladies Remote"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -12,6 +12,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+#runtime: shiny
 ---
 
 ```{r xaringan-themer, include = FALSE}
@@ -23,6 +24,7 @@ style_mono_accent(
   text_font_size = "24px",
   footnote_font_size = "20px"
 )
+Sys.setlocale('LC_ALL','C')
 ```
 
 ```{r xaringanExtra, echo=FALSE}
@@ -90,18 +92,9 @@ If you are disruptive to class learning or disparaging to other students, I may 
 ]
 
 ---
-# Workshop TA
-
-- Phil Bowsher
-
-.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-    If you have any questions you don't want to ask me, you can message Phil privately.
-]
-
----
 # Introduce Yourself in Chat
 
-- Your Name
+- Your Name and Pronouns
 - Affiliation
 - What you hope to learn in today's workshop
 
@@ -214,7 +207,7 @@ class: center, middle
 
 .pull-left[
 .tiny[
-```{r aes1, eval=FALSE, include=FALSE}
+```{r aes_one, eval=FALSE, include=FALSE}
 my_plot <-  ggplot(biopics) + 
       aes(
         x=year_release, 
@@ -224,7 +217,7 @@ my_plot <-  ggplot(biopics) +
 ```
 
 ```{r echo=FALSE}
-decorate("aes1") %>%
+decorate("aes_one") %>%
    flair("aes", background="#ffb700")
 ```
 
@@ -646,6 +639,12 @@ class: center, middle
 - A JavaScript library that makes your interactive plots more interactive.
 - accessed with the `{plotly}` package in R
 
+
+---
+# Note about {plotly}
+
+- Documentation no longer supported by plotly; is user maintained
+
 ---
 # Making a ggplot into a plotly plot
 
@@ -656,7 +655,7 @@ my_plot <- ggplot(biopics) +
       color=subject) +
   geom_point()
 
-#ggplotly(my_plot)
+ggplotly(my_plot)
 ```
 
 .pull-left.tiny[

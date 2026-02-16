@@ -6,7 +6,7 @@ author:
   - first_name: "Ted"
     last_name: "Laderas"
     url: https://laderast.github.io
-    affiliation: DNAnexus
+    affiliation: Fred Hutch Cancer Center
   - first_name: "Jessica"
     last_name: "Minnier"
     url: https://jessicaminnier.com
@@ -70,8 +70,6 @@ Intermediate R users and students. Students should be familiar with `{ggplot2}`,
 - **Add** `ggplot2` code to our app and display it with `plotOutput` and `renderOutput`
 - **Add** a control to control the aesthetics of our `ggplot`
 - **Make** a reactive dataset using reactive expressions and control it with a slider
-- **Use** `{plotly}` to add tooltips to our data
-- **Learn** about the Shiny Widget Gallery and how to use it to add controls to your app
 
 
 # RStudio Cloud Project
@@ -82,13 +80,9 @@ https://rstudio.cloud/project/2125039
 
 # Part 1: Basic Architecture of a Shiny App
 
-## Note
-
-Keep in mind that any references to `aes_string()` in the video have been fixed in the notebooks.
-
 ## Slides
 
-Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#10" target="_blank">https://laderast.github.io/gradual_shiny/slides/#10</a>
+Open slides in a separate window: <a href="https://laderast.github.io/gradual_shiny/slides/#10" target="_blank">https://laderast.github.io/gradual_shiny/slides/</a>
 
 
 ```{r}

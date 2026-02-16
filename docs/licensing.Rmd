@@ -10,7 +10,7 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Copyright 2021 The Authors.
+Copyright 2026 The Authors.
 
 All teaching materials are licensed under a Creative Commons Attribution NonCommercial 4.0 International (CC BY-NC 4.0) License. https://creativecommons.org/licenses/by-nc/4.0/
 
