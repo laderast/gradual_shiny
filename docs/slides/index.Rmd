@@ -80,11 +80,9 @@ If you are disruptive to class learning or disparaging to other students, I may 
 # Ted Laderas, PhD
 
 .pull-left[
-- Bioinformatics Trainer, DNAnexus
+- Director of Training & Community, Data Science Lab, Fred Hutch Cancer Center
 - Certified RStudio/Carpentries Instructor
-- Co-founder of
-  - [BioData Club](http://biodata-club.github.io)
-  - [Cascadia-R Conference](https://cascadiarconf.com)
+- Co-founder of [Cascadia-R Conference](https://cascadiarconf.com)
 - https://laderast.github.io 
 ]
 .pull-right[
