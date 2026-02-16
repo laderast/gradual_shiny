@@ -1,9 +1,8 @@
 Sys.setlocale('LC_ALL','C')
 
 library(shiny)
-library(fivethirtyeight)
 library(plotly)
-data(biopics)
+biopics <- read.csv("biopics.csv")
 categoricalVars <- c("country", "type_of_subject", "subject_race", "subject_sex")
 
 ui <- fluidPage(
