@@ -80,7 +80,8 @@ If you are disruptive to class learning or disparaging to other students, I may 
 # Ted Laderas, PhD
 
 .pull-left[
-- Director of Training & Community, Data Science Lab, Fred Hutch Cancer Center
+- Director of Training & Community
+  - Data Science Lab, Fred Hutch Cancer Center
 - Certified RStudio/Carpentries Instructor
 - Co-founder of [Cascadia-R Conference](https://cascadiarconf.com)
 - https://laderast.github.io 
@@ -642,6 +643,8 @@ class: center, middle
 # Note about {plotly}
 
 - Documentation no longer supported by plotly; is user maintained
+- Support may be sunsetted
+- Alternatives: `{ggiraph}`, 
 
 ---
 # Making a ggplot into a plotly plot
@@ -845,8 +848,10 @@ Shiny Widget Gallery: https://shiny.rstudio.com/gallery/widget-gallery.html
 Ways to lay out elements of your application:
 
 - `fluidPage` - https://shiny.rstudio.com/articles/layout-guide.html
-- `flexdashboard` - https://rmarkdown.rstudio.com/flexdashboard/
-    - Requires a slightly different set up for your apps: https://pkgs.rstudio.com/flexdashboard/articles/shiny.html
+- Quarto Dashboards - https://quarto.org/docs/dashboards/
+    - Requires a slightly different set up for your apps:
+- `bsLib` - https://rstudio.github.io/bslib/
+    - New way to layout Shiny apps
 
 ---
 # Extensions
@@ -860,7 +865,9 @@ More info here: https://laderast.github.io/gradual_shiny/where-next.html
 ---
 # Shiny in the Real World
 
+- [Posit Connect Cloud](https://docs.posit.co/connect-cloud/how-to/r/shiny-r.html) - lets you publish apps
 - https://shinyapps.io lets you host Shiny apps externally
+- Can host your own Shiny Server internally
 
 ---
 # Deploying Apps on shinyapps.io
@@ -887,6 +894,20 @@ You should now know enough to start learning from the examples:
 - Look at `htmlwidgets` for possible JavaScript visualizations you can leverage
 
 ---
+# WebR / ShinyLive
+
+Shiny apps that run in your browser!
+
+https://posit-dev.github.io/r-shinylive/
+
+---
+# Shiny Assistant
+
+Can be super helpful!
+
+https://shiny.posit.co/blog/posts/shiny-assistant/
+
+---
 # Suggested Reading
 
 - [Mastering Shiny](https://mastering-shiny.org/) by Hadley Wickham
@@ -906,8 +927,8 @@ You should now know enough to start learning from the examples:
 # Keep in Touch
 
 - My Web Page: https://laderast.github.io
-- Twitter: https://twitter.com/tladeras
-- Email: tedladeras [at] gmail [dot] com
+- Bluesky: https://bsky.app/profile/tladeras.bsky.social
+- Ready4R Newsletter: https://buttondown.com/ready4r
 
 ---
 class: center, middle

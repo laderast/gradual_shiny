@@ -4,6 +4,7 @@ library(vembedr)
 library(tidyverse)
 library(fivethirtyeight)
 data("biopics")
+Sys.setlocale('LC_ALL','C')
 ```
 
 # Slides about Reactives
