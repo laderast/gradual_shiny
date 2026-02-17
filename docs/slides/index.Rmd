@@ -77,11 +77,11 @@ If you are disruptive to class learning or disparaging to other students, I may 
 
 .footnote[https://bit.ly/bdc_shiny_slides]
 ---
-# Ted Laderas, PhD
+# Ted Laderas, PhD (he/him)
 
 .pull-left[
 - Director of Training & Community
-  - Data Science Lab, Fred Hutch Cancer Center
+  - [Data Science Lab](https://ocdo.fredhutch.org/dasl), Fred Hutch Cancer Center
 - Certified RStudio/Carpentries Instructor
 - Co-founder of [Cascadia-R Conference](https://cascadiarconf.com)
 - https://laderast.github.io 
@@ -93,9 +93,9 @@ If you are disruptive to class learning or disparaging to other students, I may 
 ---
 # Introduce Yourself in Chat
 
-- Your Name and Pronouns
-- Affiliation
+- Your Name, Pronouns and Affiliation
 - What you hope to learn in today's workshop
+- Favorite activity in February
 
 ---
 # What is Shiny?

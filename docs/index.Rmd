@@ -70,6 +70,7 @@ Intermediate R users and students. Students should be familiar with `{ggplot2}`,
 - **Add** `ggplot2` code to our app and display it with `plotOutput` and `renderOutput`
 - **Add** a control to control the aesthetics of our `ggplot`
 - **Make** a reactive dataset using reactive expressions and control it with a slider
+- **Add** Tooltips using `plotly`
 
 
 # Posit Cloud Project
